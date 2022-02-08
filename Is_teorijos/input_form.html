@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>input form</title>
 </head>
+
 <body>
     <!-- forma -->
-    <form action="https://www.google.com/search" method="get">
-        <input name="q"  type="text" placeholder="paieska">
-   <label> telefono numeris <input type="text" placeholder="+370 xxx xxxxx"></label> <br><br>
-   <input type="text" value="+370"> <br><b></b>
-   <input type="number"><br><br>
-   <input type="file"><br><br>
-   <input type="date"><br><br>
-   <label for="week">Week
-       <input type="week" id="week">
-   </label>
-   <button>Pateikti formą</button>
-</form>
+    <fieldset>
+        <legend>Google paieška</legend>
+        <form action="https://www.google.com/search" method="get">
+            <input name="q" type="text" placeholder="paieska">
+            <button>Ieškoti</button>
+        </form>
+    </fieldset>
+    <br><br><br>
+    <fieldset>
+        <legend style="background-color: chartreuse;">Input variantai</legend>
+        <form action="https://www.google.com/search" method="get">
+
+
+            <label> telefono numeris <input type="text" placeholder="+370 xxx xxxxx"></label> <br><br>
+            <input name="q" type="text" value="+370"> <br><b></b>
+            <input type="number"><br><br>
+            <input type="file"><br><br>
+            <input type="date"><br><br>
+            <label for="week">Week
+                <input type="week" id="week" style="background-color: chartreuse;">
+            </label><br><br>
+
+            <textarea style="background-color:aquamarine"  name="text" id="text" cols="40" rows="10" > </textarea>
+            <button>Pateikti formą</button>
+        </form>
+    </fieldset>
+
 </body>
+
 </html>
