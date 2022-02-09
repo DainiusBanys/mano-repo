@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="lt">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontaktų forma</title>
 </head>
+
 <body>
     <h1>Kontaktų forma</h1>
     <form action="./pridavimas.html" method="get">
-<fieldset>
-    <legend>Kontaktinė informacija</legend>
-    <label for="name">Jūsų vardas:</label>
-<input id="name" type="text" placeholder="Jūsų vardas" name="name" required pattern=".{2,50}"><br>
-<label for="lastname">Jūsų pavardė:</label>
-<input id="lastname" type="text" placeholder="Jūsų pavardė" name="lastname" required pattern=".{2,50}"><br>
-<label for="phonenumber">Telefono numeris:</label>
-<input id="phonenumber" type="text" placeholder="Jūsų telefono numeris" name="phonenumber" required pattern="[\+?\d+].{5,11}">
-</fieldset>
-<fieldset>
-    <legend>Užklausa</legend>
-    <label for="message"></label>
-    <textarea name="message" id="message" cols="30" rows="10" placeholder="Jūsų žinutė..."></textarea>
-</fieldset>
-<button>Pateikti</button>
+        <fieldset>
+            <legend>Kontaktinė informacija</legend>
+            <label for="name">Jūsų vardas:</label>
+            <input id="name" type="text" placeholder="Jūsų vardas" name="name" required pattern=".{2,50}"><br>
+            <label for="lastname">Jūsų pavardė:</label>
+            <input id="lastname" type="text" placeholder="Jūsų pavardė" name="lastname" required minlength="2"
+                maxlength="50"><br>
+            <label for="phonenumber">Telefono numeris:</label>
+            <input id="phonenumber" type="text" placeholder="Jūsų telefono numeris" name="phonenumber" required
+                pattern="[\+?\d+].{5,11}">
+        </fieldset>
+        <fieldset>
+            <legend>Užklausa</legend>
+            <label for="message"></label>
+            <textarea name="message" id="message" cols="30" rows="10" placeholder="Jūsų žinutė..."></textarea>
+        </fieldset>
+        <button>Pateikti</button>
     </form>
 </body>
+
 </html>
