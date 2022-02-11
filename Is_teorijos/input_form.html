@@ -22,9 +22,9 @@
         <legend style="background-color: chartreuse;">Input variantai</legend>
         <form action="https://www.google.com/search" method="get">
 
-<!-- Telefono numeris text formatas -->
+            <!-- Telefono numeris text formatas -->
             <label> telefono numeris <input type="text" placeholder="+370 xxx xxxxx" autofocus></label> <br><br>
-            <input name="q" type="text" value="+370" minlength="5" maxlength="8" > <br>
+            <input name="q" type="text" value="+370" minlength="5" maxlength="8"> <br>
             <!-- skaiciaus ivedimas -->
             <label for="">skaiciaus ivedimas</label>
             <input value="50" type="number" step="5" min="5" max="90"><br><br>
@@ -38,9 +38,27 @@
             <label for="week">Week
                 <input type="week" id="week" style="background-color: chartreuse;">
             </label><br><br>
-<!-- teksto ivestis -->
-<label for="">teksto ivestis</label>
-            <textarea style="background-color:aquamarine;"  name="text" id="text" cols="40" rows="10" > </textarea>
+            <label for="birthdaytime">Birthday (date and time):</label>
+            <input type="datetime-local" id="birthdaytime" name="birthdaytime"><br><br>
+            <label for="color">spalva</label>
+            <input type="color" name="spalva"><br><br>
+            <label for="range">rezis</label>
+            <input type="range" name="rezis" min="10" max="100"><br><br>
+            <label for="marke">sarasas</label>
+            <input name="marke" list="sarasas">
+            <form action="">
+                <datalist id="sarasas">
+                    <option>pirmas</option>
+                    <option>antras</option>
+                    <option>trecias</option>
+                    <option>ketvirtas</option>
+                    <option>penktas</option>
+                </datalist>
+            </form>
+
+            <!-- teksto ivestis -->
+            <label for="">teksto ivestis</label>
+            <textarea style="background-color:aquamarine;" name="text" id="text" cols="40" rows="10"> </textarea>
             <button>Pateikti formą</button>
         </form>
     </fieldset>
