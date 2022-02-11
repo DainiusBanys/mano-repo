@@ -1,0 +1,180 @@
+.h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.h5 {
+    display: block;
+    font-size: 0.83em;
+    margin-block-start: 1.67em;
+    margin-block-end: 1.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.h6 {
+    display: block;
+    font-size: 0.67em;
+    margin-block-start: 2.33em;
+    margin-block-end: 2.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.ul {
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.ol {
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.dl {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.dt {
+    display: block;
+}
+
+.dd {
+    display: block;
+    margin-inline-start: 40px;
+}
+
+.blockquote {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+}
+
+.address {
+    display: block;
+    font-style: italic;
+}
+
+.a {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.em {
+    font-style: italic;
+}
+
+.b {
+    font-weight: bold;
+}
+
+.i {
+    font-style: italic;
+}
+
+.code {
+    font-family: monospace;
+}
+
+.kbd {
+    font-family: monospace;
+}
+
+.samp {
+    font-family: monospace;
+}
+
+.mark {
+    background-color: yellow;
+    color: black;
+}
+
+.small {
+    font-size: smaller;
+}
+
+.del {
+    text-decoration: line-through;
+}
+
+.ins {
+    text-decoration: underline;
+}
+
+.sub {
+    vertical-align: sub;
+    font-size: smaller;
+}
+
+.sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+.q {
+    display: inline;
+}
+
+.abbr {
+    text-decoration: underline dotted;
+}
