@@ -1,0 +1,80 @@
+.float-container {
+    border: 0px;
+    width: 100%;
+    background-color: rgba(17, 207, 207, 255);
+}
+
+.float-child {
+    width: 50%;
+    height: 380px;
+    float: left;
+    background-color: rgba(17, 207, 207, 255);
+}
+
+fieldset {
+    border: 0px;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    padding-top: 5%;
+}
+
+h2 {
+    font-size: xx-large;
+    font-family: helvetica, tahoma, sans-serif;
+    color: white;
+    text-align: left;
+    padding-left: 20%;
+}
+
+p {
+    color: white;
+    text-align: left;
+    padding-left: 20%;
+}
+
+.element {
+    position: relative;
+    top: 15%;
+}
+
+
+/* input {
+    width: 60%;
+    padding: 2%;
+    margin: 2%;
+} */
+
+.input_div {
+    text-align: left;
+    width: 80%;
+    padding: 2%;
+    margin: 2%;
+    border: 0px;
+}
+
+.input_div_company_phone {
+    text-align: left;
+    width: 35%;
+    padding: 2%;
+    margin: 2%;
+    border: 0px;
+}
+
+textarea {
+    resize: none;
+}
+
+button {
+    width: 25%;
+    border: 0px;
+    height: 40px;
+    background-color: rgba(255, 234, 63, 255);
+}
+
+.button {
+    text-align: right;
+    padding-right: 8%;
+}
