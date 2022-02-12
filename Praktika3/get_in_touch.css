@@ -1,0 +1,6 @@
+fieldset {
+    display: inline;
+    border-style: solid;
+    border-width: 2cm;
+    border-color: rgb(209, 209, 247);
+}
