@@ -22,7 +22,7 @@ h1 {
 }
 
 h2 {
-    font-size: xx-large;
+    font-size: x-large;
     font-family: helvetica, tahoma, sans-serif;
     color: white;
     text-align: left;
@@ -35,17 +35,22 @@ p {
     padding-left: 20%;
 }
 
+ul {
+    color: white;
+    text-align: left;
+    padding-left: 20%;
+}
+
 .element {
     position: relative;
     top: 15%;
 }
 
-
-/* input {
+.center {
+    margin: auto;
     width: 60%;
-    padding: 2%;
-    margin: 2%;
-} */
+    padding: 10px;
+}
 
 .input_div {
     text-align: left;
@@ -53,6 +58,7 @@ p {
     padding: 2%;
     margin: 2%;
     border: 0px;
+    border-radius: 5px;
 }
 
 .input_div_company_phone {
@@ -61,6 +67,7 @@ p {
     padding: 2%;
     margin: 2%;
     border: 0px;
+    border-radius: 5px;
 }
 
 textarea {
@@ -69,9 +76,11 @@ textarea {
 
 button {
     width: 25%;
+    min-width: fit-content;
     border: 0px;
     height: 40px;
     background-color: rgba(255, 234, 63, 255);
+    border-radius: 5px;
 }
 
 .button {
