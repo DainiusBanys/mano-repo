@@ -1,4 +1,5 @@
 .float-container {
+    text-align: center;
     border: 0px;
     width: 100%;
     background-color: rgba(17, 207, 207, 255);
@@ -38,7 +39,7 @@ p {
 ul {
     color: white;
     text-align: left;
-    padding-left: 20%;
+    padding-left: 24%;
 }
 
 .element {
