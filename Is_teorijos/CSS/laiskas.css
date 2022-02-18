@@ -1,0 +1,40 @@
+.mail_format {
+    box-sizing: border-box;
+    border: 1px solid black;
+    max-width: 800px;
+    background-color: lavender;
+    padding: 20px;
+}
+
+date {
+    font-weight: 600;
+}
+
+.name {
+    font-size: 20px;
+}
+
+.right {
+    text-align: right;
+}
+
+.name_padding_down {
+    padding-top: 25px;
+}
+
+.name_padding_up {
+    padding-bottom: 25px;
+}
+
+.signature {
+    font-style: italic;
+}
+
+body {
+    font-family: "Courier New", Courier, monospace;
+}
+
+.mail_address {
+    text-align: left;
+    padding-bottom: 30px;
+}
