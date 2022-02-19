@@ -1,4 +1,8 @@
 @import url(./fonts/css/fontello.css);
+html {
+    font-size: 2vmin;
+}
+
 body {
     background-color: #0676e6;
     font-family: 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif;
@@ -8,29 +12,33 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     flex-direction: column;
 }
 
 .big_box {
     display: flex;
-    height: 80vh;
-    width: 70vw;
+    width: 70vmin;
+    min-width: fit-content;
+    height: 50vmin;
     background-color: #eeeeee;
-    border-radius: 30px;
+    border-radius: 10px;
     justify-content: center;
     align-items: center;
-    min-width: fit-content;
-    min-height: 350px;
+    padding-top: 10%;
+    padding-right: 5%;
+    padding-bottom: 10%;
+    padding-left: 5%;
 }
 
 .package {
     display: flex;
-    height: 300px;
-    width: 200px;
+    height: 80%;
+    width: 30vmin;
+    min-width: fit-content;
     flex-direction: column;
     align-items: center;
     padding-top: 3%;
+    padding-bottom: 3%;
     border-radius: 10px;
     background-color: white;
     margin: 1%;
@@ -40,21 +48,30 @@ body {
     background-color: #0676e6;
     color: white;
     padding: 3%;
-    font-size: smaller;
-    height: 5%;
-    min-width: 17ex;
+    font-size: 0.8rem;
+    height: 1rem;
+    min-width: fit-content;
+    width: 70%;
     text-align: center;
     font-weight: 600;
     border-radius: 20px;
 }
 
-h2 {
+.price {
     margin-bottom: 2%;
+    font-size: 2rem;
+    font-weight: 600;
 }
 
-h6 {
+.small {
     margin-top: 1%;
     margin-bottom: 1%;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.p {
+    margin: 0px;
 }
 
 .text_box {
@@ -62,56 +79,51 @@ h6 {
     text-align: center;
     padding-top: 15%;
     padding-bottom: 15%;
+    min-width: fit-content;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    color: lightslategray;
 }
 
 .button {
-    margin-top: 0%;
-    border: 2px solid #0676e6;
-    background-color: white;
-    border-radius: 20px;
+    width: 80%;
+    min-width: fit-content;
     padding: 3%;
-    width: 25ex;
+    margin-top: 0%;
+    background-color: white;
+    border: 2px solid #0676e6;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-family: 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif;
+    font-weight: 600;
+    color: #0676e6;
 }
 
 .footer {
-    /* position: sticky;
-    left: 0;
-    bottom: 0; */
     width: 100%;
     background-color: #0676e6;
     color: white;
     text-align: center;
     font-family: Arial, 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
-    font-size: large;
-}
-
-h3 {
-    font-family: Arial, 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
-    font-size: larger;
-}
-
-.column {
-    height: 20vh;
-    width: 10vw;
-    padding: 1ex;
-    margin: 3ex;
-    line-height: 0.7ex;
-    min-width: fit-content;
-    min-height: 15ex;
+    font-size: 1.5rem;
 }
 
 .columns {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-bottom: 2%;
+}
+
+.column {
+    padding: 1ex;
+    margin: 2%;
+    line-height: 0.7ex;
 }
 
 .pad {
     padding: 3ex;
 }
 
-.title {
-    font-size: x-large;
-    font-weight: 600;
-    line-height: 2ex;
+.p_foot {
+    font-size: 0.9rem;
 }

@@ -26,7 +26,7 @@
 [class*=" icon-"]:before {
     font-family: "fontello";
     font-style: normal;
-    font-size: x-large;
+    font-size: 2rem;
     font-weight: normal;
     display: inline-block;
     text-decoration: inherit;
