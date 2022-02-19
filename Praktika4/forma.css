@@ -1,24 +1,27 @@
+@import url(./fonts/css/fontello.css);
 body {
     background-color: #0676e6;
     font-family: 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
 
 .parent {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 .big_box {
     display: flex;
     height: 80vh;
-    width: 55vw;
+    width: 70vw;
     background-color: #eeeeee;
     border-radius: 30px;
     justify-content: center;
     align-items: center;
+    min-width: fit-content;
+    min-height: 350px;
 }
 
 .package {
@@ -68,4 +71,47 @@ h6 {
     border-radius: 20px;
     padding: 3%;
     width: 25ex;
+}
+
+.footer {
+    /* position: sticky;
+    left: 0;
+    bottom: 0; */
+    width: 100%;
+    background-color: #0676e6;
+    color: white;
+    text-align: center;
+    font-family: Arial, 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
+    font-size: large;
+}
+
+h3 {
+    font-family: Arial, 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
+    font-size: larger;
+}
+
+.column {
+    height: 20vh;
+    width: 10vw;
+    padding: 1ex;
+    margin: 3ex;
+    line-height: 0.7ex;
+    min-width: fit-content;
+    min-height: 15ex;
+}
+
+.columns {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2%;
+}
+
+.pad {
+    padding: 3ex;
+}
+
+.title {
+    font-size: x-large;
+    font-weight: 600;
+    line-height: 2ex;
 }
