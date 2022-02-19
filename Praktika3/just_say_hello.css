@@ -27,6 +27,7 @@ body {
     display: flex;
     height: 60vh;
     background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    min-height: 500px;
 }
 
 .input {
