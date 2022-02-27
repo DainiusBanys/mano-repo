@@ -16,6 +16,11 @@
 
 li:focus .submenu-list {
     display: block;
+    position: ;
+}
+
+li {
+    position: relative;
 }
 
 .submenu-list {
@@ -25,7 +30,7 @@ li:focus .submenu-list {
     list-style-type: none;
     background-color: aquamarine;
     border: 3px solid black;
-    position: relative;
+    position: absolute;
     top: 20px;
 }
 
