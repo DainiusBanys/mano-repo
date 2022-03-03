@@ -1,0 +1,25 @@
+body {
+    height: 500vh;
+    display: grid;
+    grid-template-rows: 80px 1fr repeat(4, 100vh);
+    grid-template-areas: "header" "section" "section" "section" "section" "section";
+    border: 1px solid black;
+}
+
+header {
+    grid-area: header;
+    background-color: orange;
+    height: 80px;
+}
+
+.section1 {
+    display: grid;
+    background-color: orangered;
+    place-items: center;
+}
+
+.section2 {
+    display: grid;
+    background-color: darkturquoise;
+    place-content: center;
+}
