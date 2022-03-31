@@ -84,4 +84,15 @@ task8 = (str) => {
 
 // 9 
 
-new RandExp
+function generate(length) {
+    var result           = '';
+    var range       = 'abcdefghijklmnopqrstuvwxyz';
+    var rangeLength = range.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += range.charAt(Math.floor(Math.random() * 
+ rangeLength));
+   }
+   return result;
+}
+
+console.log(generate(3));
