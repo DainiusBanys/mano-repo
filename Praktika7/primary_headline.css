@@ -7,48 +7,14 @@ html {
     font-size: 1.1vw;
 }
 
-
-/* @media screen and (max-width: 380px) {
+@media screen and (max-width: 380px) {
     main {
-        display: grid;
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        /* grid-template-columns: 1fr; */
         grid-template-rows: repeat(12, 1fr);
-        grid-template-areas: "title" "users" "checkmark" "pen" "leaf" "quote" "pad" "cloud" "globe" "profile";
         justify-content: center;
     }
-    .title {
-        grid-area: title;
-    }
-    .users {
-        grid-area: users;
-    }
-    .checkmark {
-        grid-area: checkmark;
-    }
-    .pen {
-        grid-area: pen;
-    }
-    .leaf {
-        grid-area: leaf;
-    }
-    .quote {
-        grid-area: quote;
-    }
-    .pad {
-        grid-area: pad;
-    }
-    .cloud {
-        grid-area: cloud;
-    }
-    .globe {
-        grid-area: globe;
-    }
-    .profile {
-        grid-area: profile;
-    }
-} */
-
-@media screen and (max-width: 800px) {
     .icon {
         width: 60px;
         min-width: 60px;
@@ -58,9 +24,116 @@ html {
         border: 3px solid grey;
         background-color: #f7f8fa;
     }
+    .icon_orange {
+        float: left;
+        width: 150px;
+        height: 150px;
+        margin-right: 3%;
+    }
+    .cell_header {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 3.5rem;
+        padding: 3%;
+    }
+    .cell_text {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 2.5rem;
+        padding: 3%;
+        line-height: normal;
+    }
+    .title {
+        border: 1px solid red;
+        font-family: sans-serif;
+        text-align: center;
+        font-size: 2.8rem;
+        font-weight: 100;
+        padding: 3%;
+    }
+    .users {
+        display: flex;
+        border: 1px solid red;
+    }
+    .checkmark {
+        display: flex;
+        border: 1px solid red;
+    }
+    .pen {
+        display: flex;
+        border: 1px solid red;
+    }
+    .leaf {
+        display: flex;
+        border: 1px solid red;
+    }
+    .quote {
+        display: flex;
+        border: 1px solid red;
+        background-color: #e6673c;
+        color: white;
+    }
+    .pad {
+        display: flex;
+        border: 1px solid red;
+        background-color: #e6673c;
+        color: white;
+    }
+    .cloud {
+        display: flex;
+        border: 1px solid red;
+        background-color: #e6673c;
+        color: white;
+    }
+    .globe {
+        display: flex;
+        border: 1px solid red;
+        background-color: #e6673c;
+        color: white;
+    }
+    .profile {
+        display: flex;
+        border: 1px solid red;
+        color: white;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* grid-template-columns: repeat(auto-fit, minmax(720px, 1fr)); */
+        grid-template-rows: repeat(6, 1fr);
+        justify-content: center;
+    }
+    .icon {
+        width: 60px;
+        min-width: 60px;
+        height: 60px;
+        padding: 15px;
+        border-radius: 30px;
+        border: 3px solid grey;
+        background-color: #f7f8fa;
+    }
+    .cell_header {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.5rem;
+        padding: 3%;
+    }
+    .cell_text {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.2rem;
+        padding: 3%;
+        line-height: normal;
+    }
 }
 
 @media screen and (min-width: 801px) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* grid-template-columns: repeat(auto-fit, minmax(720px, 1fr)); */
+        grid-template-rows: repeat(6, 1fr);
+        justify-content: center;
+    }
     .icon {
         width: 110px;
         min-width: 110px;
@@ -70,6 +143,120 @@ html {
         border: 5px solid gray;
         background-color: #f7f8fa;
         margin-right: 5px;
+    }
+    .cell_header {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.5rem;
+        padding: 3%;
+    }
+    .cell_text {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.2rem;
+        padding: 3%;
+        line-height: normal;
+    }
+    .title {
+        border: 1px solid red;
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+        font-family: sans-serif;
+        text-align: center;
+        font-size: 2.8rem;
+        font-weight: 100;
+        padding: 3%;
+    }
+    .users {
+        display: flex;
+        padding-top: 2%;
+        padding-left: 15%;
+        padding-right: 7%;
+        grid-column: 1 / 2;
+        grid-row: 2 /3;
+        border: 1px solid red;
+    }
+    .checkmark {
+        display: flex;
+        padding-top: 2%;
+        padding-left: 7%;
+        padding-right: 15%;
+        grid-column: 2 / 3;
+        grid-row: 2 /3;
+        border: 1px solid red;
+    }
+    .pen {
+        display: flex;
+        padding-top: 2%;
+        padding-left: 15%;
+        padding-right: 7%;
+        grid-column: 1 / 2;
+        grid-row: 3 /4;
+        border: 1px solid red;
+    }
+    .leaf {
+        display: flex;
+        padding-top: 2%;
+        padding-left: 7%;
+        padding-right: 15%;
+        grid-column: 2 / 3;
+        grid-row: 3 /4;
+        border: 1px solid red;
+    }
+    .quote {
+        display: flex;
+        padding-top: 2%;
+        padding-left: 17%;
+        padding-right: 11%;
+        grid-column: 1 / 2;
+        grid-row: 4 / 5;
+        border: 1px solid red;
+        background-color: #e6673c;
+        color: white;
+    }
+    .pad {
+        display: flex;
+        padding-top: 2%;
+        padding-left: 9%;
+        padding-right: 19%;
+        grid-column: 2 / 3;
+        grid-row: 4 / 5;
+        border: 1px solid red;
+        background-color: #e6673c;
+        color: white;
+    }
+    .cloud {
+        display: flex;
+        padding-top: 2%;
+        padding-left: 17%;
+        padding-right: 11%;
+        grid-column: 1 / 2;
+        grid-row: 5 / 6;
+        border: 1px solid red;
+        background-color: #e6673c;
+        color: white;
+    }
+    .globe {
+        display: flex;
+        padding-top: 2%;
+        padding-left: 9%;
+        padding-right: 19%;
+        grid-column: 2 / 3;
+        grid-row: 5 / 6;
+        border: 1px solid red;
+        background-color: #e6673c;
+        color: white;
+    }
+    .profile {
+        display: flex;
+        grid-column: 1 / 3;
+        grid-row: 6 / 7;
+        font-family: sans-serif;
+        font-size: 1rem;
+        font-weight: 100;
+        padding: 3%;
+        border: 1px solid red;
+        justify-self: center;
+        padding-right: 20%;
+        padding-left: 20%;
     }
 }
 
@@ -133,24 +320,13 @@ button {
     margin: 5%;
 }
 
-main {
+
+/* main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* grid-template-columns: repeat(auto-fit, minmax(720px, 1fr)); */
     grid-template-rows: repeat(6, 1fr);
     justify-content: center;
-}
-
-.title {
-    border: 1px solid red;
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
-    font-family: sans-serif;
-    text-align: center;
-    font-size: 2.8rem;
-    font-weight: 100;
-    padding: 3%;
-}
+} */
 
 .title_s {
     font-family: sans-serif;
@@ -164,121 +340,6 @@ main {
     width: 150px;
     height: 150px;
     margin-right: 3%;
-}
-
-.cell_header {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
-    padding: 3%;
-}
-
-.cell_text {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2rem;
-    padding: 3%;
-    line-height: normal;
-}
-
-.users {
-    display: flex;
-    padding-top: 2%;
-    padding-left: 15%;
-    padding-right: 7%;
-    grid-column: 1 / 2;
-    grid-row: 2 /3;
-    border: 1px solid red;
-}
-
-.checkmark {
-    display: flex;
-    padding-top: 2%;
-    padding-left: 7%;
-    padding-right: 15%;
-    grid-column: 2 / 3;
-    grid-row: 2 /3;
-    border: 1px solid red;
-}
-
-.pen {
-    display: flex;
-    padding-top: 2%;
-    padding-left: 15%;
-    padding-right: 7%;
-    grid-column: 1 / 2;
-    grid-row: 3 /4;
-    border: 1px solid red;
-}
-
-.leaf {
-    display: flex;
-    padding-top: 2%;
-    padding-left: 7%;
-    padding-right: 15%;
-    grid-column: 2 / 3;
-    grid-row: 3 /4;
-    border: 1px solid red;
-}
-
-.quote {
-    display: flex;
-    padding-top: 2%;
-    padding-left: 17%;
-    padding-right: 11%;
-    grid-column: 1 / 2;
-    grid-row: 4 / 5;
-    border: 1px solid red;
-    background-color: #e6673c;
-    color: white;
-}
-
-.pad {
-    display: flex;
-    padding-top: 2%;
-    padding-left: 9%;
-    padding-right: 19%;
-    grid-column: 2 / 3;
-    grid-row: 4 / 5;
-    border: 1px solid red;
-    background-color: #e6673c;
-    color: white;
-}
-
-.cloud {
-    display: flex;
-    padding-top: 2%;
-    padding-left: 17%;
-    padding-right: 11%;
-    grid-column: 1 / 2;
-    grid-row: 5 / 6;
-    border: 1px solid red;
-    background-color: #e6673c;
-    color: white;
-}
-
-.globe {
-    display: flex;
-    padding-top: 2%;
-    padding-left: 9%;
-    padding-right: 19%;
-    grid-column: 2 / 3;
-    grid-row: 5 / 6;
-    border: 1px solid red;
-    background-color: #e6673c;
-    color: white;
-}
-
-.profile {
-    display: flex;
-    grid-column: 1 / 3;
-    grid-row: 6 / 7;
-    font-family: sans-serif;
-    font-size: 1rem;
-    font-weight: 100;
-    padding: 3%;
-    border: 1px solid red;
-    justify-self: center;
-    padding-right: 20%;
-    padding-left: 20%;
 }
 
 .icon_profile {
