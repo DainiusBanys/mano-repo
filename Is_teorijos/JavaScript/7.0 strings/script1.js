@@ -114,5 +114,28 @@ function deminer(bombSentence, bomb) {
     if (bomb(bombSentence) !== -1) { console.log(bombSentence.replace(/bomb/gi, 'puf')) } else console.log(bombSentence);
 };
 
-deminer("Hey, did you think there is a bomb?", bomb);
-deminer("Hey, did you think there is a bombike?", bomb);
+// deminer("Hey, did you think there is a bomb?", bomb);
+// deminer("Hey, did you think there is a bombike?", bomb);
+
+// 6
+
+capitalize = (word) => {
+        const str = word.charAt(0).toUpperCase() + word.slice(1);
+        console.log(str);
+    }
+    // capitalize('dainius');
+
+// 7
+
+checkTitle = (sentence) => {
+    let splitSentence = sentence.split(' ');
+    let i;
+    let result = 0;
+    for (i = 0; i < splitSentence.length; i++) {
+        if (splitSentence[i].charAt(0).match(/[A-Z]/) === null) { result++ };
+    }
+    console.log(result === 0);
+}
+
+checkTitle('A Mind Boggling Achievement');
+checkTitle("Water is Transparent");
