@@ -60,20 +60,59 @@ bomb = (bombSentence) => {
         if (str[i].toLowerCase() === 'bomb') {
             console.log('Duck!!! //  ' + (i + 1));
             y++;
+            return y;
         }
         i++;
+        return y;
     };
     if (y == -1) { console.log('There is no bomb, relax. // ' + y) }
 };
 
-bomb("There is a bomb.");
-bomb("There is a BomB!!!");
-bomb("This goes boom!!!");
+// bomb("There is a bomb.");
+// bomb("There is a BomB!!!");
+// bomb("This goes boom!!!");
 
 // 2 dalis
 
-// deminer = (bombSentence, callback) => {
+
+// function myDisplayer(some) {
+//     document.getElementById("demo").innerHTML = some;
+//   }
+
+//   function myCalculator(num1, num2, myCallback) {
+//     let sum = num1 + num2;
+//     myCallback(sum);
+//   }
+
+//   myCalculator(5, 5, myDisplayer);
+
+
+// deminer = (bombSentence, check) => {
 
 // }
 
-// deminer("Hey, did you think there is a bomb?", callback)
+
+bomb = (bombSentence) => {
+    bombSentence = bombSentence.replace(/[.!?]/g, ' ');
+    let str = bombSentence.split(' ');
+    let i = 0;
+    let y = -1;
+    while (i < str.length) {
+
+        if (str[i].toLowerCase() === 'bomb') {
+            y++;
+            return y;
+        }
+        i++;
+    };
+    if (y == -1) { return y; }
+};
+
+
+
+function deminer(bombSentence, bomb) {
+    if (bomb(bombSentence) !== -1) { console.log(bombSentence.replace(/bomb/gi, 'puf')) } else console.log(bombSentence);
+};
+
+deminer("Hey, did you think there is a bomb?", bomb);
+deminer("Hey, did you think there is a bombike?", bomb);
