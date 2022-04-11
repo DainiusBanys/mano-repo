@@ -88,11 +88,22 @@ dayDiff = (date1, date2) => {
 // 9 
 
 biggerDate = (date1, date2) => {
-    let dateObj1 = new Date(date1);
-    let dateObj2 = new Date(date2);
-    (dateObj1 > dateObj2) ? console.log(date1): console.log(date2);
-}
-biggerDate('2022-04-07', '1974-04-08');
-biggerDate('1992-04-07', '2022-04-07');
-biggerDate('1122-04-07', '2322-04-07');
-biggerDate('3222-04-07', '1022-04-07');
+        let dateObj1 = new Date(date1);
+        let dateObj2 = new Date(date2);
+        (dateObj1 > dateObj2) ? console.log(date1): console.log(date2);
+    }
+    // biggerDate('2022-04-07', '1974-04-08');
+    // biggerDate('1992-04-07', '2022-04-07');
+    // biggerDate('1122-04-07', '2322-04-07');
+    // biggerDate('3222-04-07', '1022-04-07');
+
+// clock
+const showTime = () => {
+
+    const d = new Date();
+    let time = d.toLocaleTimeString();
+    const clockElement = document.getElementById("clock-container");
+    clockElement.innerHTML = time;
+};
+
+setInterval(showTime, 1000);
