@@ -103,4 +103,4 @@ const doubleArr = numbers.map(myFunction)
 function myFunction(num) {
     return num * 2;
 }
-console.log(doubleArr);
+// console.log(doubleArr);

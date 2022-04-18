@@ -106,4 +106,4 @@ const showTime = () => {
     clockElement.innerHTML = time;
 };
 
-setInterval(showTime, 1000);
+// setInterval(showTime, 1000);
