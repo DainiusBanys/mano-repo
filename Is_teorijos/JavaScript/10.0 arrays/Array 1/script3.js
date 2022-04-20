@@ -16,11 +16,27 @@ let tenPlus = randomArr
 
 let max = Math.max(...randomArr);
 
-console.log(max, randomArr.indexOf(max));
+console.log(max + "- didziausias skaicius");
 
-console.log(randomArr.reduce((previous, current, index) => { return Math.max(previous, current) }));
+let index = randomArr.reduce(function(a, v, i) { if (v === max) a.push(i); return a; }, []);
 
-let index = [];
-index = randomArr.reduce(function(a, v, i) { if (v === max) a.push(i); return a; }, []);
+console.log('max reiksmes/iu indeksas/ai: ' + index);
 
-console.log(index);
+// let indexSum = randomArr.reduce(function(previous, current, index) { if (index % 2 === 0) console.log(previous, current, index);});
+
+let indexSum = randomArr.reduce(
+    (previousValue, currentValue, currentIndex) => {
+        return (currentIndex % 2 === 0) ?
+            previousValue + currentIndex : previousValue;
+    }, 0);
+
+console.log('lyginiu indeksu suma ' + indexSum);
+
+let arrMinusIndex = randomArr.reduce(
+    (prev, curr, ind) => {
+        prev.push(ind);
+        return prev;
+    }, 0);
+
+
+console.log(arrMinusIndex);
