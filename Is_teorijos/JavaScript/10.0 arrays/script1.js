@@ -101,4 +101,42 @@ const filterCities = cities
 
 const result = (cities.slice().includes('Fremont')) ? 'Toks miestas yra' : 'Tokio miesto nera';
 
-console.log(result);
+// console.log(result);
+
+// 7
+
+let numberArray = new Array(10).fill(0);
+let filledNumberArray = numberArray.map((element, index) => { return element[index] = index + 1 });
+console.log(filledNumberArray);
+
+
+const reducer = (arr, next, i) => {
+    console.log({
+        index: i,
+        liekana: i % 2,
+        curentValue: next,
+        addsToIndex: i % 2 === 0 ? ++i : --i,
+        array: arr.length,
+    })
+    i % 2 === 0 ? arr[i++] = next : arr[i--] = next;
+    return arr;
+}
+
+const changedArray = filledNumberArray.reduce(reducer, []);
+console.log(changedArray);
+
+// const array2 = [1, 2, 3, 4];
+// const reducer3 = (arr, next, i) => {
+//     console.log({
+//         index: i,
+//         liekana: i % 2,
+//         next: next,
+//         addsToIndex: i % 2 === 0 ? ++i : --i
+//     });
+//     i % 2 === 0 ? arr[i++] = next : arr[i++] = next;
+//     return arr;
+// }
+
+// const changedArray = array2.reduce(reducer3, []);
+
+// console.log(changedArray);

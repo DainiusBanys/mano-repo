@@ -1,0 +1,62 @@
+const array1 = [1, 2, 3, 4];
+
+
+// const initialValue = 0;
+// const sumWithInitial = array1.reduce(
+//   (previousValue, currentValue) => previousValue + currentValue,
+//   initialValue
+// );
+
+// const reducer = (acc, next) => {
+//   return acc + next;
+// }
+
+// const sum = array1.reduce(reducer, 0); // 10
+// // su Pradine reiksme
+// // 1) acc === 0; next === 1;
+// // 2) acc === 1; next === 2;
+// // 3) acc == 3; next === 3;
+// // 4) acc === 6; next === 4;
+
+
+// const sum2 = array1.reduce(reducer); // 10
+
+// su Pradine reiksme
+// 1) acc === 1; next === 2;
+// 2) acc === 3; next === 3;
+// 3) acc == 6; next === 4;
+
+// const array1 = [1, 2, 3, 4];
+const reverse = array1.reduce((acc, next) => {
+  acc.unshift(next);
+  return acc;
+},[]);
+
+// 1) acc === []; next === 1;
+// 2) acc === 1; next === 2;
+// 3) acc === [2, 1]; 
+
+console.log("test", [].unshift(1));
+
+const obj = array1.reduce((obj, next) => {
+  obj[next] = next;
+  return obj;
+}, {});
+
+console.log(obj);
+
+const array2 = [1, 2, 3, 4];
+const reducer3 = (arr, next, i) => {
+  console.log({
+    index: i,
+    liekana: i % 2,
+    next: next,
+    addsToIndex:  i % 2 === 0 ? ++i : --i
+  });
+  i % 2 === 0 ? arr[++i] = next : arr[--i] = next;
+  return arr;
+}
+
+const changedArray = array2.reduce(reducer3, []);
+
+console.log(changedArray);
