@@ -1,0 +1,12 @@
+{
+    "name": "modules",
+    "version": "1.0.0",
+    "description": "module desctiption",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ."
+    },
+    "type": "module",
+    "author": "",
+    "license": "ISC"
+}

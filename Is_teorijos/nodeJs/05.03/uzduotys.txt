@@ -1,0 +1,34 @@
+Sukurkite kilogramų konverterį. 
+Programa priima duomenis ir atspausdina  rezultatus konsolėje.
+Priimamos dvi reikšmės "Nuo" - Nurodo koks skaičius lentelėje bus konvertuojamas pirmas ir "Iki" - nurodo koks skaičius lentelėje bus paskutinis. 
+Programos tikslas atvaizduoti lentelėje eilę skaičių kilogramais ir jų ekivalentinę reikšmę  svarais (pound) ir akmenimis (stones).
+Vienas kilogramas lygus 2.20462 svaro, o vienas akmuo lygus 0.157473 akmens.
+Reikšmes suapvalinkite iki dviejų skaičių po kablelio.
+Rezultatus atspausdinkite tokiame formate:
+ 
+ 
+ 
+kg.    pound    stone
+1       2.20        0.15
+...       ...            ...
+
+
+
+Nupieškite stačiakampį iš “*”. Žvaigždučių kiekis pasirinktinas
+* * * * * * * * * * * * * * * * * * * * * *
+* * * * * * * * * * * * * * * * * * * * * *
+* * * * * * * * * * * * * * * * * * * * * *
+* * * * * * * * * * * * * * * * * * * * * *
+* * * * * * * * * * * * * * * * * * * * * *
+* * * * * * * * * * * * * * * * * * * * * *
+* * * * * * * * * * * * * * * * * * * * * *
+* * * * * * * * * * * * * * * * * * * * * *
+* * * * * * * * * * * * * * * * * * * * * *
+Nuspalvinkite stačiakampį trijomis spalvomis: Geltona, Žalia, Raudona, kad gautume lietuvos vėliavą.
+
+
+Terminale sukurkite prisijungimą prie programos.
+Paprašykite vartotojo įvesti prisijungimo vardą ir slaptažodį.
+Sutikrinkite duomenis ir grąžinkite žinutę pagal gautus parametrus. (Prisijungimas sėkmingas arba nepavyko)
+Teisingu atveju atvaizduokite žinutę žalia spalva, priešingu atveju raudona.
+Veikiančius prisijungimo duomenis aprašykite savo sukurtame objekte arba masyve.
