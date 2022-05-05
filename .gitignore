@@ -24,3 +24,5 @@ Is_teorijos/JavaScript/10.0 arrays/Test-Book/replit.nix
 Is_teorijos/JavaScript/10.0 arrays/Test-Book/.config/configstore/update-notifier-npm.json
 Is_teorijos/JavaScript/10.0 arrays/Test-Book/.cache/replit/nix/env.json
 Is_teorijos/JavaScript/10.0 arrays/~$moka 10 Masyvai.docx
+node_modules/
+.gitignore
