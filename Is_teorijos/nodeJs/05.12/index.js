@@ -110,9 +110,9 @@ app.post('/approve-transfer', async(req, res) => {
     res.redirect('/account?message=Neteisingai užpildyti duomenys&status=danger')
 })
 
-app.get('/transfer-approved/:', (req, res) => {
-    res.send('gautas id: ' + req.params.id)
-})
+// app.get('/transfer-approved/:', (req, res) => {
+//     res.send('gautas id: ' + req.params.id)
+// })
 
 
 app.listen(3000)
