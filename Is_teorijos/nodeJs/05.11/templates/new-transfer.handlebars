@@ -1,0 +1,20 @@
+<h2>Naujas pavedimas</h2>
+<form action="/approve-transfer" method="POST">
+    <div class="mb-3">
+        <label class="form-label">Sąskaitos numeris:</label>
+        <input type="text" name="account_number" class="form-control" placeholder="LT4516561651656">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Gavėjo vardas ir pavardė:</label>
+        <input type="text" name="recipient" class="form-control" placeholder="Vardenis Pavardenis">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Mokejimo paskirtis:</label>
+        <input type="text" name="reference" class="form-control" placeholder="Uz paslaugas">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Pavedimo suma:</label>
+        <input type="text" name="amount" class="form-control" placeholder="0.00">
+    </div>
+    <button type="submit" class="btn btn-success">Pervesti</button>
+</form>

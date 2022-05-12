@@ -1,0 +1,17 @@
+Sukurkite laiptinės kodo užraktą.
+Jums prireiks 9 checkbox tipo input elementų kurių name atributas būtų "kodas", o reikšmės skaičiai nuo 1 iki 9.
+Prie kiekvieno laukelio atvaizduokite jo skaičių. 
+Galima tik viena skaičių kombinacija:
+4 - 8 - 3
+Jeigu gyventojas pasirinko teisingus skaičius konsolėje atvaizduokite žinutę:
+"Durys atrakintos", o priešingu atveju: "Bandykite dar kartą" 
+ 
+Atlikus užduotį uždėkite like arba įkelkite gif'ą
+
+-----------------------------------------------------------------------------------------------------------------
+
+Papildykite pirmają užduotį.
+Užuot po bandymo atrakinti "spyną" grąžinę žinutę į terminalą, atvaizduokite ją naršyklėje.
+Stilizuokite "spyną" ir žinutes pasinaudodami bootstrap karkasu.
+Sėkmingo atrakinimo žinutei priskirkite "success" klasę, o nepavykusio bandymo - "danger".
+Uždėkite like kai atliksite užduotį.
