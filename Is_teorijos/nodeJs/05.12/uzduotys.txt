@@ -3,3 +3,21 @@ Aprašykite dešimties elementų masyvą, kurio reikšmės jūsų sugalvoti žmo
 Priimkite į route'ą perduodamą parametrą "pavarde" ir priskirkite ji naujam kintamajam.
 Iš aprašyto masyvo paimkite atsitiktinį vardą ir prijunkite jį prie pavardės stringo. 
 Gautą rezultatą atvaizduokite naršyklėje.
+
+----------------------------------------------------------------------------------
+
+Papildykite pirmos užduoties route'ą:
+Išssaugokite sugeneruotą vardą ir pavardę faile pavadinimu "vardai.txt". 
+Failas turi būti NE perrašomas, o pastoviai papildomas t.y. Kiekvienas sugeneruotas vardas ir pavardė turėtų pildytis failo apačioje. 
+Po sėkmingo išssaugojimo res.send() metodu į naršyklę grąžinkite žinutę: 
+"(Sugeneruotas Vardas ir Pavardė) sėkmingai išssaugotas faile."
+Nepavykus to atlikti, grąžinkite žinutę:
+"Įvyko klaida"
+
+----------------------------------------------------------------------------------
+
+Modifikuokite turimą route'a:
+Pakeiskite funkcionalumą, kad nuo šiol duomenys būtų saugomi į naują failą pavadinimu "duomenys.json".
+Faile saugokite duomenis JSON formatu.
+Duomenys turi būti pastoviai pildomi.
+Grąžinamas žinutes palikite prieš tai buvusias. Pakeiskite tik failo saugojimo būdą.

@@ -81,7 +81,7 @@ const masyvoIrasymas = async(failas) => {
 
             let jasonString1 = JSON.stringify(uniqueSorted)
 
-            await writeFile(failas, jasonString1, 'utf8')
+            await writeFile(failas, jasonString1, , { 'flag': 'a' }, 'utf8')
             console.log('duomenys sekmingai issaugoti database.json faile')
 
         } catch {
