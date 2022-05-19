@@ -27,13 +27,16 @@
         document.getElementById("main").appendChild(div);
 
         jump = () => {
-            let randomVertical = Math.floor(Math.random() * window.innerHeight);
-            let randomHorizontal = Math.floor(Math.random() * window.innerWidth);
+            let randomVertical = (Math.floor(Math.random() * (window.innerHeight - 50))) + 'px';
+            let randomHorizontal = (Math.floor(Math.random() * (window.innerWidth - 50))) + 'px';
             console.log(randomVertical, randomHorizontal)
             div.style.top = randomVertical;
             div.style.left = randomHorizontal;
+            document.querySelector('div').addEventListener('click', () => {
+                clearInterval(jumps)
+            })
         }
-        jump();
+        let jumps = setInterval(jump, 1000)
     </script>
 
 
