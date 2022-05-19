@@ -1,0 +1,8 @@
+Sukurkite mygtuką pavadinimu "Pridėti nuotrauką" ir priskirkite jam veiksmą, kuris naršyklėje sukurtų failo tipo "input" elementą. Generuojamų laukelių kiekis neribotas. Laukelio name atributą priskirkite tokį patį kaip ir pavadinimą nurodytą į "upload.array()" express routeryje.
+
+---------------------------------------------------------------------------------------------------------
+
+
+Nuotraukų galerijoje prie kiekvienos atvaizduojamos nuotraukos sukurkite mygtuką su tekstu "x".
+Paspaudus ant mygtuko javascript pagalba pašalinkite nuotrauką iš DOM'o ir atvaizduokite žinutę:
+"Nuotrauka sėkmingai ištrinta"
