@@ -36,7 +36,6 @@ app.get('/receptas/:id', (req, res) => {
         }
 
     ]
-    console.log(id)
     res.json(objektas[id])
 })
 

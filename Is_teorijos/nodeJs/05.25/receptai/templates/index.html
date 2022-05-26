@@ -30,10 +30,8 @@
                 .then(resp => resp.json())
                 .then(resp => {
                     let image = ''
-                    console.log(resp.id)
                     if (resp.id === 1) {
                         image = '<img src="https://www.lamaistas.lt/uploads/modules/recipes/thumb920x573/23040.jpg">'
-                        console.log(image)
                     } else if (resp.id === 2) {
                         image = '<img src="https://www.lamaistas.lt/uploads/modules/recipes/thumb920x573/21663.jpg">'
                     } else if (resp.id === 3) {
@@ -44,7 +42,6 @@
     <p style="text-align:center;" class="degrees">Ingridientai ${resp.ingredients} </p>
     <p style="text-align:center;" class="location">Gaminimas: ${resp.directions}</p>
 `
-                    console.log(document.getElementById("recipe"))
                     document.getElementById("recipe").innerHTML = html
 
                 })
