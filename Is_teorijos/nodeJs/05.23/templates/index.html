@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vizitine kortele</title>
+</head>
+
+<body>
+    <span class="name">Name</span>
+    <span class="email">Email</span>
+    <script>
+        fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+            .then(resp => resp.json())
+            .then(resp => {
+                console.log(resp)
+                    // console.log(resp.results[0].email)
+                    // console.log(resp.results[0].name)
+                    // console.log(resp.results[0].picture.large)
+                    // document.body.innerHTML += `<p><img src ="${resp.results[0].picture.large}"></p>`
+
+                // const name = document.querySelector(".name")
+
+                // name.addEventListener('mouseenter', () => {
+                //         // console.log('pele uzvesta')
+                //         document.body.innerHTML += `<h3 id="names"> ${resp.results[0].name.first} </h3>`
+                //     })
+                // document.querySelector(".email").addEventListener('mouseenter', () => {
+                //     console.log('pele uzvesta')
+                //     document.body.innerHTML += `<h3> ${resp.results[0].email} </h3>`
+                // })
+
+                // })
+                // document.querySelector(".name").addEventListener('mouseleave', () => {
+                // console.log('pele nuvesta')
+                // var elem = document.querySelector(".name");
+                // elem.style.fontStyle = "italic"
+                // var element = document.getElementById("names");
+                // element.parentNode.removeChild(element);
+                // document.getElementById("names").innerHTML = "";
+
+            })
+    </script>
+</body>
+
+</html>

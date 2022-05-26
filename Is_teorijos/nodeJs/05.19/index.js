@@ -24,5 +24,8 @@ app.get('/trecia_uzduotis', (req, res) => {
 app.get('/ketvirta_uzduotis', (req, res) => {
     res.sendFile(__dirname + '/uzduotys/4.html')
 })
+app.get('/penkta_uzduotis', (req, res) => {
+    res.sendFile(__dirname + '/uzduotys/5.html')
+})
 
 app.listen(3000);

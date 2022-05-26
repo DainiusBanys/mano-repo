@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pirma uzduotis</title>
+
+</head>
+
+<body>
+
+    <h1>Mygtukas</h1>
+    <script>
+        console.log('Javascript veikia');
+        const button = document.createElement('button')
+
+        button.innerText = 'Pakeisti spalva'
+        document.body.appendChild(button)
+        button.addEventListener('click', () => {
+            document.body.style.backgroundColor = "red";
+        })
+    </script>
+</body>
+
+</html>
