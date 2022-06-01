@@ -1,0 +1,12 @@
+Sukurkite savo randomuser.me api kloną.
+Nukopijuokite failus iš praeitos užduoties direktorijos į naują aplanką. 
+Projekte instaliuokite modulį "faker" kuris sugeneruoja atsitiktinę informaciją apie žmogų. 
+Sukurkite naują route'ą "/person" ir objektą sudarytą  iš reikšmių kurias pateikia "faker" modulis.
+index.html faile atlikite kreipimąsi nebe į randomuser.me api, o į savo lokalų serverį.
+Atvaizduokite gautas reikšmes naršyklėje. 
+Prireikus instaliuokite ir priskirkite projekte "cors" modulį.
+ 
+https://www.npmjs.com/package/@faker-js/faker
+https://www.npmjs.com/package/cors
+ 
+Ir be abejo uždėkite like kai atliksite užduotį :)

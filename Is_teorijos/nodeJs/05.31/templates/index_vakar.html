@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Žmonių sąrašas</h1>
+    <div class="alert"></div>
+    <table class="table">
+        <thead>
+            <th>Vardas</th>
+            <th>Adresas</th>
+            <th>Kompanija</th>
+            <th>Nuotrauka</th>
+            <th>Telefonas</th>
+            <th>Tinklapis</th>
+            <th>Veiksmai</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        fetch('http://localhost:3000/get-people/')
+        .then(resp => resp.json())
+        .then(resp => {
+            let html = ''
+            resp.map(person => {
+                html += `<tr>
+                            <td>${person.name}</td>
+                            <td>${person.address}</td>
+                            <td>${person.company}</td>
+                            <td><img src="${person.image}" /></td>
+                            <td>${person.phone}</td>
+                            <td>${person.website}</td>
+                            <td><button class="btn btn-danger" data-id="${person._id}">Trinti</button></td>
+                        </tr>`
+            })
+
+            document.querySelector('.table tbody').innerHTML = html
+
+            document.querySelectorAll('.btn-danger').forEach(element => {
+                const id = element.dataset.id
+
+                element.addEventListener('click', () => {
+                    fetch('http://localhost:3000/delete/' + id)
+                    .then(async resp => {
+                        const alert = document.querySelector('.alert')
+                        alert.textContent = await resp.text()
+
+                        if(resp.status === 200) {
+                            alert.classList.add('alert-success')
+                        } else {
+                            alert.classList.add('alert-danger')
+                        }
+                    })
+                })
+            })
+        })
+    </script>
+</body>
+</html>

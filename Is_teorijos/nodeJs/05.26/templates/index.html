@@ -22,15 +22,15 @@
     </style>
 
     <script>
-        fetch('https://randomuser.me/api')
+        fetch('http://localhost:3000/person')
             .then(resp => resp.json())
             .then(resp => {
                 console.log(resp)
-                document.getElementById('top').innerHTML += `<div style="top:0"><img src ="${resp.results[0].picture.large}"></div>`
+                document.getElementById('top').innerHTML += `<div style="top:0"><img src ="${resp.photo}"></div>`
 
                 const name = document.querySelector(".name")
                 name.addEventListener('mouseenter', () => {
-                    document.getElementById('bottom').innerHTML = `${resp.results[0].name.first}  ${resp.results[0].name.last}`
+                    document.getElementById('bottom').innerHTML = `${resp.name} `
                 })
                 name.addEventListener('mouseleave', () => {
                     document.getElementById('bottom').innerHTML = ''
@@ -38,7 +38,7 @@
                 })
                 const email = document.querySelector(".email")
                 email.addEventListener('mouseenter', () => {
-                    document.getElementById('bottom').innerHTML = `${resp.results[0].email}  `
+                    document.getElementById('bottom').innerHTML = `${resp.email}  `
                 })
                 email.addEventListener('mouseleave', () => {
                     document.getElementById('bottom').innerHTML = ''
@@ -46,21 +46,21 @@
                 })
                 const birthday = document.querySelector(".birthday")
                 birthday.addEventListener('mouseenter', () => {
-                    document.getElementById('bottom').innerHTML = `${resp.results[0].dob.date}  `
+                    document.getElementById('bottom').innerHTML = `${resp.birthday}  `
                 })
                 birthday.addEventListener('mouseleave', () => {
                     document.getElementById('bottom').innerHTML = ''
                 })
                 const address = document.querySelector(".address")
                 address.addEventListener('mouseenter', () => {
-                    document.getElementById('bottom').innerHTML = `${resp.results[0].location.street.number} ${resp.results[0].location.street.name} ${resp.results[0].location.city}`
+                    document.getElementById('bottom').innerHTML = `${resp.address}`
                 })
                 address.addEventListener('mouseleave', () => {
                     document.getElementById('bottom').innerHTML = ''
                 })
                 const phone = document.querySelector(".phone")
                 phone.addEventListener('mouseenter', () => {
-                    document.getElementById('bottom').innerHTML = `${resp.results[0].phone}`
+                    document.getElementById('bottom').innerHTML = `${resp.phone}`
                 })
                 phone.addEventListener('mouseleave', () => {
                     document.getElementById('bottom').innerHTML = ''

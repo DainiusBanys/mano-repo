@@ -1,0 +1,14 @@
+Prisijunkite prie mongodb compass programos ir sukurkite naują duomenų bazę bei kolekciją.
+Į kolekciją importuokite pateiktus json duomenis.
+Sukurkite naują aplanką ir jame inicijuokite naują NodeJS projektą.
+Aprašykite reikiamą konfigūraciją programiniam prisijungimui prie mongodb serviso ir sukurkite modelį pagal gautų duomenų struktūrą.
+Pasinaudodami sukurtu modeliu paimkite visus įrašus iš sukurtos kolekcijos ir grąžinkite duomenis terminale.
+Uždėkite like kai atliksite užduotį :)
+
+
+
+
+Trecia dalis:
+Grido blokelyje sukurkite mygtuką su tekstu "Ištrinti". Priskirkite jam įvykį ir kreipimąsį į backend sritį, kurioje įvykdykite ištrynimą iš duomenų bazės.
+Jeigu įrašas buvo sėkmingai pašalintas, panaikinkite jį iš sąrašo naršyklėje. Priešingu atveju:
+Grąžinkite žinutę: "Įvyko klaida"

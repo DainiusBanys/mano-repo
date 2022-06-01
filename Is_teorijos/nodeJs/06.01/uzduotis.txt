@@ -1,0 +1,19 @@
+Sukurkite užduoties ištrynimą.
+Jums prireiks sukurti naują route'ą index.js faile kuris GET metodu priimtų kelią /delete-task/:id
+Pagal persiunčiamą indentifikatorių, duomenų bazės faile, suraskite reikiamą elementą ir jį pašalinkite iš masyvo.
+Išssaugokite pakeistus duomenis duomenų bazės faile ir atlikite peradresavimą į titulinį puslapį su žinutėmis:
+"Užduotis sėkmingai ištrinta" - sėkmingu atveju,
+"Nepavyko ištrinti užduoties" - įvykus klaidai
+ 
+Uždėkite like atlikus užduotį arba įkelkite gif'ą su atvaizduojamu veikimu :)
+
+
+----------------------------------------------------------------------------------------------------------------
+
+Sukurkite užduoties užbaigimą.
+Priskirkite naują GET metodo routerį adresu "/complete-task/:id".
+Sukurkite analogišką veiksmų seką kaip ir užduoties trynimo funkcijoje, 
+tačiau užuot pašalinus pagal indeksą surastą reikšmę, ją modifikuokite.
+Priskirkite elemento objekte naują indeksą pavadinimu "done" ir reikšmę true.
+Jeigu elemento objekte toks indeksas jau buvo, pakeiskite jo reikšmę į atvirščią (Atlikta užduotis turi pakeisti statusą į neužbaigtą)
+Modifikuokite šabloną ir jame prie <tr> elemento priskirkite css klasę pavadinimu "completedTask" toms eilutėms kurių užduotys jau yra užbaigtos. CSS faile aprašykite įvardintą klasę ir prie jos priskirkite savybę "opacity: .5", kad visos atliktos užduotys prarastų ryškumą.

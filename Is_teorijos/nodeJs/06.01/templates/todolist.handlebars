@@ -1,0 +1,25 @@
+
+{{#if message}}
+<div class="alert alert-{{status}}" role="alert">{{message}}</div>
+{{/if}} 
+
+
+<table class="table table-striped-columns mt-3 align-middle">
+  <thead>
+      <th colspan="3">
+          <form action="add-task" method="post" class="input-group mb-3">
+<input type="text" name="task" placeholder="Iveskite uzduoti">
+<button type="submit" class="btn btn-success">Add</button></form>
+      </th>
+  </thead>
+  <tbody>
+      {{#each data}}
+      <tr {{#if done}} class="completedTask" {{/if}}>
+          <td><a href="/complete-task/{{@key}}" >{{task}}</a> </td>
+          <td>{{date}}</td>
+          <td class="text-end"> <a href="/delete-task/{{@key}}" class="btn btn-danger">Delete</a></td>
+      </tr>
+          {{/each}}
+
+  </tbody>
+</table>

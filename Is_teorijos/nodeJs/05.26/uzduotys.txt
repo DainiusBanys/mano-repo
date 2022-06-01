@@ -1,0 +1,39 @@
+Orų aplikacija.
+ 
+Index.js faile sukurkite route'ą "/api/weather" ir jame aprašykite objektą su šiais duomenimis:
+ 
+condition: windy
+degrees: 20
+location: Barcelona, Spain
+windSpeed: 4
+humidity: 64
+ 
+Perduokite šį objektą kaip json stringą.
+index.html faile aprašykite duomenų paėmimą iš serverio. 
+Priimkite JSON stringą, jį konvertuokite atgal į objektą ir sudėliokite gautus duomenis pagal pateiktą maketą.
+ 
+Kai pabaigsite uždėkite like.
+
+--------------------------------------------------------------------
+
+Antroji dalis:
+ 
+index.js faile generuojamame objekte priskirkite dinamines reikšmes.
+Condition - Trys galimi variantai: Windy, Rain, Sunshine
+Degrees - Atsitiktinis skaičius nuo -8 iki 40
+Location - Galimi variantai: London, Madrid, Vilnius, Berlin
+Wind Speed - Atsitiktinis skaičius nuo 1 iki 10
+Humidity - Atsitiktinis skaičius nuo 40 iki 100
+
+--------------------------------------------------------------------
+
+Sukurkite naują užduoties aplanką ir persikelkite pirminę konfigūraciją. 
+Index.js faile sukurkite route'a: "/receptas/:id"
+Ir jame priimkite perduodamą parametrą "id".
+Aprašykite tris mėgstamų patiekalų receptus objekte kurį sudaro šie indeksai:
+Ingridientai
+Paruošimas
+Nuotrauka
+ 
+index.html faile sukurkite tris mygtukus su receptų patiekalų pavadinimais. Aprašykite javascript įvykius šiems mygtukams, jog paspaudus ant kiekvieno iš jo būtų įvykdomas kreipimąsis į serverį ir paimami recepto duomenys, kuriuos galiausiai atvaiduokite naršyklėje.
+

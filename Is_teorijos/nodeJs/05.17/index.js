@@ -16,8 +16,8 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({
-    storage: storage,
-    filefilter: (req, file, callback) => {
+    storage,
+    fileFilter: (req, file, callback) => {
         if (
             file.mimetype === 'image/gif' ||
             file.mimetype === 'image/jpg' ||
@@ -27,6 +27,7 @@ const upload = multer({
         } else {
             callback(new Error('Netinkamas failo formatas'), false)
         }
+        // console.log(file)
     }
 })
 
@@ -44,16 +45,33 @@ app.use(express.urlencoded({
 
 //Statiniu failu perdavimo i narsykle konfiguracijos eilute
 app.use('/resources', express.static('assets'))
+app.use('/photos', express.static('uploads'))
 
 const file = './db/database.json'
 
 app.get('/', (req, res) => {
-    res.send('Uzklausa yra gauta')
+    res.render('gallery')
 })
 
 
-app.post('/submit-image', upload.single('photo'), (req, res) => {
-    res.send(req.body)
+app.post('/submit-image', upload.single('photo'), async(req, res) => {
+    if (!req.file) {
+        res.send('Netinkamas failo formatas')
+        return
+
+    }
+    try {
+        const data = await readFile(file, 'utf8')
+        let json = JSON.parse(data)
+        json.push(req.file.filename)
+
+
+        await writeFile(file, JSON.stringify(json), 'utf8')
+        res.send('Nuotrauka sekmingai patalpinta')
+    } catch {
+        res.send('Nepavyko irasyti nuotraukos i duomenu baze')
+    }
 })
+
 
 app.listen(3000)
