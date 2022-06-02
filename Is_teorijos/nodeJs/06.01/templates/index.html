@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="todolist"></div>
+    <script>
+        const editText = 'Redaguoti'
+        const updateText = 'Atnaujinti'
+
+        const fetchData = async(url, method = 'GET', body = {}) => {
+            const options = {
+                method,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            if (method != 'GET')
+                options.body = JSON.stringify(body)
+
+            const tasks = await fetch(url, options)
+
+            if (tasks.status === 200) {
+                if (method == 'GET')
+                    return await tasks.json()
+                else
+                    return true
+            } else {
+                return false
+            }
+        }
+
+        const deleteTask = async(e) => {
+            const element = e.target
+            const parent = element.parentNode.parentNode
+            const id = parent.dataset.id
+
+            if (await fetchData('http://localhost:3000/api/tasks/delete/' + id, 'DELETE')) {
+                taskList('Užduotis sėkmingai ištrinta')
+            } else {
+                taskList('Nepavyko ištrinti užduoties', 'danger')
+            }
+        }
+
+        const editTask = async(e) => {
+            const element = e.target
+            const parent = element.parentNode.parentNode
+            const id = parent.dataset.id
+            const task = parent.querySelector('.task-name')
+            const taskName = task.innerText
+
+            if (element.dataset.update) {
+                const taskName = task.querySelector('input').value
+                if (await fetchData('http://localhost:3000/api/tasks/edit/' + id, 'PUT', {
+                        taskName
+                    })) {
+                    taskList('Užduotis sėkmingai atnaujinta')
+                } else {
+                    taskList('Nepavyko atnaujinti užduoties', 'danger')
+                }
+
+                return
+            }
+
+            element.innerText = updateText
+            element.classList.add('btn-success')
+            element.dataset.update = true
+            task.innerHTML = `<input type="text" class="form-control" value="${taskName}">`
+        }
+
+        const addTask = async(event) => {
+            event.preventDefault()
+
+            const url = event.target.getAttribute('action')
+            const taskName = event.target.querySelector('input[name="taskName"]').value
+
+            if (await fetchData(url, 'POST', {
+                    taskName: taskName,
+                    done: false
+                })) {
+                taskList('Užduotis sėkmingai patalpinta')
+            } else {
+                taskList('Nepavyko patalpinti užduoties', 'danger')
+            }
+        }
+
+        const taskList = async(message = '', status = 'success') => {
+            const tasks = await fetchData('http://localhost:3000/api/tasks/all')
+            let html = ''
+
+            if (message)
+                html += `<div class="alert alert-${status}">${message}</div>`
+
+            html += `<table class="table mt-3 align-middle">
+                        <thead>
+                            <th colspan="3">
+                                <form action="http://localhost:3000/api/tasks/new/" onsubmit="addTask(event)">
+                                    <input name="taskName" class="form-control">
+                                    <button type="submit" class="btn btn-primary">Pridėti užduotį</button>    
+                                </form>
+                           </th>
+                        </thead>
+                        <tbody>
+                        `
+
+            tasks.map(task => {
+                html += `<tr data-id="${task._id}">
+                            <td class="task-name">${task.taskName}</td>
+                            <td class="text-end">
+                                <button class="btn btn-primary" onclick="editTask(event)">${editText}</button>
+                                <button class="btn btn-danger" onclick="deleteTask(event)">Trinti</button>
+                            </td>
+                        </tr>`
+            })
+
+            html += '</tbody></table>'
+
+            document.querySelector('#todolist').innerHTML = html
+
+        }
+
+        taskList()
+    </script>
+</body>
+
+</html>
