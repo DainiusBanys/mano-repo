@@ -1,0 +1,29 @@
+
+Praplėskite internetinės parduotuvės funkcionalumą: Užduoties esmė:
+
+Sukurkite sistemą, leidžiančią prideti, redaguoti bei trinti prekes duomenų bazėje. Užduoties eiga:
+
+Sukurkite naują mongodb kolekciją prekėms ir aprašykite express route'us duomenims gauti, saugoti, redaguoti ir trinti.
+
+Apsaugokite šiuos kelius, kad šie būtų prieinami tik prisijungusiems vartotojams išskyrus duomenų gavimo route'ą. 
+
+Sukurkite šabloną, produktų sąrašui atvaizduoti ir paimkite duomenis iš backend pusės. 
+
+Sąraše atvaizduokite prekių informaciją bei mygtukus trinti ir redaguoti.
+
+Prie mygtukų priskirkite įvykius ir priregistruokite atitinkamus veiksmus.
+
+Atvaizduokite produktų sąrašą iš duomenų bazės prekės užsakymo formoje. Pabaigę užduotį uždėkite like
+
+1. susikurti kolekcija - OK
+2. sukurti pridejimo route - OK
+3. ismeginti su Insomnia pridejima - OK
+4. sukurti route sarasui gauti ir patikrinti per browser'i - OK
+5. pakeisti index html, kad imtu prekes is db - OK
+6. sukurti admino html su prekiu sarasu - OK
+7. prideti prie saraso redaguoti ir trinti mygtukus - OK
+8. prideti saraso gale forma prekes pridejimui - OK
+9. prideti mygtuka pridejimui - OK
+10. prideti redagavimo route - OK
+10. ismeginti su Insomnia redagavima - OK
+11. prideti mygtukams redaguoti ir trinti funkcijas - OK!!! ;)

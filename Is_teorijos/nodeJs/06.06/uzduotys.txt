@@ -1,0 +1,31 @@
+[6:56 PM] Vilius Ramulionis
+Sukurkite prekių užsakymą.
+
+Naršyklėje vartotojas turi turėti galimybę pasirinkti vieną iš trijų prekių (Panaudokite radio tipo html elementą).
+
+Prekių pavadinimai:
+
+Lova "Agnė"
+
+Stalas "Dalius"
+
+Kėdė "Austėja" Prie prekių priskirkite pasirinktas atsitiktines nuotraukas ir aprašymus.
+
+Žemiau sukurkite šiuos užsakymo laukelius:
+
+Vardas,
+
+Pavardė,
+
+Adresas,
+
+Miestas,
+
+Telefono nr.,
+
+El. pašto adresas Aprašykite backend sritį šiems duomenims išsaugoti mongodb duomenų bazėje, kurios pavadinimas būtų "orders".
+
+Prekių aprašymo bei nuotraukos duomenų bazėje saugoti nereikia! Užtenka tik pasirinktos prekės pavadinimo.
+
+Uždėkite like kai atliksite užduotį.
+

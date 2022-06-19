@@ -1,0 +1,30 @@
+Sukurkite express route'ą '/login', kuris atvaizduotų naują html šabloną login.html
+Šiame faile aprašykite prisijungimo formą su šiais laukeliais:
+el. pašto adresas
+slaptažodis
+ 
+Sukurkite naują express route'ą '/authenticate' į kurį iš naršyklės perduokite įvestus prisijungimo duomenis ir sutikrinkite 
+ar jie yra sutampantys su šiais:
+admin@bit.lt
+1234
+ 
+Jeigu validacija sėkminga sukurkite sesijos indeksą ir jam priskirkite true reikšmę.
+Po sėkmingo autentifikavimo grąžinkite vartotoją į titulinį puslap		į.
+ 
+Uždėkite like kai atliksite užduotį.
+
+------------------------------------------------------------------------
+
+Sukurkite naują šabloną "administratorius.html" prieinamą keliu '/admin'.
+Šiame puslapyje lentelėje atvaizduokite visų užsakymų sąrašą. 
+Backend srityje sukurkite express route'ą kuriame aprašykite užsakymų iš duomenų bazės paėmimą ir grąžinimą.
+Šablone aprašykite kreipimąsi į prieš tai sukurtą kelią ir gautus duomenis patalpinkite į lentelę.
+
+-------------------------------------------------------------------------
+
+
+Apsaugokite /admin route'ą ir neleiskite prie jo prieiti neprisijungusiems vartotojams.
+Tokiu atveju persiųskite vartotoją į prisijungimo puslapį.
+Taip pat, modifikuokite prisijungimo puslapį ir po sėkmingo prisijungimo, nukreipkite vartotoją, nebe į užsakymo puslapį, o į administratoriaus.
+
+
