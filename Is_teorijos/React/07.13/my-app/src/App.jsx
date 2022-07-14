@@ -1,30 +1,34 @@
 import './App.css';
-import Bebras from './Components/003/Bebras';
-import Briedis from './Components/003/Briedis';
-import BlueCircle from './Components/BlueCircle';
-import RedCircle from './Components/RedCircle';
-import randColor from './Functions/randomColor';
-
-
-const cats = ['Pilkis', "Mukis", 'Kriukis']
+import Form from './Components/004/Form';
+import Text from './Components/004/Text';
+import Square from './Components/004/Square';
+import Colors from './Components/004/Colors';
+import Tencircles from './Components/Tencircles';
+import A from './Components/A';
+import C from './Components/C';
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-<h1 className='start'>Start</h1>
-<Bebras />
-<Briedis />
-{ cats.map((c, i) => <span key={i}>{c}</span>)}
-<div className='container'>
-{ [...Array(5)].map((_, i) => <BlueCircle key={i} ></BlueCircle>) }</div>
-<div className='container'>
-{ [...Array(6)].map((_, i) => (i % 2) ? <RedCircle key={i} ></RedCircle> : <BlueCircle key={i} ></BlueCircle>) }</div>
-
-<div className='container'>
-{ [...Array(10)].map((_, i) => <div className='circle' style={{borderColor: randColor()}} key={i} ></div>) }</div>
-
+<h1>Props</h1>
+<Text zodis="Raudonas Zuikis" color="red"></Text>
+<Text zodis="Melynas Zuikis" color="blue"></Text>
+<Form forma='square'> </Form>
+<Form forma='circle'> </Form>
+<Square width='100' height='100'></Square>
+<Square width='50' height='50'></Square>
+<Square width='150' height='250'></Square>
+<Square width='150' height='50'></Square>
+<Colors backgroundColor='gray' color='white'></Colors>
+<Colors backgroundColor='yellow' color='cyan'></Colors>
+<Colors backgroundColor='green' color='orange'></Colors>
+<Colors backgroundColor='blue' color='blue'></Colors>
+<div className='row'><Tencircles qty={5}></Tencircles></div>
+<A color1='red' color2='blue'></A>
+<div className='row'>
+<C count={6}></C></div>
       </header>
     </div>
   );

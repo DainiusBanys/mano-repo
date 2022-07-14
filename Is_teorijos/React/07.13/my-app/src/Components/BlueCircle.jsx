@@ -1,4 +1,3 @@
 function BlueCircle() {
-    return <div className="BlueCircle"></div>}
-
+    return   <div className="BlueCircle"></div>  }
     export default BlueCircle;
