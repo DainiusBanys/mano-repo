@@ -106,3 +106,70 @@ h1.start {
 .squares {
     border: 5px solid red;
 }
+
+
+/* From uiverse.io by @alexroumi */
+
+button {
+    margin: 5px;
+    ;
+    padding: 15px 25px;
+    border: none;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    transition: all 250ms;
+    overflow: hidden;
+    cursor: pointer;
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: #212121;
+        z-index: -1;
+        transition: all 250ms
+    }
+    &:hover {
+        color: #e8e8e8;
+    }
+    &:hover::before {
+        width: 100%;
+    }
+    &.red {
+        color: orangered;
+        background: crimson;
+        color: white;
+        &:before {
+            background-color: orangered;
+        }
+        &:hover {
+            color: white;
+        }
+    }
+    &.blue {
+        color: gray;
+        background: skyblue;
+        &:before {
+            background-color: white;
+        }
+        &:hover {
+            color: skyblue;
+        }
+    }
+    &.green {
+        color: white;
+        background: lawngreen;
+        &:before {
+            background-color: white;
+        }
+        &:hover {
+            color: lawngreen;
+        }
+    }
+}
