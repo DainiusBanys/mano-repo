@@ -1,16 +1,16 @@
 import './App.scss';
-import NiceClass from './Components/005/NiceClass';
-
+import NiceAndFun from './Components/006/NiceAndFun';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-<h1>State, Class & Clicks</h1>
-<NiceClass spalva="pink"></NiceClass>
-      </header>
-    </div>
-  );
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <h1>States & Clicks</h1>
+                <NiceAndFun spalva="#b41320"></NiceAndFun>
+            </header>
+        </div>
+    );
 }
 
 export default App;
