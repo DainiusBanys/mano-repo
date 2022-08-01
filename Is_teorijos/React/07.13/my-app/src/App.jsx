@@ -3,6 +3,8 @@ import Input1 from './Components/012/Input1';
 import Input2 from './Components/012/Input2';
 import Show from './Components/012/Show';
 import './App.scss';
+import Repeat from './Components/012/Repeat';
+import Checkbox from './Components/012/Checkbox';
 
 function App() {
     
@@ -18,6 +20,10 @@ const [printcolor, setPrintcolor] = useState('#ffffff');
 <div className='input_box'>
 <Input2 setWord={setWord} setPrintcolor={setPrintcolor} ></Input2>
 <Show word={word} printcolor={printcolor}></Show>
+<Repeat word={word} printcolor={printcolor}></Repeat>
+</div>
+<div className='inut_box'>
+    <Checkbox></Checkbox>
 </div>
                 </div>
             </header>

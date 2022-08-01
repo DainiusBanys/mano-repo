@@ -5,6 +5,7 @@ function Show({word, printcolor}) {
 
 <h3 style={{color:printcolor}} >{word}</h3>
 
+
     )
 }
 
