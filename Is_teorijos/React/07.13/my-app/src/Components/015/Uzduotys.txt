@@ -1,0 +1,52 @@
+[18:11] Arvydas Kijakauskas (Dėstytojas)
+Padaryti komponentą su mygtuku, kurį paspaudus atsirastų kvadratukas DONE!
+
+
+[18:33] Arvydas Kijakauskas (Dėstytojas)
+patobulit, kad paspaudus atsirastų iškart DU kvadratukai DONE!
+
+
+[18:43] Arvydas Kijakauskas (Dėstytojas)
+patobulinti uždavinį taip, kad vienas sugeneruotas kvadratukas būtų vienokios spalvos, o kitas kitokius. DONE!
+
+
+[18:51] Arvydas Kijakauskas (Dėstytojas)
+patobulin uždavinį taip, kad random generuotų arba kvadratukus arba apskritimukus DONE!
+
+
+[19:08] Arvydas Kijakauskas (Dėstytojas)
+Suskaičiuoti ir parašyti kiek yra kvadratukų o kiek apskritimukų DONE!
+
+
+[19:08] Arvydas Kijakauskas (Dėstytojas)
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+Array.prototype.reduce() - JavaScript | MDN
+The reduce() method executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element.
+  The fin...
+
+
+[19:58] Arvydas Kijakauskas (Dėstytojas)
+Kvadratukai ar apskritimai rand skirtingo dydžio pvz nuo 25px iki 125px DONE!
+
+
+[20:06] Arvydas Kijakauskas (Dėstytojas)
+Reikia mygtuko, kuris rūšiuotų pagal dydį. DONE!
+
+
+[20:19] Arvydas Kijakauskas (Dėstytojas)
+Reikia sort back mygtuko. DONE!
+
+
+[20:33] Arvydas Kijakauskas (Dėstytojas)
+Reikia 3 filtrų apskritimas, keturkampiams ir atgal visiems DONE!
+
+[21:09] Arvydas Kijakauskas (Dėstytojas)
+Rūšiuoti pagal dydį, bet pirma turi eiti visi apskritimai tada visi kvadratai DONE!
+
+
+
+
+
+
+
+

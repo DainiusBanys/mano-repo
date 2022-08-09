@@ -7,6 +7,8 @@ const [color, setColor] = useState('#FFFFFF');
 const add = () => {
      setWord(text);
      setPrintcolor(color);
+     
+
 }
 
 // useEffect(() => 

@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useState } from "react"
-import randColor from "../../Functions/randomColor";
 import rand from "../../Functions/rand";
  
 function RandNumbers({data}) {
