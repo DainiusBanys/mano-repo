@@ -124,16 +124,32 @@ h1.start {
             color: orangered;
             font-weight: bold;
             // text-align: right;
+            font-size: 22px;
+            margin-right: 20px;
         }
         .cat {
             position: absolute;
             padding: 5px;
-            background-color: #ffffff90;
+            background-color: #ffffff70;
             top: 0;
             left: 0;
             font-size: 12px;
             font-weight: bold;
             color: darkslategray;
+        }
+        .author {
+            font-size: 20px;
+            color: gray;
+        }
+        .bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        img {
+            height: 210px;
+            width: auto;
         }
     }
 }
