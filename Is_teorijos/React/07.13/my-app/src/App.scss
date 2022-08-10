@@ -99,61 +99,6 @@ h1.start {
     border: 5px solid red;
 }
 
-.books-list {
-    width: 100%;
-    list-style: none;
-    margin: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-    li.li-book {
-        width: 300px;
-        height: 400px;
-        padding: 10px;
-        margin: 10px;
-        position: relative;
-        h2 {
-            font-size: 20px;
-            height: 50px;
-            overflow: hidden;
-            text-align: center;
-            line-height: 24px;
-        }
-        .price {
-            color: orangered;
-            font-weight: bold;
-            // text-align: right;
-            font-size: 22px;
-            margin-right: 20px;
-        }
-        .cat {
-            position: absolute;
-            padding: 5px;
-            background-color: #ffffff70;
-            top: 0;
-            left: 0;
-            font-size: 12px;
-            font-weight: bold;
-            color: darkslategray;
-        }
-        .author {
-            font-size: 20px;
-            color: gray;
-        }
-        .bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-        }
-        img {
-            height: 210px;
-            width: auto;
-        }
-    }
-}
-
 .red {
     color: red;
 }
@@ -234,5 +179,145 @@ button {
         &:hover {
             color: lawngreen;
         }
+    }
+}
+
+.books-list {
+    width: 100%;
+    list-style: none;
+    margin: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    li.li-book {
+        width: 300px;
+        height: 400px;
+        padding: 10px;
+        margin: 10px;
+        position: relative;
+        h2 {
+            font-size: 20px;
+            height: 50px;
+            overflow: hidden;
+            text-align: center;
+            line-height: 24px;
+        }
+        .price {
+            color: orangered;
+            font-weight: bold;
+            // text-align: right;
+            font-size: 22px;
+            margin-right: 20px;
+        }
+        .cat {
+            position: absolute;
+            padding: 5px;
+            background-color: #ffffff70;
+            top: 0;
+            left: 0;
+            font-size: 12px;
+            font-weight: bold;
+            color: darkslategray;
+        }
+        .author {
+            font-size: 20px;
+            color: gray;
+        }
+        .bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        img {
+            height: 210px;
+            width: auto;
+        }
+    }
+}
+
+.cart-bin {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .cart {
+        position: relative;
+        margin-right: 180px;
+        svg {
+            fill: orange;
+            width: 40px;
+            height: 40px;
+        }
+        span {
+            position: absolute;
+            font-size: 16px;
+            color: orange;
+            top: -13px;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        .cart-list {
+            display: none;
+            position: absolute;
+            width: 180px;
+            z-index: 20;
+            div {
+                font-size: 17px;
+                line-height: 25px;
+                background-color: #ffffff;
+                color: black;
+                padding: 5px 25px 5px 5px;
+                border-bottom: 1px solid orange;
+                height: 50px;
+                overflow: hidden;
+                position: relative;
+                i {
+                    position: absolute;
+                    top: 15px;
+                    right: 8px;
+                    font-weight: bold;
+                }
+                b {
+                    position: absolute;
+                    bottom: 5px;
+                    right: 8px;
+                    color: orange;
+                    display: block;
+                    width: 17px;
+                    height: 17px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    border: 1px solid orange;
+                    cursor: pointer;
+                }
+            }
+        }
+        &:hover .cart-list {
+            display: block;
+        }
+    }
+}
+
+.counter {
+    display: flex;
+    flex-direction: column;
+    svg {
+        fill: orange;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        &.down {
+            transform: rotate(180deg);
+        }
+    }
+    span {
+        color: orange;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 24px;
     }
 }

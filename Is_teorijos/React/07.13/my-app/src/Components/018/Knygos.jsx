@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 import Book from "./Book";
 import randColor from '../../Functions/randomColor'
+import BooksContext from './BooksContext'
 
 function Knygos() {
     const [books, setBooks] = useState(null);
     const [category, setCategory] = useState(null);
     const [cat, setCat] = useState(0);
     const [sort, setSort] = useState(0);
+    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         axios.get('https://in3.dev/knygos/')
@@ -47,7 +49,44 @@ function Knygos() {
         }
     }, [sort]);
 
-return ( <>
+    const addToCart = (id, count) => {
+
+        setCart(c =>  {
+            const inCart = c.find(b => b.id === id);
+            if (!inCart) {
+                return [...c, {id, count: 1}]
+            }
+            console.log(count)
+            return c.map(b => b.id === id ? {...b, count: b.count + count} : {...b});
+        });
+    }
+
+    const removeItem = id => {
+        setCart(c => c.filter(item => item.id !== id));
+    }
+    
+return ( 
+    <BooksContext.Provider value={{
+        addToCart
+    }}>
+        <div className="cart-bin">
+            <div className="cart">
+                <span>{cart.length}</span>
+                <svg>
+                    <use href="#cart"></use>
+                </svg>
+                <div className="cart-list">
+                    {
+                        cart.map((b, i) => <div key={i}>
+                            {books?.find(bo => bo.id === b.id).title}
+                            <i>{b.count}</i>
+                            <b onClick={() => removeItem(b.id)}>X</b>
+                        </div>)
+                    }
+                </div>
+
+            </div>
+        </div>
     { category ?
         <div className="container">
             <select value={cat} onChange={e => setCat(parseInt(e.target.value))}>
@@ -76,7 +115,7 @@ return ( <>
                 ) : <li className="loader"></li>
             }
     </ul>
-    </>)
+    </BooksContext.Provider>)
 
 }
     
