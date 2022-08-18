@@ -1,140 +1,88 @@
-import { useReducer } from 'react';
 import './App.scss';
-import countSquares from './Reducers/countSquares';
-import count from './Reducers/count';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import Home from './Components/020/Home';
+import Animals from './Components/020/Animals';
+import Plants from './Components/020/Plants';
+import Sea from './Components/020/Sea';
+import Brand from './Components/020/Brand';
+import DataContext from './Components/020/DataContext';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+
+const animalsData = {
+    fox: {color: 'brown', tail: 'Long', type: 'Fox'},
+    wolf: {color: 'gray', tail: 'Medium', type: 'Wolf'},
+    rabbit: {color: 'white', tail: 'short', type: 'Rabbit'}
+}
+
+
+const seaPlaners = [
+    {id: 1, type: 'man', name: 'Lina', color: 'blue'},
+    {id: 2, type: 'car', name: 'Opel', color: 'red'},
+    {id: 3, type: 'animal', name: 'Vilkas', color: 'green'},
+    {id: 4, type: 'fish', name: 'Ungurys', color: 'yellow'},
+    {id: 5, type: 'man', name: 'Tomas', color: 'green'},
+    {id: 6, type: 'animal', name: 'Bebras', color: 'red'},
+    {id: 7, type: 'animal', name: 'Barsukas', color: 'green'},
+    {id: 8, type: 'car', name: 'MB', color: 'blue'},
+    {id: 9, type: 'car', name: 'ZIL', color: 'red'},
+    {id: 10, type: 'man', name: 'Teta Toma', color: 'yellow'},
+  ];
+  
+
+
 
 function App() {
 
-    const [number, dispatchNumber] = useReducer(count, 0)
-    const [numberVal, setNumberVal] = useState('');
-    const [sqNumberVal, setSqNumberVal] = useState('');
-    const [square, dispatchSquare] = useReducer(countSquares, []);
+    const [brands, setBrands] = useState(null);
 
-    const add1 = () => {
-        const action = {
-            type: 'plus_one'
-        }
-        dispatchNumber(action);
-    }
-    const rem1 = () => {
-        const action = {
-            type: 'minus_one'
-        }
-        dispatchNumber(action);
-    }
-    const do0 = () => {
-        const action = {
-            type: 'reset'
-        }
-        dispatchNumber(action);
-    }
-
-    const addSome = () => {
-        const action = {
-            type: 'add_some',
-            payload: numberVal
-        }
-        dispatchNumber(action);
-    }
-
-    const remSome = () => {
-        const action = {
-            type: 'rem_some',
-            payload: numberVal
-        }
-        dispatchNumber(action);
-    }
-
-
-
-    const addSquare = () => {
-        const action = {
-            type: 'plus_square',
-            payload: sqNumberVal
-        }
-        setSqNumberVal('');
-        dispatchSquare(action);
-    }
-    const remSquare = () => {
-        const action = {
-            type: 'minus_square'
-        }
-        dispatchSquare(action);
-    }
-    const zeroSquare = () => {
-        const action = {
-            type: 'reset_square'
-        }
-        dispatchSquare(action);
-    }
-
-    const sortAsc = () => {
-        const action = {
-            type: 'sort_asc',
-        }
-        dispatchSquare(action);
-    }
-    const sortDesc = () => {
-        const action = {
-            type: 'sort_desc',
-        }
-        dispatchSquare(action);
-    }
-    const showEven = () => {
-        const action = {
-            type: 'show_even',
-        }
-        dispatchSquare(action);
-    }
-    const showOdd = () => {
-        const action = {
-            type: 'show_odd',
-        }
-        dispatchSquare(action);
-    }
-    const showAll = () => {
-        const action = {
-            type: 'show_all',
-        }
-        dispatchSquare(action);
-    }
+    useEffect(() => {
+        axios.get('https://in3.dev/vinted/api/brands/all')
+        .then(res => setBrands(res.data));
+    })
 
     return (
+        <DataContext.Provider value={{
+            seaPlaners,
+            brands
+        }}>
+        <BrowserRouter>
         <div className="App">
             <header className="App-header">
-                <h1>useReducer</h1>
-                <h2>Number now is: {number}</h2>
-                <div className='container'>
-                    <button onClick={add1}>+1</button>
-                    <button onClick={rem1}>-1</button>
-                    <button onClick={do0}>0</button>
-                    <input className="reducerInput" type="text" value={numberVal} onChange={e => setNumberVal(e.target.value.length <= 2 ? e.target.value : numberVal)} />
-                    <button onClick={addSome}>+?</button>
-                    <button onClick={remSome}>-?</button>
+                <h1>Router</h1>
+                <div className="container">
+                    <Link to="/">Home Page</Link>
+                    <Link to="/animals/nice-fox">Fox</Link>
+                    <Link to="/animals/fast-rabbit">Rabbit</Link>
+                    <Link to="/animals/big-wolf">Wolf</Link>
+                    <Link to="/plants">Plants</Link>
                 </div>
-                <div className='container'>
-                    <button onClick={addSquare}>+[]</button>
-                    <button onClick={remSquare}>-[]</button>
-                    <button onClick={zeroSquare}>0[]</button>
+                <div className="container">
+                    {
+                       seaPlaners.map(s => <Link to={'/sea/' + s.id} key={s.id}>{s.name}</Link>) 
+                    }
                 </div>
-                <div className='container'>
-                    <input className="reducerInput" type="text" value={sqNumberVal} onChange={e => setSqNumberVal(e.target.value.length <= 2 ? e.target.value : numberVal)} />
-                    {square.map((s, i) => (s.show) ? <div key={i} className="square" >{s.number}</div> : null)}
+                <div className="container">
+                    {
+                        brands?.map(b => <Link key={b.id} to={'/brand/' + b.id}>{b.title}</Link>)
+                    }
                 </div>
-                <div className='container'>
-                    <button onClick={sortAsc}>Sort Asc</button>
-                    <button onClick={sortDesc}>Sort Desc</button>
+                <div className="container">
+                    <Routes>
+                        <Route path="/" element={<Home/>}></Route>
+                        <Route path="/animals/nice-fox" element={<Animals show={animalsData.fox} />}></Route>
+                        <Route path="/animals/big-wolf" element={<Animals show={animalsData.wolf} />}></Route>
+                        <Route path="/animals/fast-rabbit" element={<Animals show={animalsData.rabbit} />}></Route>
+                        <Route path="/plants" element={<Plants/>}></Route>
+                        <Route path="/sea/:seaId" element={<Sea/>}></Route>
+                        <Route path="/brand/:id" element={<Brand/>}></Route>
+                    </Routes>
                 </div>
-                <div className='container'>
-                    <button onClick={showEven}>Show Even</button>
-                    <button onClick={showOdd}>Show Odd</button>
-                    <button onClick={showAll}>Show All</button>
-
-                </div>
-
             </header>
         </div>
+        </BrowserRouter>
+        </DataContext.Provider>
     );
 }
-export default App; 
+export default App;

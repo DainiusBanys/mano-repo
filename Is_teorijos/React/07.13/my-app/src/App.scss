@@ -44,6 +44,17 @@ h1.start {
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: row;
+    a {
+        display: inline-block;
+        color: red;
+        margin: 0 10px;
+        text-decoration: none;
+        transition: 0.5s;
+        &:hover {
+            color: orangered;
+            font-weight: bold;
+        }
+    }
 }
 
 .App {
