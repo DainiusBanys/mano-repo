@@ -26,7 +26,7 @@ Fees should be formatted as output below:
         
 <h2>Installing</h2>
         
-<p>Program is written in TypeScript, testing prepared with Jest. Install needed modules with <strong>npm install</strong> in node.js environment. Source file located in <strong>SRC</strong> directory, test file in <strong>test</strong> </p>
+<p>Program is written in TypeScript, testing prepared with Jest. Install needed modules with <strong>npm install</strong> in node.js environment. Source file located in <strong>src</strong> directory, test file in <strong>test</strong> </p>
         
 <h2>Executing</h2>
         
