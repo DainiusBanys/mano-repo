@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Random Drinks</title>
+</head>
+
+<body style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+    <span class="name">Name</span>
+    <span class="email">Email</span>
+    <script>
+        fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+            .then(resp => resp.json())
+            .then(resp => {
+                // console.log(resp.drinks[0])
+
+                let drink = {
+                        name: resp.drinks[0].strDrink,
+                        image: resp.drinks[0].strDrinkThumb,
+                        directions: resp.drinks[0].strInstructions
+
+                    }
+                    // console.log(resp.results[0].email)
+                    // console.log(resp.results[0].name)
+                    // console.log(resp.results[0].picture.large)
+                    // document.body.innerHTML += `<p><img src ="${resp.results[0].picture.large}"></p>`
+
+                const objektas = {
+                    in1: resp.drinks[0].strIngredient1,
+                    in2: resp.drinks[0].strIngredient2,
+                    in3: resp.drinks[0].strIngredient3,
+                    in4: resp.drinks[0].strIngredient4,
+                    in5: resp.drinks[0].strIngredient5,
+                    in6: resp.drinks[0].strIngredient6,
+                    in7: resp.drinks[0].strIngredient7,
+                    in8: resp.drinks[0].strIngredient8,
+                    in9: resp.drinks[0].strIngredient9,
+                    in10: resp.drinks[0].strIngredient10,
+                    in11: resp.drinks[0].strIngredient11,
+                    in12: resp.drinks[0].strIngredient12,
+                    in13: resp.drinks[0].strIngredient13,
+                    in14: resp.drinks[0].strIngredient14,
+                    in15: resp.drinks[0].strIngredient15,
+                }
+
+                let html = ''
+
+                html += `<h2 style="text-align:center;">Drink Name</h2> <h2 style="text-align:center;"> ${drink.name} </h2>
+                <p> <img src= ${drink.image} style="display: block; margin-left: auto; margin-right: auto; width: 10%;"> </img> </p>
+                <h3 style="text-align:center;">Ingredients</h3>
+                `
+
+                for (let i = 1; i <= 15; i++) {
+                    let x = 'in' + i
+                    if (objektas[x])
+                        html += `<p style="text-align:center;">  ${objektas[x]}</p> `
+                        // console.log(objektas[x])
+                }
+
+                html += `<h3 style="text-align:center;">Directions</h3>
+                <p style="text-align:center;"> ${drink.directions}</p>
+                <p style="text-align:center;" ><button onClick="window.location.reload();">Next Drink</button></p>
+                `
+
+                document.body.innerHTML = html
+
+            })
+    </script>
+</body>
+
+</html>

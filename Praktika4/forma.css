@@ -1,0 +1,252 @@
+@import url(./fonts/css/fontello.css);
+body {
+    background-color: #0676e6;
+    font-family: 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif;
+}
+
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media only screen and (min-width: 1201px) {
+    .big_box {
+        min-height: 80vh;
+        width: 90%;
+        padding: 3%;
+    }
+    .package {
+        width: 20%;
+        margin: 2%;
+        padding: 1%;
+    }
+    .p_foot {
+        font-size: 1.2rem;
+    }
+    .title {
+        font-size: 1.4rem;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .big_box {
+        min-height: 80vh;
+        width: 90%;
+    }
+    .package {
+        width: 20%;
+        margin: 1%;
+        padding: 1%;
+    }
+    .p_foot {
+        font-size: 1rem;
+    }
+    .title {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .big_box {
+        flex-wrap: wrap;
+        min-height: 80vh;
+        width: 100%;
+    }
+    .package {
+        width: 20%;
+        margin: 1%;
+        padding: 1%;
+    }
+    .columns {
+        flex-wrap: wrap;
+        width: 100%
+    }
+    .column {
+        width: 20%;
+        margin: 1%;
+    }
+    .p_foot {
+        font-size: 0.8rem;
+    }
+    .title {
+        font-size: 1.1rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .big_box {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+    }
+    .package {
+        width: 35%;
+        margin: 2%;
+        padding: 3%;
+    }
+    .columns {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .column {
+        width: 40%;
+    }
+    .p_foot {
+        font-size: 0.8rem;
+    }
+    .title {
+        font-size: 1.1rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .big_box {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    .package {
+        width: 60%;
+        padding: 10%;
+    }
+    .columns {
+        flex-wrap: wrap;
+    }
+    .column {
+        width: 100%;
+    }
+    .p_foot {
+        font-size: 0.9rem;
+    }
+    .title {
+        font-size: 1.1rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .big_box {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    .package {
+        width: 90%;
+        padding: 3%;
+    }
+    .columns {
+        flex-wrap: wrap;
+    }
+    .column {
+        width: 100%;
+    }
+    .p_foot {
+        font-size: 0.8rem;
+    }
+    .title {
+        font-size: 1rem;
+    }
+}
+
+.big_box {
+    display: flex;
+    /* height: 50vmin; */
+    background-color: #eeeeee;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.package {
+    display: flex;
+    height: 80%;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.p_heading {
+    background-color: #0676e6;
+    color: white;
+    padding: 3%;
+    font-size: 0.8rem;
+    height: 1rem;
+    min-width: fit-content;
+    width: 70%;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 20px;
+    margin-top: 10%;
+}
+
+.price {
+    margin-bottom: 2%;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.small {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.p {
+    margin: 0px;
+}
+
+.text_box {
+    width: 70%;
+    text-align: center;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    min-width: fit-content;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    color: lightslategray;
+}
+
+.button {
+    width: 80%;
+    min-width: fit-content;
+    padding: 3%;
+    margin-top: 0%;
+    background-color: white;
+    border: 2px solid #0676e6;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-family: 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif;
+    font-weight: 600;
+    color: #0676e6;
+}
+
+.footer {
+    width: 100%;
+    background-color: #0676e6;
+    color: white;
+    text-align: center;
+    font-family: Arial, 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
+    font-size: 1.5rem;
+}
+
+.columns {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 2%;
+}
+
+.column {
+    line-height: 0.7ex;
+}
+
+.pad {
+    padding: 3ex;
+}
+
+hr {
+    color: azure;
+}

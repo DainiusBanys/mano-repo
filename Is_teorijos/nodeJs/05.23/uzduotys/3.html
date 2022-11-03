@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trecia uzduotis</title>
+
+
+</head>
+
+<body>
+    <h1>3 Uzduotis</h1>
+
+    <div id="myDIV" style=" margin: 0%; width: 280px; height: 200px; background-color: #8cb7c0; border: 1px solid black; text-align: center; padding-top: 20%; position: sticky; top: 0; display: none" ;>Tikslas pasiektas!</div>
+
+    <script>
+        document.body.style.height = '5000px';
+        window.addEventListener("scroll", () => {
+            // console.log(scrollY)
+            if (scrollY <= 3000) {
+                let box = document.getElementById("myDIV").style.display = "none";
+            } else {
+                let box = document.getElementById("myDIV").style.display = "block";
+            }
+        })
+    </script>
+
+
+
+</body>
+
+</html>

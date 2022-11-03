@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Open+Sans:wght@300&family=Oswald:wght@300;700&display=swap');
+.menu {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+    list-style-type: none;
+    background-color: #172122;
+    color: white;
+    text-transform: uppercase;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.7rem;
+    padding-top: 0.5rem;
+    position: absolute;
+    top: 10%;
+}
+
+.fame {
+    font-family: 'Kaushan Script', cursive;
+    color: var(--accent-color);
+    font-size: 2rem;
+    background-color: #172122;
+}
+
+header {
+    grid-area: header;
+    background-color: #172122;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+body {
+    margin: 0px;
+    box-sizing: border-box;
+    --accent-color: #5BB12F;
+    /* height: 100vh; */
+    display: grid;
+    /* grid-template-rows: 10vh 1fr 40vh; */
+    grid-template-areas: "header" "main" "footer";
+    font-family: "Open Sans", sans-serif;
+}
+
+main {
+    display: grid;
+    grid-area: main;
+    background-color: #172122;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    /* position: relative; */
+}
+
+.title {
+    padding-top: 3rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 5rem;
+    margin: 0px;
+    font-weight: 700;
+    text-align: center;
+}
+
+span {
+    color: var(--accent-color);
+}
+
+.paragraph {
+    font-family: "Open Sans", sans-serif;
+    font-size: 2rem;
+    font-weight: 100;
+    text-align: center;
+}
+
+i {
+    background: #5BB12F;
+    text-align: center;
+    color: #fff;
+    width: 2rem;
+    height: 2rem;
+    padding: 1.5rem;
+}
+
+footer>ul {
+    text-align: center;
+    display: grid;
+    place-items: center;
+    /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); */
+    grid-gap: 1rem;
+}
+
+@media only screen and (min-width: 1201px) {
+    footer>ul {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .burger {
+        display: none;
+    }
+    .menu {
+        position: relative;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    footer>ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .burger {
+        display: none;
+    }
+    .title {
+        font-size: 4rem;
+    }
+    .paragraph {
+        font-size: 1.5rem;
+    }
+    .menu {
+        position: relative;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    nav>.menu {
+        display: none;
+    }
+    nav {
+        justify-content: space-between;
+    }
+    .burger {
+        display: block;
+    }
+}
+
+.burger:focus+.menu {
+    display: block;
+    position: absolute;
+    height: 25vh;
+    width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+    footer>ul {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .title {
+        font-size: 2rem;
+    }
+    .paragraph {
+        font-size: 1rem;
+    }
+}
+
+li {
+    list-style-type: none;
+}
+
+.foot_title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    color: #666;
+    font-weight: 300;
+}
+
+p {
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.button {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+button {
+    padding-top: 0.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    border: 0px;
+    margin-bottom: 1rem;
+}
+
+.green {
+    color: white;
+    background-color: var(--accent-color);
+}

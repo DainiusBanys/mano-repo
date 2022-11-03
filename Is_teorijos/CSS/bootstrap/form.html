@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Apmokėjimo forma</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <span class="fs-4">Simple header</span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+            </ul>
+        </header>
+    </div>
+    <form action="./pridavimas.html" method="post">
+        <h1>Apmokėjimo forma</h1>
+        <p>
+            Privalomi laukai pažymėti <strong><abbr title="privalomas">*</abbr></strong
+                >.
+            </p>
+            <section>
+                <h2>Kontaktinė informacija</h2>
+                <fieldset>
+                    <legend>Kreipinys</legend>
+
+                      <div class="form-check">
+                    <div>
+                        <label class="form-check-label" for="title_1">
+                            <input class="form-check-input"  type="radio" id="title_1" name="title" value="mr" required />
+                            Ponas
+                        </label>
+                    </div>
+                    <div>
+                        <label class="form-check-label"  for="title_2">
+                            <input class="form-check-input" type="radio" id="title_2" name="title" value="mrs" required />
+                            Ponia
+                        </label>
+                    </div>
+                    <div>
+                        <label class="form-check-label"  for="title_3">
+                            <input class="form-check-input" type="radio" id="title_3" name="title" value="unknown" required />
+                            Nesakysiu
+                        </label>
+                    </div>
+                </fieldset>
+                <p>
+                    <label>
+                        <span>Vardas: </span>
+                        <strong><abbr title="privalomas">*</abbr></strong>
+            <input type="text" name="name" required minlength="2" maxlength="50" />
+            </label>
+        </p>
+        <p>
+            <label>
+                        <span>Pavardė: </span>
+                        <strong><abbr title="privalomas">*</abbr></strong>
+                        <input type="text" name="lastname" required minlength="2" maxlength="50" />
+                    </label>
+        </p>
+        <p>
+            <label>
+                        <span>El. paštas: </span>
+                        <strong><abbr title="privalomas">*</abbr></strong>
+                        <input type="email" name="email" required />
+                    </label>
+        </p>
+        <p>
+            <label>
+                        <span>Slaptažodis: </span>
+                        <strong><abbr title="privalomas">*</abbr></strong>
+                        <input type="password" name="password" required minlength="5" />
+                    </label>
+        </p>
+        </section>
+        <section>
+            <h2>Apmokėjimo informacija</h2>
+            <p>
+                <label>
+                        <span>Kortelės tipas:</span>
+                        <select name="cardtype" required>
+                            <option value="visa">Visa</option>
+                            <option value="mc">Mastercard</option>
+                            <option value="amex">American Express</option>
+                        </select>
+                    </label>
+            </p>
+            <p>
+                <label>
+                        <span>Kortelės numeris:</span>
+                        <strong><abbr title="privalomas">*</abbr></strong>
+                        <!-- Reguliari išraiška: https://regex101.com/r/uW8mC3/1 -->
+                        <!-- 
+                            Keletas validžių pavyzdžių.
+                            4510123456781234
+                            373342709912345
+                            5410123412344567
+                        -->
+                        <input
+                            type="text"
+                            name="cardnumber"
+                            required
+                            pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}(?:2131|1800|35\d{3})\d{11})$"
+                        />
+                    </label>
+            </p>
+            <p>
+                <label>
+                        <span>Galiojimo data:</span>
+                        <strong><abbr title="privalomas">*</abbr></strong>
+                        <em>pateikite mm/dd/yyyy formatu</em>
+                        <input type="date" name="expiration" required min="2021-08-28" />
+                    </label>
+            </p>
+        </section>
+        <section>
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Pateikti</button>
+        </section>
+    </form>
+    <div class="container">
+        <footer class="row row-cols-5 py-5 my-5 border-top">
+            <div class="col">
+                <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                </a>
+                <p class="text-muted">© 2021</p>
+            </div>
+
+            <div class="col">
+
+            </div>
+
+            <div class="col">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

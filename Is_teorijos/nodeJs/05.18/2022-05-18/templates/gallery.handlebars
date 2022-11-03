@@ -1,0 +1,29 @@
+<a href="/test" class="linkas">Testine nuoroda</a>
+<form action="/submit-image" method="POST" enctype="multipart/form-data">
+        <h2>Pavienes nuotraukos ikelimas:</h2>
+        <div class="nuotraukos">
+            <label>Pirma nuotrauka:</label>
+            <input class="form-control form-control mb-2" type="file" name="photo">
+            <label>Antra nuotrauka:</label>
+            <input class="form-control form-control mb-2" type="file" name="photo">
+            <label>Trecia nuotrauka:</label>
+            <input class="form-control form-control mb-2" type="file" name="photo">
+        </div>
+        <div>
+            <button class="btn btn-success addPhotoButton">Pridėti nuotrauką</button>
+        </div>
+        <h2>Keliu nuotrauku ikelimas vienu kartu:</h2>
+        <input class="form-control form-control mb-2" type="file" name="photo" multiple>
+        <button type="submit" class="btn btn-primary">Siųsti</button>
+</form>
+
+<h1>Nuotraukų galerija</h1>
+
+<div class="photoGallery">
+    {{#each images}}
+        <div>
+            <img src="/photos/{{this}}" alt="">
+            <button class="deletePhoto">X</button>
+        </div>
+    {{/each}}
+</div>

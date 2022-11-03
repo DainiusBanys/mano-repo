@@ -1,0 +1,124 @@
+body {
+    background-color: rgba(244, 107, 149, 255);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.parent {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.shadow {
+    box-shadow: rgba(14, 22, 69, 0.3) 10px 10px 50px 15px, rgba(14, 22, 69, 0.3) -10px -10px 50px 15px;
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    /* background-color: rgba(47, 55, 101, 255); */
+}
+
+.bottom {
+    display: flex;
+    height: 60vh;
+    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    min-height: 500px;
+}
+
+.input {
+    width: 60%;
+    padding-top: 5%;
+    padding-left: 10%;
+}
+
+.contact {
+    width: 40%;
+    padding-top: 5%;
+    padding-left: 10%;
+}
+
+.contact_text {
+    width: 60%;
+    height: 80%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-family: Helvetica, monospace, sans-serif, Arial;
+    font-size: medium;
+    font-weight: 500;
+    padding-inline: 30px;
+}
+
+a:hover {
+    color: rgba(233, 106, 169, 255);
+}
+
+h2 {
+    color: rgba(233, 106, 169, 255);
+    line-height: 1ex;
+    font-size: larger;
+}
+
+p {
+    color: white;
+    line-height: 0.1ex;
+    font-size: 75%;
+}
+
+.p_pad_t {
+    padding-top: 5%;
+}
+
+.p_pad_b {
+    padding-bottom: 3%;
+}
+
+span {
+    color: white;
+    font-weight: 600;
+    font-size: 75%;
+    padding-right: 3ex;
+}
+
+input {
+    background-color: #4f5c88;
+    padding: 2%;
+    width: 30%;
+    border-radius: 10px;
+    border: 0px;
+    margin-top: 2%;
+}
+
+textarea {
+    background-color: #4f5c88;
+    padding: 2%;
+    width: 65%;
+    height: 15ex;
+    border-radius: 10px;
+    border: 0px;
+    margin-top: 2%;
+    resize: none;
+}
+
+button {
+    background-color: #f86bad;
+    padding: 2%;
+    margin-top: 2%;
+    width: 15ex;
+    border: 0px;
+    border-radius: 10px;
+    color: white;
+}
+
+::placeholder {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 70%;
+}

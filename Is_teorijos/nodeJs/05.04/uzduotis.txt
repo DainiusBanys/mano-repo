@@ -1,0 +1,12 @@
+Sugeneruokite šimto elementų masyvą kurio reikšmės būtų atsitiktiniai skaičiai nuo 1 iki 49.
+
+Konvertuokite masyvą į json stringą ir išssaugokite jį database.json faile.
+
+Programiškai atsidarykite database.json failą ir paimite jo turinį.
+
+Ištrinkite iš masyvo visus elementus kurių reikšmės kartojasi t.y. palikite masyve tik unikalias reikšmes.
+
+Išrūšiuokite masyvo reikšmes didėjančia tvarka ir išssaugokite database.json faile.
+
+Patalpinkite visą aprašytą kodą į funkciją kuri priimtų vieną parametrą "failas", o pabaigoje grąžintų teigiamą arba neigiamą rezultatą (true arba false)
+

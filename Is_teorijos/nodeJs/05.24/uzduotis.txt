@@ -1,0 +1,32 @@
+Sukurkite kokteilio prezentaciją pagal pateiktą maketą. 
+Informaciją paimkite iš nemokamo API adresu:
+https://www.thecocktaildb.com/api/json/v1/1/random.php
+ 
+Įstatykite gautą informaciją reikiamose pozicijose.
+Iš API turi būti paimta:
+Kokteilio pavadinimas
+Ingridientai 
+Gaminimo instrukcijos
+Kokteilio nuotrauka
+ 
+Likes turinys gali būti statinis (hardcoded).
+ 
+Prezentacijos apačioje sukurkite mygtuką "Sekantis kokteilis" ant kurio paspaudus informacija būtų kas kartą atnaujinama.
+Uždėkite like atlikus užduotį.
+
+const objektas = {
+in1: 'text',
+in2: "text1',
+in3: null,
+in4: 'text3'
+}
+
+let html = ''
+
+for (let i = 1; i<=14; i++) {
+let x = 'in'+i
+if(objektas[x])
+html += objektas[x]
+}
+
+console.log(html)

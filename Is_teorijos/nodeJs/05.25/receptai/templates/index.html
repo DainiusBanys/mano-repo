@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Receptai</title>
+</head>
+
+<body style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+    <button id="receptas1">Receptas1</button>
+    <button id="receptas2">Receptas2</button>
+    <button id="receptas3">Receptas3</button>
+    <div id="recipe"></div>
+    <style>
+        img {
+            width: 25%;
+        }
+        
+        ul {
+            text-align: center;
+            list-style-position: inside;
+        }
+    </style>
+    <script>
+        button = (id) => {
+
+            fetch(`http://localhost:4000/receptas/${id}`)
+                .then(resp => resp.json())
+                .then(resp => {
+                    let image = ''
+                    if (resp.id === 1) {
+                        image = '<img src="https://www.lamaistas.lt/uploads/modules/recipes/thumb920x573/23040.jpg">'
+                    } else if (resp.id === 2) {
+                        image = '<img src="https://www.lamaistas.lt/uploads/modules/recipes/thumb920x573/21663.jpg">'
+                    } else if (resp.id === 3) {
+                        image = '<img src="https://www.lamaistas.lt/uploads/modules/recipes/thumb920x573/36189.jpg">'
+                    }
+                    let html = `
+    <p style="text-align:center;" class="image">${image}</p>
+    <p style="text-align:center;" class="degrees">Ingridientai ${resp.ingredients} </p>
+    <p style="text-align:center;" class="location">Gaminimas: ${resp.directions}</p>
+`
+                    document.getElementById("recipe").innerHTML = html
+
+                })
+        }
+
+
+        document.getElementById("receptas1").addEventListener("click", function() {
+            button(0);
+        })
+        document.getElementById("receptas2").addEventListener("click", function() {
+            button(1);
+        })
+        document.getElementById("receptas3").addEventListener("click", function() {
+            button(2);
+        })
+    </script>
+</body>
+
+</html>

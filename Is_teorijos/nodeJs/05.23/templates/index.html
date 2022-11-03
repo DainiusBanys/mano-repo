@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vizitine kortele</title>
+</head>
+
+<body>
+    <style>
+        img {
+            border-radius: 50%;
+        }
+        
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+
+    <script>
+        fetch('https://randomuser.me/api')
+            .then(resp => resp.json())
+            .then(resp => {
+                console.log(resp)
+                document.getElementById('top').innerHTML += `<div style="top:0"><img src ="${resp.results[0].picture.large}"></div>`
+
+                const name = document.querySelector(".name")
+                name.addEventListener('mouseenter', () => {
+                    document.getElementById('bottom').innerHTML = `${resp.results[0].name.first}  ${resp.results[0].name.last}`
+                })
+                name.addEventListener('mouseleave', () => {
+                    document.getElementById('bottom').innerHTML = ''
+
+                })
+                const email = document.querySelector(".email")
+                email.addEventListener('mouseenter', () => {
+                    document.getElementById('bottom').innerHTML = `${resp.results[0].email}  `
+                })
+                email.addEventListener('mouseleave', () => {
+                    document.getElementById('bottom').innerHTML = ''
+
+                })
+                const birthday = document.querySelector(".birthday")
+                birthday.addEventListener('mouseenter', () => {
+                    document.getElementById('bottom').innerHTML = `${resp.results[0].dob.date}  `
+                })
+                birthday.addEventListener('mouseleave', () => {
+                    document.getElementById('bottom').innerHTML = ''
+                })
+                const address = document.querySelector(".address")
+                address.addEventListener('mouseenter', () => {
+                    document.getElementById('bottom').innerHTML = `${resp.results[0].location.street.number} ${resp.results[0].location.street.name} ${resp.results[0].location.city}`
+                })
+                address.addEventListener('mouseleave', () => {
+                    document.getElementById('bottom').innerHTML = ''
+                })
+                const phone = document.querySelector(".phone")
+                phone.addEventListener('mouseenter', () => {
+                    document.getElementById('bottom').innerHTML = `${resp.results[0].phone}`
+                })
+                phone.addEventListener('mouseleave', () => {
+                    document.getElementById('bottom').innerHTML = ''
+                })
+            })
+    </script>
+    <div id="card">
+        <div id="top"></div>
+        <div id="middle" style="flex-direction: row;">
+            <span class="name"> Name&nbsp;&nbsp;   </span>
+            <span class="email">Email&nbsp;&nbsp;   </span>
+            <span class="birthday">Birthday&nbsp;&nbsp;   </span>
+            <span class="address">Address&nbsp;&nbsp;   </span>
+            <span class="phone">Phone&nbsp;&nbsp;   </span>
+        </div>
+        <div id="bottom"></div>
+    </div>
+</body>
+
+</html>

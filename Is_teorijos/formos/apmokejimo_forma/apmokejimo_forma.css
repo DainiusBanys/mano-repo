@@ -1,0 +1,47 @@
+input::placeholder {
+    color: rgb(104, 104, 104, 0.61);
+    font-weight: bold;
+}
+
+input:hover {
+    border: 3px solid brown;
+}
+
+label:hover {
+    border: 3px solid brown;
+}
+
+input:required {
+    background-color: lightyellow;
+}
+
+input:invalid {
+    border-color: red;
+}
+
+input:valid {
+    border-color: greenyellow;
+}
+
+input:focus {
+    outline: 3px solid blue;
+}
+
+p::first-letter {
+    font-size: 2rem;
+}
+
+p:nth-of-type(odd) {
+    background-color: ghostwhite;
+}
+
+
+/* form {
+    background-image: url(./eldes1.JPG);
+    background-position: center;
+    width: fit-content;
+} */
+
+.cursor {
+    cursor: pointer;
+}

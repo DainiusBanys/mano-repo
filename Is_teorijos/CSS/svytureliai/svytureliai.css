@@ -1,0 +1,29 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square {
+    border: 1px solid black;
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    overflow: hidden;
+}
+
+.gradient {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right, red, blue);
+    transition: 2s;
+    position: relative;
+}
+
+.gradient:hover {
+    height: 200%;
+    width: 200%;
+    transform: rotate(360deg);
+}

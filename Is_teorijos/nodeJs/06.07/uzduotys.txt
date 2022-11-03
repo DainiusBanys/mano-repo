@@ -1,0 +1,23 @@
+
+Sukurkite užsakymo ištrynimo mygtuką ir aprašykite to funkcionalumą serveryje ir naršyklės javascripte.
+
+Užsakymus trinti gali tik prisijungę vartotojai. 
+
+Atlikite autorizacijos patikrinimą. Uždėkite like kai atliksite užduotį. 
+
+----------------------------------------------------------------------------
+
+Modifikuokite užsakymų schemą ir priskirkite naują indeksą "statusas". Galimi trys variantai: 
+
+Pateiktas,
+
+Užbaigtas
+
+Atšauktas 
+
+Statusas "Pateiktas", turi būti priskirtas kiekvienam naujam užsakymui.
+
+Užsakymų sąraše sukurkite mygtukus ant kurių paspaudus būtų galima pakeisti užsakymo statusą.
+
+Uždėkite like kai atliksite užduotį. 
+

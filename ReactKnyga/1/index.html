@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Samples</title>
+</head>
+
+<body>
+    <!-- Target container -->
+    <div id="root"></div>
+    <!-- React library & ReactDOM (Development Version)-->
+    <script src="https://unpkg.com/react@16/umd/react.development.js">
+    </script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
+    </script>
+    <script>
+        // Pure React and JavaScript code  
+        const instructions = [
+            "Preheat the oven to 375 degrees.",
+            "Lightly coat aluminum foil with oil.",
+            "Place salmon on foil.",
+            "Cover with rosemary, sliced lemons, chopped garlic.",
+            "Bake for 15-20 minutes until cooked through.",
+            "Remove from oven."
+        ]
+
+
+        const recipe = React.createElement("section", {
+                id: "baked-salmon"
+            }, React.createElement("h1", null, "Baked Salmon"),
+            React.createElement("ul", {
+                    className: "ingredients"
+                },
+                React.createElement("li", null, "2 lb salmon"),
+                React.createElement("li", null, "5 sprigs fresh rosemary"),
+                React.createElement("li", null, "2 tablespoons olive oil"),
+                React.createElement("li", null, "2 small lemons"),
+                React.createElement("li", null, "1 teaspoon kosher salt"),
+                React.createElement("li", null, "4 cloves of chopped garlic")
+            ),
+            React.createElement("section", {
+                    className: "instructions"
+                },
+                React.createElement("h2", null, "Cooking Instructions"),
+                instructions.map((ingredient, i) => React.createElement("p", {
+                    key: i
+                }, null, ingredient))
+            ));
+        ReactDOM.render(recipe, document.getElementById("root"));
+    </script>
+</body>
+
+</html>

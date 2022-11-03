@@ -1,0 +1,104 @@
+body {
+    background-color: #2e3138;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Signika Negative', sans-serif;
+    color: #8a909f;
+    width: 100vw;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@600&family=Signika+Negative:wght@600&display=swap');
+.h1 {
+    color: #28a0d2;
+}
+
+.h1_margin {
+    font-size: 2rem;
+    margin-bottom: 0%;
+}
+
+.sub {
+    font-size: 0.7rem;
+    margin-bottom: 3%;
+}
+
+.white {
+    color: white;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.bottom {
+    padding-top: 30%;
+}
+
+.form {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    border-radius: 5px;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    padding-left: 2%;
+    background-color: #24252a;
+}
+
+.header {
+    box-sizing: border-box;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    background-color: #454954;
+    font-size: 0.8rem;
+}
+
+.body {
+    width: 100%;
+}
+
+.input {
+    box-sizing: border-box;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 3%;
+    width: 100%;
+    background-color: #454954;
+    border-style: none;
+    border-radius: 5px;
+    color: #8a909f;
+}
+
+label {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.checkbox {
+    margin-left: 0%;
+}
+
+button {
+    font-family: 'Signika Negative', sans-serif;
+    font-weight: 600;
+    padding: 2%;
+    background-color: #28a0d2;
+    color: white;
+    border-style: none;
+    border-radius: 5px;
+}
+
+.sign_in {
+    background-color: #525864;
+    border-style: none;
+}
+
+.button_width {
+    width: 100%;
+}

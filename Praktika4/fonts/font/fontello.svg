@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2022 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="facebook" unicode="&#xe800;" d="M0-150l0 1000 1000 0 0-1000-1000 0z m471 469l92 0 0-352 132 0 0 352 129 0 6 127-135 0 0 94q0 31 12 43t41 13l80 0 2 117q-59 6-88 6l-23 0q-31 0-57-10-99-39-99-154l0-109-92 0 0-127z" horiz-adv-x="1000" />
+
+<glyph glyph-name="linkedin" unicode="&#xe801;" d="M0-150l0 1000 1000 0 0-1000-1000 0z m164 729q2-34 25-54t53-23l2 0q35 2 59 24t23 53q-2 33-25 53t-55 21q-35 0-58-22t-24-52z m8-569l144 0 0 434-144 0 0-434z m225 0l144 0 0 242q0 24 4 36 27 52 74 52 72-2 72-97l0-233 145 0 0 248q-2 98-47 149-47 47-119 49-53-2-86-26-21-15-43-47l0 61-144 0q1-18 1-70 0-90-1-364z" horiz-adv-x="1000" />
+
+<glyph glyph-name="youtube" unicode="&#xe802;" d="M0-29l0 758 1000 0 0-758-1000 0z m355 157l350 220-350 219 0-439z" horiz-adv-x="1000" />
+
+<glyph glyph-name="twitter-squared" unicode="&#xf304;" d="M714 510q-31-14-67-19 38 22 52 65-37-21-75-28-34 36-85 36-49 0-83-34t-35-83q0-16 3-27-72 4-135 37t-107 86q-16-28-16-59 0-64 51-98-27 1-56 15v-1q0-42 28-75t68-40q-16-5-28-5-7 0-22 3 12-36 42-59t67-23q-64-50-145-50-15 0-28 2 82-53 180-53 62 0 117 20t94 53 67 76 42 91 13 94q0 10 0 15 35 25 58 61z m143 108v-536q0-66-47-113t-114-48h-535q-67 0-114 48t-47 113v536q0 66 47 113t114 48h535q67 0 114-48t47-113z" horiz-adv-x="857.1" />
+</font>
+</defs>
+</svg>

@@ -1,0 +1,39 @@
+Sukurkite prisijungimo formą, kurią sudarytų du laukeliai:
+Email address
+Password
+Duomenis iš formos į serverį perduokite GET metodu. 
+Priimkite perduodamus duomenis serveryje ir sutikrinkite ar:
+1. Laukeliai nėra tušti
+2. Ar laukelių reikšmės yra vienodos su duotomis užduoties pabaigoje.
+ 
+Sėkmingai prisijungus konsolėje atvaizduokite žinutę: 
+"Prisijungimas pavyko".
+Priešingu atveju:
+"Neteisingi prisijungimo duomenys"
+ 
+email: admin@bit.lt
+password: labas1234
+ 
+Uždėkite Like prie šios žinutės, kai atliksite užduotį.
+
+---------------------------------------------------------------------------------------------------------
+
+
+Adrese '/account' sukurkite pavedimo formą kurią sudaro šie laukeliai:
+
+Sąskaitos numeris
+
+Gavėjo vardas ir pavardė
+
+Mokėjimo paskirtis Užpildžius formos duomenis persiųskite juos į adresą '/transfer', kuriam aprašykite duomenų priėmimą index.js faile.
+
+Taip pat sukurkite naują šabloną "transfer.handlebars" kuriame atvaizduokite persiunčiamus duomenis ir patvirtinimo klausimą: "Ar pavedimo duomenys yra teisingi?"
+
+Po klausimu sukurkite du mygtukus su tekstais "Patvirtinti" ir "Atmesti"
+
+Paspaudus ant abiejų mygtukų grąžinkite varotoją atgal į adresą '/account', tačiau atvaizduokite skirtingas žinutes pagal tai kuris mygtukas buvo paspaustas. Atmetimo atveju grąžinkite žinutę "Pavedimas atmestas", o patvirtinimo "Pavedimas sėkmingai įvykdytas" Atlikus užduotį uždėkite Like
+
+[20:17] Vilius Ramulionis
+
+<form action="/transfer">
+

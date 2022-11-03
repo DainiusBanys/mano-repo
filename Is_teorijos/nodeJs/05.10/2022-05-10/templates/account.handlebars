@@ -1,0 +1,24 @@
+<h1>Jūsų banko sąskaita</h1>
+<p>Sveiki, {{user}}</p>
+{{#if message}}
+    <div class="alert alert-{{status}}" role="alert">
+        {{message}}
+    </div>
+{{/if}}
+
+<h2>Naujas pavedimas</h2>
+<form action="/transfer">
+    <div>
+        <label>Sąskaitos numeris:</label>
+        <input type="text" name="account_number" placeholder="LT4516561651656">
+    </div>
+    <div>
+        <label>Gavėjo vardas ir pavardė</label>
+        <input type="text" name="recipient" placeholder="Vardenis Pavardenis">
+    </div>
+    <div>
+        <label>Mokejimo paskirtis</label>
+        <input type="text" name="reference" placeholder="Uz paslaugas">
+    </div>
+    <button type="submit">Pervesti</button>
+</form>

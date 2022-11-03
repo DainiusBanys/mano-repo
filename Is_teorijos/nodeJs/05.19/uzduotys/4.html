@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ketvirta uzduotis</title>
+
+
+</head>
+
+<body>
+    <h1>4 Uzduotis</h1>
+
+
+
+    <div id="main"></div>
+    <script>
+        let div = document.createElement("div");
+        div.style.width = "50px";
+        div.style.height = "50px";
+        div.style.position = "absolute"
+        div.style.background = "red";
+        div.style.top = 0;
+        div.style.left = 0;
+        document.getElementById("main").appendChild(div);
+
+        jump = () => {
+            let randomVertical = (Math.floor(Math.random() * (window.innerHeight - 50))) + 'px';
+            let randomHorizontal = (Math.floor(Math.random() * (window.innerWidth - 50))) + 'px';
+            console.log(randomVertical, randomHorizontal)
+            div.style.top = randomVertical;
+            div.style.left = randomHorizontal;
+            document.querySelector('div').addEventListener('click', () => {
+                clearInterval(jumps)
+            })
+        }
+        let jumps = setInterval(jump, 1000)
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+Sukurkite du kelius ir du šablonus kurių turinys būtų grąžinamas naršyklėje atsidarius atitinkamus adresus.
+Abiejuose šablonuose priskirkite jiems pasirinktą fono spalvą ir pridėkite html nuorodos elementą (<a href="") su nuoroda į gretimą route'ą. T.y. Pirmame šablone sukurkite nuorodą į adresa /antras-kelias, o antrame šablone į adresa /pirmas-kelias.
+Pabaigus užduotį uždėkite like arba įkelkite gif nuotrauką su atvaizduojamu veikimu.
+
+
+
+
+
+
+
+
+Sukurkite penkių puslapių reprezentacinę svetainę pasinaudojant bootstrap biblioteka.
+Turiniui panaudokite Lipsum teksta. 
+Sukurkite navigaciją su nuorodomis:
+Titulinis
+Apie Kompaniją
+Darbo galimybės
+Klientai
+Kontaktai
+ 
+Kiekvienai nuorodai sukurkite route'ą index.js faile ir po atskirą šabloną kiekvienam keliui.
+Baigus darbą įkelkite screenshot'ą į chatą arba uždėkite like prie šios žinutės.

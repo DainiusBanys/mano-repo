@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1667407767130" clover="3.2.0">
+  <project timestamp="1667407767130" name="All files">
+    <metrics statements="43" coveredstatements="43" conditionals="9" coveredconditionals="9" methods="19" coveredmethods="19" elements="71" coveredelements="71" complexity="0" loc="43" ncloc="43" packages="1" files="1" classes="1"/>
+    <file name="script.js" path="C:\Users\daini\OneDrive\Documents\HTML\mano-repo\mobilePay\script.js">
+      <metrics statements="43" coveredstatements="43" conditionals="9" coveredconditionals="9" methods="19" coveredmethods="19"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="15" count="5" type="stmt"/>
+      <line num="20" count="1" type="stmt"/>
+      <line num="22" count="10" type="stmt"/>
+      <line num="23" count="10" type="stmt"/>
+      <line num="24" count="10" type="stmt"/>
+      <line num="25" count="10" type="stmt"/>
+      <line num="26" count="10" type="stmt"/>
+      <line num="27" count="10" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="30" count="10" type="cond" truecount="2" falsecount="0"/>
+      <line num="33" count="1" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+      <line num="38" count="13" type="cond" truecount="3" falsecount="0"/>
+      <line num="43" count="4" type="stmt"/>
+      <line num="44" count="13" type="stmt"/>
+      <line num="45" count="13" type="stmt"/>
+      <line num="47" count="10" type="stmt"/>
+      <line num="49" count="4" type="stmt"/>
+      <line num="53" count="1" type="stmt"/>
+      <line num="56" count="73" type="stmt"/>
+      <line num="59" count="19" type="stmt"/>
+      <line num="62" count="19" type="stmt"/>
+      <line num="65" count="19" type="stmt"/>
+      <line num="68" count="19" type="cond" truecount="2" falsecount="0"/>
+      <line num="73" count="19" type="cond" truecount="2" falsecount="0"/>
+      <line num="76" count="3" type="stmt"/>
+      <line num="77" count="19" type="stmt"/>
+      <line num="78" count="19" type="stmt"/>
+      <line num="79" count="19" type="stmt"/>
+      <line num="80" count="19" type="stmt"/>
+      <line num="81" count="19" type="stmt"/>
+      <line num="83" count="3" type="stmt"/>
+      <line num="87" count="1" type="stmt"/>
+      <line num="89" count="3" type="stmt"/>
+      <line num="90" count="3" type="stmt"/>
+      <line num="91" count="9" type="stmt"/>
+      <line num="93" count="3" type="stmt"/>
+      <line num="97" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>

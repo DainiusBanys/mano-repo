@@ -1,0 +1,231 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgb(13, 23, 23);
+}
+
+
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.game-frame {
+  position: relative;
+  max-width: 1100px;
+  min-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 50px;
+}
+
+.eggs-bin {
+  position: relative;
+  width: 480px;
+  height: 60px;
+  &.top {
+    margin-bottom: 100px;
+  }
+  &.bottom {
+    margin-top: 100px;
+  }
+  &.left {
+    transform: rotate(20deg);
+  }
+  &.right {
+    transform: rotate(-20deg);
+  }
+  .path {
+    display: flex;
+    &::after {
+      content: '';
+      display: block;
+      border-bottom: 4px solid brown;
+      width: 430px;
+      position: absolute;
+      top: 60px;
+    }
+
+    &.left {
+      flex-direction: row;
+     }
+
+    &.right {
+      flex-direction: row-reverse;
+    }
+
+    .egg {
+      width: 26px;
+      height: 36px;
+      margin: 14px;
+      border-radius: 50%;
+      background-color: antiquewhite;
+    }
+
+    .no-egg {
+      width: 36px;
+      height: 56px;
+      margin: 4px;
+    }
+  }
+}
+
+.catch {
+  position: absolute;
+  left: 450px;
+  top: 140px;
+  width: 200px;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .bin {
+    position:absolute;
+    width: 50px;
+    height: 50px;
+    border: 3px solid darkkhaki;
+    border-top: none;
+    &.top {
+      top: -10px;
+    }
+    &.bottom {
+      bottom: 0;
+    }
+    &.left {
+      left: -30px;
+    }
+    &.right {
+      right: -30px;
+    }
+  }
+}
+
+.result {
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  h2 {
+    color:skyblue;
+    margin-top: 0;
+  }
+  span {
+    color: skyblue;
+    margin-bottom: 30px;
+  }
+}
+
+.button-holder {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+}
+
+button {
+  padding: 15px 25px;
+  border: none;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  transition: all 250ms;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 5px;
+  &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background-color: #212121;
+      z-index: -1;
+      transition: all 250ms
+  }
+  &:hover {
+      color: #e8e8e8;
+  }
+  &:hover::before {
+      width: 100%;
+  }
+  &.red {
+      color: orangered;
+      background: crimson;
+      color: white;
+      &:before {
+          background-color: orangered;
+      }
+      &:hover {
+          color: white;
+      }
+  }
+  &.blue {
+      color: gray;
+      background: skyblue;
+      &:before {
+          background-color: white;
+      }
+      &:hover {
+          color: skyblue;
+      }
+  }
+  &.green {
+      color: white;
+      background: lawngreen;
+      &:before {
+          background-color: white;
+      }
+      &:hover {
+          color: lawngreen;
+      }
+  }
+  &.circle {
+      border-radius: 50%;
+  }
+  &:disabled {
+      color: gray;
+      background: gray;
+      color: white;
+      cursor: not-allowed;
+      &:before {
+          background-color: gray;
+      }
+      &:hover {
+          color: white;
+      }
+  }
+}

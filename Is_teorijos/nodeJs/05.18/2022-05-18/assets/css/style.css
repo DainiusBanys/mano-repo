@@ -1,0 +1,9 @@
+.photoGallery {
+    column-count: 3;
+    column-gap: 1rem;
+}
+
+.photoGallery img {
+    max-width: 100%;
+    margin-bottom: 1rem;
+}

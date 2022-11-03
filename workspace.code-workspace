@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "projektas-maistas"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": null
+	}
+}

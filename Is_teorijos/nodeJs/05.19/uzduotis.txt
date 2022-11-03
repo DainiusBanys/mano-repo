@@ -1,0 +1,31 @@
+1. Pasinaudodami vanilla javascript sukurkite mygtuką. Mygtukui priskirkite "click" įvykį ir aprašykite funkciją kuri pakeistų fono spalvą iš baltos į raudoną.
+
+
+
+
+2. Sukurkite mygtuką kuris keistų fono spalvą iš baltos į raudoną ir atvirškčiai.
+
+
+3.  Pasinaudodami css, nustatykite naršyklėje atvaizduojamo dokumento aukštį iki 5000px (Kad dešinėje naršyklės pusėje esantis slankstas (scrollbar) leistų slinkti turinį žemyn). Sukurkite elementą su pasirinkta klase ir įrašytų tekstu "Tikslas pasiektas", tačiau laikykite jį paslėptą. Padarykite šį elementą matomu tik tuomet kai paslinksite puslapio slankstą 3000px nuo viršaus.
+ 
+4. Javascript pagalba dokumente sukurkite <div> elementą, kurio originalios css savybės būtų:
+{
+width: 50px;
+height: 50px;
+position: absolute;
+top: 0;
+left: 0;
+}
+Sukurkite funkciją kuri kas pusę sekundės keistų Jūsų sukurto elemento top ir left reikšmes į atsitiktines (Kad elementas šokinėtų iš pozicijos į poziciją kas pusę sekundės).
+Jeigu ant sukurto div elemento įvyko paspaudimas veikimą nutraukite.
+
+5. Paverskite ketvirtą užduotį į žaidimą:
+Žaidžia du žaidėjai: Jūs ir kompiuteris.
+Kompiuteris keičia elemento poziciją, o Jūs bandote jį pagauti pelės paspaudimu.
+Maksimalus pozicijų keitimų kiekis: 30.
+Jei nespėjote paspausti ant blokelio taškas atitenka kompiuteriui, jei priešingai - Jums.
+Pasibaigus žaidimui paslėpkite kvadratą ir naršyklėje atvaizduokite laimėtoją bei žaidėjų surinktus taškus.
+
+6. Sukurkite mygtuką su tekstu "Rodyti Video". Paspaudus ant jo puslapyje atidarykite modalinį langą (žiūrėti iliustraciją).
+Šiame lange įdėkite Jums patinkantį Youtube video (Pasinaudojant embded kodu, kurį galite rasti prie kiekvieno video, paspaudus mygtuką Share). Prie modalinio lango sukurkite uždarymo mygtuką ant kurio paspaudus video būtų uždaromas.
+

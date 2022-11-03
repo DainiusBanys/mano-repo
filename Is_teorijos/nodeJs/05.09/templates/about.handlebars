@@ -1,0 +1,28 @@
+{{#if z}}
+Informacija apie klienta {{x}}
+{{/if}}
+
+{{array}}
+
+{{#if array}}
+<ul>
+{{#each array}}
+<li> {{this}}</li>
+{{/each}}
+
+</ul>
+{{/if}}
+
+{{#if object}}
+<ul>
+    {{#each object}}
+    <li>{{vardas}} {{pavarde}}</li>
+    {{/each}}
+</ul>
+{{/if}}
+
+
+{{#with salis}}
+<li>Salis: {{pavadinimas}}</li>
+<li>Sostine: {{sostine}}</li>
+{{/with}}
