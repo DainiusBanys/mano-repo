@@ -3,7 +3,7 @@ exports.__esModule = true;
 exports.out = exports.calculation = exports.parse = exports.merchantDiscount = void 0;
 var input = [
     "2018-09-01 7-ELEVEN 50",
-    "2018-09-04 CIRCLE_K 307307",
+    "2018-09-04 CIRCLE_K 307",
     "2018-09-04 TELIA 503",
 ];
 var output = [];
