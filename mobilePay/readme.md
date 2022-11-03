@@ -1,6 +1,8 @@
-MobilePay Homework Assignement
+<h1>MobilePay Homework Assignement</h1>
 
-Following business rules have been defined for first release of the application:
+<h2>Task Description</h2>
+
+<p>Following business rules have been defined for first release of the application:
 
 All merchants should be charged 1% of transaction amount
 Telia merchant should get 10% discount
@@ -8,7 +10,6 @@ Circle_K merchant should get 20% discount
 Transactions made during weekends are free of charge
 When transaction number exceeds 10 for a merchant, he gets additional 20% discount for each next transaction
  
-
 The tech lead has provided additional non-functional requirements for this application:
 
 Ubiquitous language should be used in the solution ( https://www.agilealliance.org/glossary/ubiquitous-language )
@@ -21,17 +22,14 @@ App should accept transactions as input below:
 
 Fees should be formatted as output below:
         2018-09-01 7-ELEVEN 0.00
-        2018-09-04 CIRCLE_K 0.80
+        2018-09-04 CIRCLE_K 0.80</p>
         
-        Installing
+<h2>Installing</h2>
         
-        Program is written in TypeScript, testing prepared with Jest. 
+<p>Program is written in TypeScript, testing prepared with Jest. Install needed modules with <strong>npm install</strong> in node.js environment.</p>
         
-        Install needed modules with npm install in node.js environement
+<h2>Executing</h2>
         
-        Executing
-        
-        Open index.html file and check Console in browser Dev tools for sample data output. 
-        Run tests with  npm test in node.js environement
+<p>Open index.html file and check Console in browser Dev tools for sample data output. Run tests with  <strong>npm test</strong> in node.js environment <p>
         
         
