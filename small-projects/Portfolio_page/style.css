@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Sen", sans-serif;
+  background-color: rgb(83, 83, 83);
+  color: lightgray;
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 100%;
+  max-width: 80%;
+  padding-top: 140px;
+}
+
+.burger {
+  border: 1px solid aquamarine;
+  width: fit-content;
+  display: none;
+  align-items: center;
+}
+
+.container,
+.menuText {
+  padding: 5px 10px;
+  color: aquamarine;
+}
+
+.line1,
+.line2,
+.line3 {
+  width: 25px;
+  height: 3px;
+  background-color: aquamarine;
+  margin: 6px 0;
+  border-radius: 3px;
+  transition: 0.4s;
+  position: relative;
+}
+
+/* Rotate first bar */
+.cross .line1 {
+  transform: translate(0, 9px) rotate(-45deg);
+}
+
+/* Fade out the second bar */
+.cross .line2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.cross .line3 {
+  transform: translate(0, -9px) rotate(45deg);
+}
+
+h1 {
+  color: whitesmoke;
+}
+
+a,
+h2 {
+  color: aquamarine;
+}
+
+a {
+  text-decoration: none;
+}
+
+.menu {
+  border-bottom: 1px solid lightgray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: rgb(83, 83, 83);
+}
+
+.menu-items {
+  display: flex;
+  padding: 15px;
+}
+
+.menu-items > div {
+  padding: 0 30px;
+}
+
+.menu-items > div > a:hover {
+  color: whitesmoke;
+}
+
+@media (max-width: 576px) {
+  .menu-items {
+    display: none;
+  }
+  .burger {
+    display: flex;
+  }
+  .menu-items.responsive {
+    display: block;
+    text-align: left;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

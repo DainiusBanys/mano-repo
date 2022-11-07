@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css"> -->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="wrapper">
+        <nav class="menu">
+            <!-- <ul class="menu-items"> -->
+            <div class="burger">
+
+                <div class="container">
+                    <a href="javascript:void(0);" onclick="change(this)">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </a>
+                </div>
+                <div class="menuText">MENU</div>
+
+            </div>
+            <div class="menu-items">
+                <div><a name="menuId" href="#about">about</a></div>
+                <div><a name="menuId" href="#work">works</a></div>
+                <div><a name="menuId" href="#contacts">contacts</a></div>
+            </div>
+            <!-- </ul> -->
+        </nav>
+    </header>
+    <script>
+        change = (x) => {
+            var x = document.getElementsByClassName("burger")[0].firstChild.nextSibling;
+            console.log(x);
+            x.classList.toggle("cross");
+            let y = document.getElementsByClassName("menu-items")[0];
+            console.log(y)
+            if (y.className === "menu-items") {
+                y.className += " responsive";
+            } else {
+                y.className = "menu-items";
+            }
+
+        }
+    </script>
+    <div class="section" id="about">
+        <div class="content">
+            <h1>Heading</h1>
+
+
+            <h2>about me</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias nihil velit magni itaque dolor, explicabo delectus, ipsum quod, quos modi earum consequatur autem vero. Eius unde id debitis labore repellendus. Quisquam deserunt voluptates alias molestias
+                deleniti ad unde sed, ex inventore nihil quasi perferendis porro expedita atque, ullam in numquam dolores. Distinctio unde ad repudiandae iusto natus, saepe qui ut. Voluptate inventore incidunt, officiis odio exercitationem perspiciatis,
+                amet ipsa quas cum quos, possimus nisi dolorem perferendis fugit. Deleniti nam quidem a eligendi tenetur sunt quis expedita, minus, itaque vel mollitia. Velit blanditiis natus, quis et quaerat recusandae minima eveniet vel ducimus facere.
+                Eius, esse distinctio id quaerat commodi, impedit odio non modi aut repellat provident cupiditate illum ipsam facilis nisi? Ipsa quis architecto repellendus quod facilis? Eveniet magni optio qui quam eius quo consectetur odio quia enim
+                rem deserunt in voluptatem, obcaecati non aliquam incidunt nesciunt? Itaque repellendus possimus cum! Distinctio deleniti numquam facilis eaque natus repellat hic facere accusantium error sunt. Deserunt omnis eum in. Ullam soluta aspernatur
+                reiciendis sapiente nesciunt inventore omnis? Vel iusto iste aliquid possimus fugit. Eos nemo minima corrupti iusto? Omnis quos cum maxime sit! Quibusdam quis veniam hic, modi corrupti iure, dolorum illum enim animi et quisquam porro inventore
+                quidem aut dolores accusamus cupiditate. Aperiam temporibus repellendus sint mollitia maiores reprehenderit iste itaque hic reiciendis explicabo adipisci eum nesciunt, exercitationem assumenda. Rerum consectetur ad aliquid, molestias asperiores
+                deserunt explicabo laboriosam possimus modi ratione neque. Sit aut tempore dignissimos deserunt autem provident quaerat beatae nostrum debitis porro ex, officia a tempora doloribus velit tenetur laborum! Libero tempora debitis optio, quo
+                corporis quidem dolores rem quos. Dolores praesentium esse quae et reiciendis mollitia dolorem quaerat debitis eveniet in, similique harum ipsa sit itaque laudantium error consequuntur aliquam architecto animi nesciunt temporibus. Incidunt
+                nostrum itaque explicabo deserunt? Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nemo animi sequi, veritatis ad neque! Pariatur obcaecati esse consectetur tempore cumque delectus, odit enim tempora soluta voluptatum,
+                voluptatibus iste ullam? Nostrum ipsum rem, reiciendis enim, ipsam alias, delectus quasi ipsa voluptatum corrupti est iste quam porro aspernatur blanditiis sint qui odio totam libero quo. Iure dolores nesciunt ad similique vitae. In, libero
+                iusto? Provident optio obcaecati enim earum quam doloribus impedit, eius quasi et consequatur reprehenderit itaque? Laudantium maxime, velit, facilis sapiente perferendis obcaecati tempora accusamus qui dolores quibusdam adipisci? Quidem
+                unde obcaecati magnam eligendi porro ad hic, placeat aliquid, facilis enim perferendis facere ullam sint, natus vel culpa tempore non nostrum! Magnam beatae doloremque, accusamus sequi animi ipsam provident! Dignissimos ipsam labore ducimus,
+                dolorum optio odio sequi vitae molestias magni numquam earum doloremque officiis porro minus quasi amet. Aperiam fugiat repellat commodi eveniet odit adipisci facilis eos eius maxime? Repudiandae voluptatibus in, dolore a commodi sapiente
+                deserunt mollitia aperiam quod sit nemo dolores velit hic ad ut, soluta distinctio. Dolorum odit tenetur dolore, velit aut minus qui architecto quibusdam. Quis veniam esse distinctio delectus molestiae obcaecati corrupti ratione autem
+                quasi consequatur? Maiores quas maxime nisi, repudiandae cum, vitae dolorum expedita beatae magni nobis ipsum possimus eum. Quod, eaque nemo? Quibusdam aperiam repellendus nihil quas minima ipsam beatae porro, ducimus repellat ut labore.
+                Consequatur veritatis illum dolorem eos similique quam, qui nulla incidunt aliquam adipisci voluptatibus, repellat numquam facilis beatae? Ab incidunt pariatur voluptate, aliquam sapiente odio fugiat nobis quasi. Explicabo delectus distinctio
+                rerum inventore eius est sint, vero sapiente amet eum, et a exercitationem perferendis iusto nostrum modi numquam. Aspernatur qui cumque, officiis excepturi ea tempora repellat provident quo iure vel rem exercitationem facilis, velit sequi
+                ab blanditiis mollitia non eum illo obcaecati incidunt perferendis ipsa? Enim, animi eius? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit distinctio ab architecto, voluptas provident tenetur consectetur voluptatem accusamus
+                sit voluptate illum perferendis assumenda modi, rem culpa! Quas reprehenderit voluptates vero. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum sapiente dolorum saepe nihil officia inventore, neque ipsum, pariatur blanditiis
+                mollitia vero nulla vel, voluptatum quas? Asperiores dolor nemo blanditiis numquam.lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, nulla, delectus quos repudiandae eligendi aliquam hic similique ratione quisquam ad
+                magni maiores impedit. Rerum iusto id consequuntur doloremque molestias praesentium!
+            </p>
+        </div>
+        <div class="photo">
+            photo
+        </div>
+    </div>
+    <div class="section" id="work">
+        <div class="content">
+            <h2>Works</h2>
+            <ul>
+                <li>project list</li>
+                <li>project list</li>
+                <li>project list</li>
+                <li>project list</li>
+                <li>project list</li>
+                <li>project list</li>
+                <li>project list</li>
+                <li>project list</li>
+                <li>project list</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="section" id="contacts">
+        <div class="content">
+            <h2>Contacts</h2>
+        </div>
+    </div>
+</body>
+
+</html>
