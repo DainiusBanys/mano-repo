@@ -14,7 +14,7 @@ function Create() {
     let error = false;
     if (/^\s*$/.test(type)) {
       // tikrinam su regexu ar neivede tik vieno ar keliu tarpu
-      msg("danger", "missing type!");
+      msg("danger", "Add description first");
       error = true;
     }
     // if (/^\s*$/.test(weight)) {
