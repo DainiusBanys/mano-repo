@@ -21,30 +21,33 @@ function Line({ task }) {
   };
 
   return (
-    <li className="list-group-item"         style={{
-        backgroundColor: checked ? 'lightgray' : '',
-        textDecoration: checked ? 'line-through' : '',
+    <li
+      className="list-group-item"
+      style={{
+        backgroundColor: checked ? "lightgray" : "",
+        textDecoration: checked ? "line-through" : "",
       }}
-      >
+    >
       <div className="bin">
         <div className="content">
           <i>{task.taskDate}</i>
           <h3>{task.type}</h3>
         </div>
         <div className="control">
-            <div>
-          <input
-            type="checkbox"
-            checked={checked}
-            onChange={handleChange}
-            className="btn-check"
-            id={id}
-            autoComplete="off"
-          />
-          <label className="btn btn-outline-primary" htmlFor={id}>
-            Job Done
-          </label>
-          <br /></div>
+          <div>
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={handleChange}
+              className="btn-check"
+              id={id}
+              autoComplete="off"
+            />
+            <label className="btn btn-outline-primary" htmlFor={id}>
+              Job Done
+            </label>
+            <br />
+          </div>
 
           <button
             type="button"
