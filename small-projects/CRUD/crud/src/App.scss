@@ -1,3 +1,7 @@
+body {
+    font-family: 'Sen', sans-serif;
+}
+
 .App {
     text-align: center;
 }
@@ -8,4 +12,41 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
+}
+
+.list-group-item {
+    .bin {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        .content {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            h3 {
+                color: cornflowerblue;
+            }
+            i {
+                margin: 0 12px 0 0;
+                color: gray;
+            }
+        }
+        .control {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+    }
+}
+
+.modal {
+    display: block;
+    background-color: #e4d9cb90;
+}
+
+.messages-bin {
+    position: fixed;
+    top: 50px;
+    left: 50px;
 }

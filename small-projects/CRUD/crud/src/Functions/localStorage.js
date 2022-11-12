@@ -1,4 +1,4 @@
-function getID(key) {
+function getId(key) {
 
     let id = localStorage.getItem(key + '_id');
     if (id === null) {
@@ -14,29 +14,29 @@ function getID(key) {
 function getFromLocalStorage(key) {
     const data = localStorage.getItem(key);
     if (data === null) {
-        localStorage.setItem(key + '_id', JSON.stringify([]));
+        localStorage.setItem(key, JSON.stringify([]));
         return [];
     }
     return JSON.parse(data);
 }
 
-export function create(key, data) {
+export function create(key, newData) {
 
     const data = getFromLocalStorage(key);
-    const newData = {...data, id: getID(key) };
+    newData.id = getId(key);
     data.push(newData);
-    localStorage.setItem(key + '_id', JSON.stringify(data));
+    localStorage.setItem(key, JSON.stringify(data));
 }
 
 export function destroy(key, id) {
     const data = getFromLocalStorage(key);
-    localStorage.setItem(key + '_id', JSON.stringify(
-        data.filter(d => d.id != id)));
+    localStorage.setItem(key, JSON.stringify(
+        data.filter(d => d.id !== id)));
 }
 
-export function update(key, newData, id) {
+export function edit(key, newData, id) {
     const data = getFromLocalStorage(key);
-    localStorage.setItem(key + '_id', JSON.stringify(
+    localStorage.setItem(key, JSON.stringify(
         data.map(d => d.id === id ? {...newData, id: id } : {...d })));
 }
 
