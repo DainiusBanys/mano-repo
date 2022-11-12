@@ -69,9 +69,24 @@
 
 // console.log(reverseWords('hello there!'));
 
-const arr = N => {
-    return (N >= 0) ? [...new Array(N)].map((el, i) => el = i) : [];
+// const arr = N => {
+//     return (N >= 0) ? [...new Array(N)].map((el, i) => el = i) : [];
+
+// };
+
+// console.log(arr(3));
+
+
+const rps = (p1, p2) => {
+
+    if (p1 === p2) return 'Draw!';
+    else
+    if (((p1 === 'scissors') && (p2 === 'papers')) || ((p1 === 'rock') && (p2 === 'scissors')) || ((p1 === 'papers') && (p2 === 'rock')))
+        return "Player 1 won!";
+    else
+        return "Player 2 won!";
+
 
 };
 
-console.log(arr(3));
+console.log(rps('paper', 'scissors'));
