@@ -29,22 +29,49 @@
 
 // console.log(getMiddle('testing'));
 
-function finalGrade(exam, projects) {
-    switch (true) {
-        case (exam > 90 || projects > 10):
-            result = 100;
-            break;
-        case (exam > 75 && projects >= 5):
-            result = 90;
-            break;
-        case (exam > 50 && projects >= 2):
-            result = 75;
-            break;
-        default:
-            result = 0;
-            break;
-    }
-    return result;
-}
+// function finalGrade(exam, projects) {
+//     switch (true) {
+//         case (exam > 90 || projects > 10):
+//             result = 100;
+//             break;
+//         case (exam > 75 && projects >= 5):
+//             result = 90;
+//             break;
+//         case (exam > 50 && projects >= 2):
+//             result = 75;
+//             break;
+//         default:
+//             result = 0;
+//             break;
+//     }
+//     return result;
+// }
 
-console.log(finalGrade(97, 4));
+// console.log(finalGrade(97, 4));
+
+// function printerError(s) {
+
+//     const goodString = 'aaabbbbhaijjjm';
+
+//     const goodStringSplit = goodString.split('');
+//     const inputStringSplit = s.split('');
+
+//     let difference = s.split('').filter(x => !goodStringSplit.includes(x));
+//     const result = difference.length + '/' + inputStringSplit.length;
+//     return result;
+// }
+
+// console.log(printerError('aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz'));
+
+// function reverseWords(str) {
+//     return str.split(' ').map(w => w.split('').reverse()).map(w => w.join('')).join(' ');
+// }
+
+// console.log(reverseWords('hello there!'));
+
+const arr = N => {
+    return (N >= 0) ? [...new Array(N)].map((el, i) => el = i) : [];
+
+};
+
+console.log(arr(3));
