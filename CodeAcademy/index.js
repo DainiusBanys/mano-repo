@@ -77,16 +77,50 @@
 // console.log(arr(3));
 
 
-const rps = (p1, p2) => {
+// const rps = (p1, p2) => {
 
-    if (p1 === p2) return 'Draw!';
-    else
-    if (((p1 === 'scissors') && (p2 === 'papers')) || ((p1 === 'rock') && (p2 === 'scissors')) || ((p1 === 'papers') && (p2 === 'rock')))
-        return "Player 1 won!";
-    else
-        return "Player 2 won!";
+//     if (p1 === p2) return 'Draw!';
+//     else
+//     if (((p1 === 'scissors') && (p2 === 'papers')) || ((p1 === 'rock') && (p2 === 'scissors')) || ((p1 === 'papers') && (p2 === 'rock')))
+//         return "Player 1 won!";
+//     else
+//         return "Player 2 won!";
 
 
+// };
+
+// console.log(rps('paper', 'scissors'));
+
+// function findUniq(arr) {
+//     const resultArray = (arr.filter(el => arr.indexOf(el) === arr.lastIndexOf(el)));
+//     return resultArray[0];
+// }
+
+// console.log(findUniq([1, 0, 0]));
+
+// function oddOrEven(array) {
+//     return (array.reduce((prev, curr) => prev + curr) % 2 === 0) ? 'even' : 'odd';
+// }
+
+// console.log(oddOrEven([0, 1, 2, 3, 4, 5]))
+
+function bubbleSort(arr) {
+    for (let i = 0; i < arr.length; i++) {
+
+        //Inner pass
+        for (let j = 0; j < arr.length - i - 1; j++) {
+
+            //Value comparison using ascending order
+
+            if (arr[j + 1] < arr[j]) {
+
+                //Swapping
+                [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
+            }
+        }
+    };
+    return arr;
 };
 
-console.log(rps('paper', 'scissors'));
+
+console.log(bubbleSort([9, 3, 8, 4, 6, 1, 0]));
