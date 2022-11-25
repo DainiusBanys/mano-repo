@@ -104,23 +104,83 @@
 
 // console.log(oddOrEven([0, 1, 2, 3, 4, 5]))
 
-function bubbleSort(arr) {
-    for (let i = 0; i < arr.length; i++) {
+// function bubbleSort(arr) {
+//     for (let i = 0; i < arr.length; i++) {
 
-        //Inner pass
-        for (let j = 0; j < arr.length - i - 1; j++) {
+//         //Inner pass
+//         for (let j = 0; j < arr.length - i - 1; j++) {
 
-            //Value comparison using ascending order
+//             //Value comparison using ascending order
 
-            if (arr[j + 1] < arr[j]) {
+//             if (arr[j + 1] < arr[j]) {
 
-                //Swapping
-                [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
-            }
-        }
-    };
-    return arr;
-};
+//                 //Swapping
+//                 [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
+//             }
+//         }
+//     };
+//     return arr;
+// };
+// console.log(bubbleSort([9, 3, 8, 4, 6, 1, 0]));
+
+// function solution(string) {
+//     return string.split(/(?=[A-Z])/).join(' ');
+// }
+// console.log(solution('camelCasingTest'));
+
+// String.prototype.toJadenCase = function() {
+//     return this.split(' ').map(el => el.charAt(0).toUpperCase() + el.slice(1)).join(' ');
+// };
+// const str = "How can mirrors be real if our eyes arent real";
+// console.log(str.toJadenCase());
+
+// function isValidWalk(walk) {
+
+//     let counter = {};
+//     walk.forEach(char => { counter[char] = (counter[char] || 0) + 1 })
+
+//     return (walk.length === 10) && (counter.n === counter.s) && (counter.e === counter.w);
+
+// }
+
+// console.log(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
+
+// const arr = ['one', 'two', 'one', 'one', 'two', 'three'];
+
+// const count = {};
+
+// arr.forEach(element => {
+//   count[element] = (count[element] || 0) + 1;
+// });
+
+// var uniqueInOrder = function(iterable) {
+//     (typeof iterable === 'string') ? input = iterable.split(''): input = iterable;
+//     return input.reduce((accumulator, currentValue, index, arr) => {
+//         if (currentValue !== arr[index + 1]) {
+//             return [...accumulator, currentValue];
+//         }
+//         return accumulator;
+//     }, []);
+// }
+
+// console.log(uniqueInOrder('AAAABBBCCDAABBB'));
+// console.log(uniqueInOrder([1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 7, 7, 1, 1, 3, 3, 2]));
 
 
-console.log(bubbleSort([9, 3, 8, 4, 6, 1, 0]));
+// const iterable = 'AAAABBBCCDAABBB';
+// const myArrayWithNoDuplicates = iterable.split('').reduce((accumulator, currentValue, index, arr) => {
+//     if (currentValue !== arr[index + 1]) {
+//         return [...accumulator, currentValue];
+//     }
+//     return accumulator;
+// }, []);
+
+// console.log(myArrayWithNoDuplicates);
+
+function findShort(s) {
+    const min = s.split(' ').reduce((prev, cur) => prev.length <= cur.length ? prev : cur);
+    return min.length;
+
+}
+
+console.log(findShort("bibibi take over the world maybe who knows perhapsperhaps"));

@@ -1,5 +1,6 @@
 import "./bootstrap.css";
 import "./App.scss";
+import axios from 'axios';
 import Create from "./Components/Create";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -23,8 +24,10 @@ function App() {
 
   const [messages, setMessages] = useState([]);
 
+  // atnaujina sarasa ekrane
   useEffect(() => {
-    setTasks(read(localStorageKey)); // atnaujina sarasa ekrane
+    axios.get('http://localhost:3003/list')   
+    .then(res => setTasks(res.data))
   }, [lastUpdate]);
 
   useEffect(() => {
@@ -40,9 +43,11 @@ function App() {
     if (deleteData === null) {
       return;
     }
-    destroy(localStorageKey, deleteData.id);
-    setLastUpdate(Date.now());
-    msg("info", "Deleted!");
+    axios.delete('http://localhost:3003/list' + deleteData.id)
+    .then(res => {
+      setLastUpdate(Date.now());
+      msg("info", "Deleted!");
+    })
   }, [deleteData]);
 
   useEffect(() => {
