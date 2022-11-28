@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import DataContext from "./DataContext";
 
 function Edit() {
-  const { modalData, setModalData, setEditData } = useContext(DataContext);
+  const { modalData, setModalData, setEditData, msg } = useContext(DataContext);
   const [type, setType] = useState("");
   const [taskDate, setTaskDate] = useState('');
 
@@ -16,6 +16,15 @@ function Edit() {
   }, [modalData]);
 
   const clickSave = () => {
+    let error = false;
+    if (/^\s*$/.test(type)) {
+      // tikrinam su regexu ar neivede tik vieno ar keliu tarpu
+      msg("danger", "Add description first");
+      error = true;
+    }
+    if (error) {
+      return;
+    }
 setEditData({type, taskDate, id: modalData.id}); // issaugo pakeitimus i localstorage
 setModalData(null); // uzdaro modala
 
