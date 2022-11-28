@@ -25,20 +25,25 @@ function App() {
   const [messages, setMessages] = useState([]);
 
   // atnaujina sarasa ekrane
+  //READ
   useEffect(() => {
     axios.get('http://localhost:3003/list')   
     .then(res => setTasks(res.data))
   }, [lastUpdate]);
 
+  //CREATE
   useEffect(() => {
     if (createData === null) {
       return;
     }
-    create(localStorageKey, createData);
-    setLastUpdate(Date.now());
-    msg("success", "All good!");
+    axios.post('http://localhost:3003/list', createData)
+    .then(res => {
+      setLastUpdate(Date.now());
+      msg(...res.data.msg);
+    })
   }, [createData]);
 
+  //DELETE
   useEffect(() => {
     if (deleteData === null) {
       return;
@@ -46,10 +51,11 @@ function App() {
     axios.delete('http://localhost:3003/list' + deleteData.id)
     .then(res => {
       setLastUpdate(Date.now());
-      msg("info", "Deleted!");
+      msg(...res.data.msg);
     })
   }, [deleteData]);
 
+  // UPDATE
   useEffect(() => {
     if (editData === null) {
       return;

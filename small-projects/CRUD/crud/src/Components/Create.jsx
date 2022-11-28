@@ -4,6 +4,7 @@ import DataContext from "./DataContext";
 
 function Create() {
   const [type, setType] = useState("");
+  const [taskState, setTaskState] = useState(0);
   const [taskDate, setTaskDate] = useState(new Date().toLocaleDateString('lt-LT'));
   // const [weight, setWeight] = useState("");
   const { setCreateData, msg } = useContext(DataContext);
@@ -26,7 +27,7 @@ function Create() {
     }
     setTaskDate(`${current.toLocaleDateString('lt-LT')}`);
     
-    setCreateData({ type, taskDate });
+    setCreateData({ type, taskDate, taskState });
  
     setType("");
     // setWeight("");

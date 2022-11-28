@@ -4,6 +4,8 @@ const app = express();
 const port = 3003;
 const cors = require('cors')
 app.use(cors());
+app.use(express.json());
+
 
 
 // create the connection to database
@@ -31,7 +33,18 @@ app.delete('/list:taskId', (req, res) => {
     // simple query
     connection.query(sql, [req.params.taskId], (err, results) => {
         if (err) throw err;
-        res.send(results);
+        res.send({ msg: ["info", "Task Deleted"] });
+    });
+})
+
+app.post('/list', (req, res) => {
+
+    const sql = 'INSERT INTO tasks (taskDescr, taskDate, taskState) VALUES(?,?,?)';
+
+    // simple query
+    connection.query(sql, [req.body.type, req.body.taskDate, req.body.taskState], (err, results) => {
+        if (err) throw err;
+        res.send({ msg: ["success", "Task Added To The List"] });
     });
 })
 
