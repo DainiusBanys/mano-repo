@@ -25,6 +25,11 @@ function App() {
   const [messages, setMessages] = useState([]);
 
   // atnaujina sarasa ekrane
+
+  //LOADER
+
+  const [createDisabled, setCreateDisabled] = useState(false);
+
   //READ
   useEffect(() => {
     axios.get('http://localhost:3003/list')   
@@ -36,10 +41,12 @@ function App() {
     if (createData === null) {
       return;
     }
+    setCreateDisabled(true);
     axios.post('http://localhost:3003/list', createData)
     .then(res => {
       setLastUpdate(Date.now());
       msg(...res.data.msg);
+      setCreateDisabled(false);
     })
   }, [createData]);
 
@@ -87,6 +94,7 @@ function App() {
         setEditData,
         messages,
         msg,
+        createDisabled
       }}
     >
       <div className="card text-center">
