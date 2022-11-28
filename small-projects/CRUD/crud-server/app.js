@@ -47,6 +47,16 @@ app.post('/list', (req, res) => {
         res.send({ msg: ["success", "Task Added To The List"] });
     });
 })
+app.put('/list:taskId', (req, res) => {
+
+    const sql = 'UPDATE tasks SET taskDescr = ?, taskDate = ? WHERE id = ?';
+
+    // simple query
+    connection.query(sql, [req.body.type, req.body.taskDate, req.params.taskId], (err, results) => {
+        if (err) throw err;
+        res.send({ msg: ["success", "Task Updated"] });
+    });
+})
 
 
 
