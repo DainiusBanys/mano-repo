@@ -60,9 +60,12 @@ function App() {
     if (editData === null) {
       return;
     }
-    edit(localStorageKey, editData, editData.id);
-    setLastUpdate(Date.now());
-    msg("info", "Update success!");
+    axios.put('http://localhost:3003/list' + editData.id, editData)
+    .then(res => {
+      setLastUpdate(Date.now());
+      msg(...res.data.msg);
+
+    })
   }, [editData]);
 
   const msg = (type, text) => {
