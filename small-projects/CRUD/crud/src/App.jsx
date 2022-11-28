@@ -70,9 +70,8 @@ function App() {
     if (editData === null) {
       return;
     }
-    axios
     setListDisabled(true);
-      .put("http://localhost:3003/list" + editData.id, editData)
+    axios.put("http://localhost:3003/list" + editData.id, editData)
       .then((res) => {
         setLastUpdate(Date.now());
         msg(...res.data.msg);
