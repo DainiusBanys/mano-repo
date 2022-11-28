@@ -1,6 +1,6 @@
 import "./bootstrap.css";
 import "./App.scss";
-import axios from 'axios';
+import axios from "axios";
 import Create from "./Components/Create";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -29,11 +29,15 @@ function App() {
   //LOADER
 
   const [createDisabled, setCreateDisabled] = useState(false);
+  const [listDisabled, setListDisabled] = useState(false);
 
   //READ
   useEffect(() => {
-    axios.get('http://localhost:3003/list')   
-    .then(res => setTasks(res.data))
+    setListDisabled(true);
+    axios.get("http://localhost:3003/list").then((res) => {
+      setTasks(res.data);
+      setListDisabled(false);
+    });
   }, [lastUpdate]);
 
   //CREATE
@@ -42,12 +46,11 @@ function App() {
       return;
     }
     setCreateDisabled(true);
-    axios.post('http://localhost:3003/list', createData)
-    .then(res => {
+    axios.post("http://localhost:3003/list", createData).then((res) => {
       setLastUpdate(Date.now());
       msg(...res.data.msg);
       setCreateDisabled(false);
-    })
+    });
   }, [createData]);
 
   //DELETE
@@ -55,11 +58,11 @@ function App() {
     if (deleteData === null) {
       return;
     }
-    axios.delete('http://localhost:3003/list' + deleteData.id)
-    .then(res => {
+    setListDisabled(true);
+    axios.delete("http://localhost:3003/list" + deleteData.id).then((res) => {
       setLastUpdate(Date.now());
       msg(...res.data.msg);
-    })
+    });
   }, [deleteData]);
 
   // UPDATE
@@ -67,12 +70,13 @@ function App() {
     if (editData === null) {
       return;
     }
-    axios.put('http://localhost:3003/list' + editData.id, editData)
-    .then(res => {
-      setLastUpdate(Date.now());
-      msg(...res.data.msg);
-
-    })
+    axios
+    setListDisabled(true);
+      .put("http://localhost:3003/list" + editData.id, editData)
+      .then((res) => {
+        setLastUpdate(Date.now());
+        msg(...res.data.msg);
+      });
   }, [editData]);
 
   const msg = (type, text) => {
@@ -94,7 +98,8 @@ function App() {
         setEditData,
         messages,
         msg,
-        createDisabled
+        createDisabled,
+        listDisabled,
       }}
     >
       <div className="card text-center">
