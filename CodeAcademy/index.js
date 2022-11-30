@@ -177,10 +177,33 @@
 
 // console.log(myArrayWithNoDuplicates);
 
-function findShort(s) {
-    const min = s.split(' ').reduce((prev, cur) => prev.length <= cur.length ? prev : cur);
-    return min.length;
+// function findShort(s) {
+//     const min = s.split(' ').reduce((prev, cur) => prev.length <= cur.length ? prev : cur);
+//     return min.length;
 
+// }
+
+// console.log(findShort("bibibi take over the world maybe who knows perhapsperhaps"));
+
+
+// function arrayDiff(a, b) {
+//     let result = [];
+//     a.map(el => {
+//         (!b.includes(el)) ? result.push(el): null;
+//     })
+//     return result;
+// }
+
+// console.log(arrayDiff([1, 2, 3], [3]));
+
+function disemvowel(str) {
+    const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+    let result = [];
+    str.split('').map(el => {
+        (vowels.includes(el) ? null : result.push(el))
+    });
+    const joined = result.join('');
+    return joined;
 }
 
-console.log(findShort("bibibi take over the world maybe who knows perhapsperhaps"));
+console.log(disemvowel("This website is for losers LOL!"));

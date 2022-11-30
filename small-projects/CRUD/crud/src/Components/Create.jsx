@@ -7,7 +7,7 @@ function Create() {
   const [taskDate, setTaskDate] = useState(
     new Date().toLocaleDateString("lt-LT")
   );
-  const { setCreateData, msg, createDisabled } = useContext(DataContext);
+  const { setCreateData, msg, createDisabled, setSort } = useContext(DataContext);
   const btn = useRef();
 
   const clickAdd = () => {
@@ -28,6 +28,7 @@ function Create() {
     setTaskDate(`${current.toLocaleDateString("lt-LT")}`);
 
     setCreateData({ type, taskDate, taskState });
+    setSort(null);
 
     setType("");
     btn.current.blur();
@@ -70,9 +71,6 @@ function Create() {
           {
             createDisabled ? <><span className="spinner-border spinner-border-sm" role="status"></span><span> Loading...</span></>: <span>Add Task</span>
           }
-          
-        
-
         </button>
       </div>
     </div>
