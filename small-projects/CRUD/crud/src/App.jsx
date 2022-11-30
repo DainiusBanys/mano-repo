@@ -99,6 +99,7 @@ function App() {
         msg,
         createDisabled,
         listDisabled,
+        setTasks
       }}
     >
       <div className="card text-center">
