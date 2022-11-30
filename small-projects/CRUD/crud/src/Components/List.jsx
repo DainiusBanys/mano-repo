@@ -8,6 +8,7 @@ function List() {
   const { tasks, listDisabled, setTasks } = useContext(DataContext);
   const [sort, setSort] = useState("asc");
 
+
   useEffect(() => {
     switch (sort) {
       case "dateAsc":
@@ -31,6 +32,10 @@ function List() {
           : null);
         break;
       default:
+        setTasks(tasks
+          ? [...tasks].sort((a, b) => a.id - b.id)
+          : null);
+        break;
     }
   }, [sort]);
 
@@ -39,7 +44,8 @@ function List() {
       <div className="card-header">
         <h2>My Task List</h2>
         <div className="sortButtons">
-          <select value={sort} onChange={(e) => setSort(e.target.value)}>
+          <select className="form-select" aria-label="Default select example" value={sort} onChange={(e) => setSort(e.target.value)}>
+          <option defaultValue={"id"}>Select Task Sorting</option>
             <option value="dateAsc">Sort by Task Date asc</option>
             <option value="dateDesc">Sort by Task Date desc</option>
             <option value="status1">Sort by Task Status Not Completed 1st</option>
