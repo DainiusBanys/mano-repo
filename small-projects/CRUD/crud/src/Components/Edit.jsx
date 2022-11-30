@@ -1,18 +1,27 @@
 import { useEffect } from "react";
-import { useContext, useState } from "react";
+import { useContext, useId, useState } from "react";
 import DataContext from "./DataContext";
 
 function Edit() {
   const { modalData, setModalData, setEditData, msg } = useContext(DataContext);
   const [type, setType] = useState("");
-  const [taskDate, setTaskDate] = useState('');
+  const [taskState, setTaskState] = useState(false);
+  const [taskDate, setTaskDate] = useState("");
+
+  const id = useId();
+
+  const handleChange = () => {
+    setTaskState(!taskState);
+    // galima pagal checked togle daryti klase ant selectby dom komponento
+  };
 
   useEffect(() => {
     if (null === modalData) {
       return;
     }
     setType(modalData.type); // sitas efektas paima ivestas reiksmes ir sudeda i modalo inputa
-     setTaskDate(modalData.taskDate);
+    setTaskDate(modalData.taskDate);
+    setTaskState(modalData.taskState);
   }, [modalData]);
 
   const clickSave = () => {
@@ -25,9 +34,8 @@ function Edit() {
     if (error) {
       return;
     }
-setEditData({type, taskDate, id: modalData.id}); // issaugo pakeitimus i localstorage
-setModalData(null); // uzdaro modala
-
+    setEditData({ type, taskDate, taskState, id: modalData.id }); // issaugo pakeitimus i localstorage
+    setModalData(null); // uzdaro modala
   };
 
   if (null === modalData) {
@@ -58,20 +66,26 @@ setModalData(null); // uzdaro modala
                 placeholder="Enter changed task description"
               />
             </div>
-            {/* <div className="mb-3">
-              <label className="form-label">Weight</label>
-              <input
-                aria-label="task type"
-                type="text"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-                className="form-control"
-                placeholder="Enter your task weigth"
-              />
-            </div> */}
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              checked={taskState}
+              onChange={handleChange}
+              id={id}
+              aria-label="taskState"
+            />
+            <label className="form-check-label" htmlFor="flexCheckDefault">
+              Job Done
+            </label>
+          </div>
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-outline-primary" onClick={clickSave}>
+            <button
+              type="button"
+              className="btn btn-outline-primary"
+              onClick={clickSave}
+            >
               Save changes
             </button>
             <button
