@@ -37,7 +37,7 @@ function List() {
           : null);
         break;
     }
-  }, [sort]);
+  }, [sort, setTasks]);
 
   return (
     <div className="card m-2">
