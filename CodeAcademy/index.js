@@ -196,14 +196,25 @@
 
 // console.log(arrayDiff([1, 2, 3], [3]));
 
-function disemvowel(str) {
-    const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
-    let result = [];
-    str.split('').map(el => {
-        (vowels.includes(el) ? null : result.push(el))
-    });
-    const joined = result.join('');
-    return joined;
+// function disemvowel(str) {
+//     const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+//     let result = [];
+//     str.split('').map(el => {
+//         (vowels.includes(el) ? null : result.push(el))
+//     });
+//     const joined = result.join('');
+//     return joined;
+// }
+
+// console.log(disemvowel("This website is for losers LOL!"));
+
+function countBy(x, n) {
+    let z = [];
+    for (let i = x; i <= n; i += x) {
+        z.push(i);
+        // console.log(z);
+    }
+    return z;
 }
 
-console.log(disemvowel("This website is for losers LOL!"));
+console.log(countBy(2, 10));
