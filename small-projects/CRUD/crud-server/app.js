@@ -6,15 +6,20 @@ const cors = require('cors')
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.send('OK!!!OK')
+})
 
 
-// create the connection to database
+//create the connection to database
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'task_user',
-    database: 'tasks',
-    password: 'task_user'
+    host: 'eu-cdbr-west-03.cleardb.net',
+    user: 'becb3c7157d5d9',
+    database: 'heroku_a54fbb9376cebde',
+    password: '8217c68c'
 });
+
+//mysql://becb3c7157d5d9:8217c68c@eu-cdbr-west-03.cleardb.net/heroku_a54fbb9376cebde?reconnect=true
 
 app.get('/list', (req, res) => {
 
