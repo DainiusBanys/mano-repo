@@ -34,7 +34,7 @@ function Edit() {
     if (error) {
       return;
     }
-    setEditData({ type, taskDate, taskState, id: modalData.id }); // issaugo pakeitimus i localstorage
+    setEditData({ type, taskDate, taskState, id: modalData.id }); // issaugo pakeitimus i db
     setModalData(null); // uzdaro modala
   };
 
