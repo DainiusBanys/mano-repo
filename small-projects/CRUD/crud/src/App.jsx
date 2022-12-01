@@ -30,7 +30,7 @@ function App() {
   //READ
   useEffect(() => {
     setListDisabled(true);
-    axios.get("http://localhost:3003/list").then((res) => {
+    axios.get("https://crud-to-do-list-dainius.herokuapp.com/").then((res) => {
       setTasks(res.data);
       setListDisabled(false);
     });
@@ -42,7 +42,7 @@ function App() {
       return;
     }
     setCreateDisabled(true);
-    axios.post("http://localhost:3003/list", createData).then((res) => {
+    axios.post("https://crud-to-do-list-dainius.herokuapp.com/", createData).then((res) => {
       setLastUpdate(Date.now());
       msg(...res.data.msg);
       setCreateDisabled(false);
@@ -55,7 +55,7 @@ function App() {
       return;
     }
     setListDisabled(true);
-    axios.delete("http://localhost:3003/list" + deleteData.id).then((res) => {
+    axios.delete("https://crud-to-do-list-dainius.herokuapp.com/" + deleteData.id).then((res) => {
       setLastUpdate(Date.now());
       msg(...res.data.msg);
     });
@@ -68,7 +68,7 @@ function App() {
     }
     setListDisabled(true);
     axios
-      .put("http://localhost:3003/list" + editData.id, editData)
+      .put("https://crud-to-do-list-dainius.herokuapp.com/" + editData.id, editData)
       .then((res) => {
         setLastUpdate(Date.now());
         msg(...res.data.msg);
