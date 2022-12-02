@@ -212,7 +212,6 @@ function countBy(x, n) {
     let z = [];
     for (let i = x; i <= n; i += x) {
         z.push(i);
-        // console.log(z);
     }
     return z;
 }
