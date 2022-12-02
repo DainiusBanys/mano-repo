@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 
 //create the connection to database
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
     host: 'eu-cdbr-west-03.cleardb.net',
     user: 'becb3c7157d5d9',
     database: 'heroku_a54fbb9376cebde',
