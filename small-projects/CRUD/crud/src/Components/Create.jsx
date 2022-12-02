@@ -1,13 +1,14 @@
-import { useContext } from "react";
-import { useState } from "react";
+import { useState, useContext, useRef } from "react";
 import DataContext from "./DataContext";
 
 function Create() {
   const [type, setType] = useState("");
-  const [taskDate, setTaskDate] = useState(new Date().toLocaleDateString('lt-LT'));
-  // const [weight, setWeight] = useState("");
-  const { setCreateData, msg } = useContext(DataContext);
-  
+  const [taskState, setTaskState] = useState(0);
+  const [taskDate, setTaskDate] = useState(
+    new Date().toLocaleDateString("lt-LT")
+  );
+  const { setCreateData, msg, createDisabled } = useContext(DataContext);
+  const btn = useRef();
 
   const clickAdd = () => {
     const current = new Date();
@@ -24,12 +25,12 @@ function Create() {
     if (error) {
       return;
     }
-    setTaskDate(`${current.toLocaleDateString('lt-LT')}`);
-    
-    setCreateData({ type, taskDate });
- 
+    setTaskDate(`${current.toLocaleDateString("lt-LT")}`);
+
+    setCreateData({ type, taskDate, taskState });
+
     setType("");
-    // setWeight("");
+    btn.current.blur();
   };
 
   return (
@@ -62,10 +63,13 @@ function Create() {
         </div> */}
         <button
           type="button"
+          ref={btn}
           onClick={clickAdd}
           className="btn btn-outline-info m-3"
-        >
-          Add Task
+          disabled={createDisabled}>
+          {
+            createDisabled ? <><span className="spinner-border spinner-border-sm" role="status"></span><span> Loading...</span></>: <span>Add Task</span>
+          }
         </button>
       </div>
     </div>

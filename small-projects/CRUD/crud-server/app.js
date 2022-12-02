@@ -1,103 +1,75 @@
 const express = require('express');
+const mysql = require('mysql2');
 const app = express();
-const port = 3003;
+const PORT = 3003;
+
 const cors = require("cors");
-app.use(cors());
+
+app.use(
+    cors({
+        origin: "*"
+    }));
 app.use(express.json());
 
-const mysql = require("mysql2");
-const con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "Atata3388",
-    database: "zoo2",
-    port: 3306,
+app.get('/', (req, res) => {
+    res.send('OK!!!OK')
+})
+
+
+//create the connection to database
+const connection = mysql.createPool({
+    host: 'eu-cdbr-west-03.cleardb.net',
+    user: 'becb3c7157d5d9',
+    database: 'heroku_a54fbb9376cebde',
+    password: '8217c68c'
 });
 
+//mysql://becb3c7157d5d9:8217c68c@eu-cdbr-west-03.cleardb.net/heroku_a54fbb9376cebde?reconnect=true
 
 app.get('/list', (req, res) => {
 
-    let sql;
+    const sql = 'SELECT id, taskDescr as type, taskDate, taskState  FROM tasks ORDER BY taskDate';
 
-    if (!req.query.sort) {
-        sql = `
-        SELECT
-        id, animal AS type, weight
-        FROM animals
-        ORDER BY id DESC
-      `;
-    } else if (req.query.sort == 'az') {
-        sql = `
-        SELECT
-        id, animal AS type, weight
-        FROM animals
-        ORDER BY animal
-      `;
-    } else if (req.query.sort == 'za') {
-        sql = `
-        SELECT
-        id, animal AS type, weight
-        FROM animals
-        ORDER BY animal DESC
-      `;
-    } else if (req.query.sort == '09') {
-        sql = `
-        SELECT
-        id, animal AS type, weight
-        FROM animals
-        ORDER BY weight
-      `;
-    } else if (req.query.sort == '90') {
-        sql = `
-        SELECT
-        id, animal AS type, weight
-        FROM animals
-        ORDER BY weight DESC
-      `;
-    }
-    con.query(sql, (err, result) => {
+    // simple query
+    connection.query(sql, (err, results) => {
         if (err) throw err;
-        res.send(result);
+        res.send(results);
     });
-});
-
-app.delete('/list/:animalId', (req, res) => {
-    const sql = `
-    DELETE FROM animals
-    WHERE id = ?
-  `;
-    con.query(sql, [req.params.animalId], (err, result) => {
-        if (err) throw err;
-        res.send({ msg: ['info', 'Animal was deleted from the list.'] });
-    });
-});
-
-app.post('/list/', (req, res) => {
-    const sql = `
-    INSERT INTO animals
-    (animal, weight)
-    VALUES(?, ?)
-  `;
-    con.query(sql, [req.body.type, req.body.weight], (err, result) => {
-        if (err) throw err;
-        res.send({ msg: ['success', 'New animal was added to the list.'] });
-    });
-});
-
-app.put('/list/:animalId', (req, res) => {
-    const sql = `
-    UPDATE animals
-    SET animal = ?, weight = ?
-    WHERE id = ?
-  `;
-    con.query(sql, [req.body.type, req.body.weight, req.params.animalId], (err, result) => {
-        if (err) throw err;
-        res.send({ msg: ['success', 'Animal was edited.'] });
-    });
-});
-
-
-
-app.listen(port, () => {
-    console.log(`Server on ${port} port`)
 })
+
+
+app.delete('/list:taskId', (req, res) => {
+
+    const sql = 'DELETE FROM tasks WHERE id = ?';
+
+    // simple query
+    connection.query(sql, [req.params.taskId], (err, results) => {
+        if (err) throw err;
+        res.send({ msg: ["info", "Task Deleted"] });
+    });
+})
+
+app.post('/list', (req, res) => {
+
+    const sql = 'INSERT INTO tasks (taskDescr, taskDate, taskState) VALUES(?,?,?)';
+
+    // simple query
+    connection.query(sql, [req.body.type, req.body.taskDate, req.body.taskState], (err, results) => {
+        if (err) throw err;
+        res.send({ msg: ["success", "Task Added To The List"] });
+    });
+})
+app.put('/list:taskId', (req, res) => {
+
+    const sql = 'UPDATE tasks SET taskDescr = ?, taskDate = ?, taskState = ? WHERE id = ?';
+
+    // simple query
+    connection.query(sql, [req.body.type, req.body.taskDate, req.body.taskState, req.params.taskId], (err, results) => {
+        if (err) throw err;
+        res.send({ msg: ["success", "Task Updated"] });
+    });
+})
+
+
+
+app.listen(process.env.PORT || PORT);
