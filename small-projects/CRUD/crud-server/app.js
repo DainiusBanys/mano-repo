@@ -3,9 +3,12 @@ const mysql = require('mysql2');
 const app = express();
 const PORT = 3003;
 
-// isjungiau cors
-// const cors = require('cors')
-// app.use(cors());
+const cors = require("cors");
+
+app.use(
+    cors({
+        origin: "*"
+    }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
