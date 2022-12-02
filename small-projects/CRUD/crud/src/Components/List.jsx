@@ -55,7 +55,7 @@ function List() {
       </div>
       <div className="card-body">
         <ul className="list-group">
-          {tasks ?  tasks.map((a) => (
+          {(tasks!== null) ?  tasks.map((a) => (
             <Line key={a.id} task={a}></Line>
           )) : console.log(tasks)}
         </ul>
