@@ -1,9 +1,9 @@
 const express = require('express');
 const mysql = require('mysql2');
 const app = express();
-const port = 3003;
-const cors = require('cors')
-app.use(cors());
+const PORT = 3003;
+// const cors = require('cors')
+// app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -67,4 +67,4 @@ app.put('/list:taskId', (req, res) => {
 
 
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || PORT);
