@@ -57,7 +57,7 @@ function List() {
         <ul className="list-group">
           {tasks ?  tasks.map((a) => (
             <Line key={a.id} task={a}></Line>
-          )) : null}
+          )) : console.log(tasks)}
         </ul>
         {listDisabled ? (
           <div className="loader-screen">
