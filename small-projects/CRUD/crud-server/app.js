@@ -31,6 +31,8 @@ app.get('/list', (req, res) => {
         res.send(results);
     });
 })
+
+
 app.delete('/list:taskId', (req, res) => {
 
     const sql = 'DELETE FROM tasks WHERE id = ?';
