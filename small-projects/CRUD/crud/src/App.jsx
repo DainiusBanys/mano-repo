@@ -1,63 +1,99 @@
 import "./bootstrap.css";
 import "./App.scss";
+import axios from "axios";
 import Create from "./Components/Create";
 import { useState } from "react";
 import { useEffect } from "react";
-import { create, destroy } from "./Functions/localStorage";
-import { read, edit } from "./Functions/localStorage";
 import DataContext from "./Components/DataContext";
 import List from "./Components/List";
 import Edit from "./Components/Edit";
 import Messages from "./Components/Messages";
 import rand from "./Functions/rand";
 
-const localStorageKey = "tasks";
-
 function App() {
   const [lastUpdate, setLastUpdate] = useState(Date.now()); // kad automatskai atnaujinti duomenis
   const [tasks, setTasks] = useState(null); // perduoti ivedamus duomenis
-  const [createData, setCreateData] = useState(null); // irasyti i local storage
-  const [deleteData, setDeleteData] = useState(null); // istrinti is local storage
-  const [editData, setEditData] = useState(null); // irasyti pakeitimus i local storage
+  const [createData, setCreateData] = useState(null); // irasyti i db
+  const [deleteData, setDeleteData] = useState(null); // istrinti is db
+  const [editData, setEditData] = useState(null); // irasyti pakeitimus i db
   const [modalData, setModalData] = useState(null); // valdyti modala, kad atsirastu ir dingtu
 
   const [messages, setMessages] = useState([]);
 
+  // atnaujina sarasa ekrane
+
+  //LOADER
+
+  const [createDisabled, setCreateDisabled] = useState(false);
+  const [listDisabled, setListDisabled] = useState(false);
+
+  //READ
   useEffect(() => {
-    setTasks(read(localStorageKey)); // atnaujina sarasa ekrane
+    setListDisabled(true);
+    axios.get("https://crud-to-do-list-dainius.herokuapp.com/list").then((res) => {
+      setTasks(res.data);
+      setListDisabled(false);
+    }).catch(err =>{
+      console.log(err);
+      if (err) {
+        if (err.response) {
+            // The client was given an error response (5xx, 4xx)
+            console.log(err.response.data);
+            console.log(err.response.status);
+            console.log(err.response.headers);
+        } else if (err.request) {
+            // The client never received a response, and the request was never left
+            console.log(err.request);
+        } else {
+            // Anything else
+            console.log('Error', err.message);
+        }
+    }});
   }, [lastUpdate]);
 
+  //CREATE
   useEffect(() => {
     if (createData === null) {
       return;
     }
-    create(localStorageKey, createData);
-    setLastUpdate(Date.now());
-    msg("success", "All good!");
+    setCreateDisabled(true);
+    axios.post("https://crud-to-do-list-dainius.herokuapp.com/list", createData).then((res) => {
+      setLastUpdate(Date.now());
+      msg(...res.data.msg);
+      setCreateDisabled(false);
+    });
   }, [createData]);
 
+  //DELETE
   useEffect(() => {
     if (deleteData === null) {
       return;
     }
-    destroy(localStorageKey, deleteData.id);
-    setLastUpdate(Date.now());
-    msg("info", "Deleted!");
+    setListDisabled(true);
+    axios.delete("https://crud-to-do-list-dainius.herokuapp.com/list" + deleteData.id).then((res) => {
+      setLastUpdate(Date.now());
+      msg(...res.data.msg);
+    });
   }, [deleteData]);
 
+  // UPDATE
   useEffect(() => {
     if (editData === null) {
       return;
     }
-    edit(localStorageKey, editData, editData.id);
-    setLastUpdate(Date.now());
-    msg("info", "Update success!");
+    setListDisabled(true);
+    axios
+      .put("https://crud-to-do-list-dainius.herokuapp.com/list" + editData.id, editData)
+      .then((res) => {
+        setLastUpdate(Date.now());
+        msg(...res.data.msg);
+      });
   }, [editData]);
 
   const msg = (type, text) => {
     const mes = { type, text, id: rand(1000000, 9999999) }; // sukuriam pranesima, su rand generuojam pranesimo id, kad galima butu istrinti(neberodyti) reikiamo pranesimo
     setTimeout(() => {
-      setMessages((m) => m.filter((mm) => mm.id !== mes.id)); // paleidziam tameri pranesimui, kad istrintu automatiskai po taimero
+      setMessages((m) => m.filter((mm) => mm.id !== mes.id)); // paleidziam taimeri pranesimui, kad istrintu automatiskai po taimero
     }, 4000);
     setMessages((m) => [...m, mes]); // prideda prie pranesimu nauja message (parodom)
   };
@@ -73,6 +109,9 @@ function App() {
         setEditData,
         messages,
         msg,
+        createDisabled,
+        listDisabled,
+        setTasks,
       }}
     >
       <div className="card text-center">

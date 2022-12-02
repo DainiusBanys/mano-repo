@@ -69,9 +69,151 @@
 
 // console.log(reverseWords('hello there!'));
 
-const arr = N => {
-    return (N >= 0) ? [...new Array(N)].map((el, i) => el = i) : [];
+// const arr = N => {
+//     return (N >= 0) ? [...new Array(N)].map((el, i) => el = i) : [];
 
-};
+// };
 
-console.log(arr(3));
+// console.log(arr(3));
+
+
+// const rps = (p1, p2) => {
+
+//     if (p1 === p2) return 'Draw!';
+//     else
+//     if (((p1 === 'scissors') && (p2 === 'papers')) || ((p1 === 'rock') && (p2 === 'scissors')) || ((p1 === 'papers') && (p2 === 'rock')))
+//         return "Player 1 won!";
+//     else
+//         return "Player 2 won!";
+
+
+// };
+
+// console.log(rps('paper', 'scissors'));
+
+// function findUniq(arr) {
+//     const resultArray = (arr.filter(el => arr.indexOf(el) === arr.lastIndexOf(el)));
+//     return resultArray[0];
+// }
+
+// console.log(findUniq([1, 0, 0]));
+
+// function oddOrEven(array) {
+//     return (array.reduce((prev, curr) => prev + curr) % 2 === 0) ? 'even' : 'odd';
+// }
+
+// console.log(oddOrEven([0, 1, 2, 3, 4, 5]))
+
+// function bubbleSort(arr) {
+//     for (let i = 0; i < arr.length; i++) {
+
+//         //Inner pass
+//         for (let j = 0; j < arr.length - i - 1; j++) {
+
+//             //Value comparison using ascending order
+
+//             if (arr[j + 1] < arr[j]) {
+
+//                 //Swapping
+//                 [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
+//             }
+//         }
+//     };
+//     return arr;
+// };
+// console.log(bubbleSort([9, 3, 8, 4, 6, 1, 0]));
+
+// function solution(string) {
+//     return string.split(/(?=[A-Z])/).join(' ');
+// }
+// console.log(solution('camelCasingTest'));
+
+// String.prototype.toJadenCase = function() {
+//     return this.split(' ').map(el => el.charAt(0).toUpperCase() + el.slice(1)).join(' ');
+// };
+// const str = "How can mirrors be real if our eyes arent real";
+// console.log(str.toJadenCase());
+
+// function isValidWalk(walk) {
+
+//     let counter = {};
+//     walk.forEach(char => { counter[char] = (counter[char] || 0) + 1 })
+
+//     return (walk.length === 10) && (counter.n === counter.s) && (counter.e === counter.w);
+
+// }
+
+// console.log(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
+
+// const arr = ['one', 'two', 'one', 'one', 'two', 'three'];
+
+// const count = {};
+
+// arr.forEach(element => {
+//   count[element] = (count[element] || 0) + 1;
+// });
+
+// var uniqueInOrder = function(iterable) {
+//     (typeof iterable === 'string') ? input = iterable.split(''): input = iterable;
+//     return input.reduce((accumulator, currentValue, index, arr) => {
+//         if (currentValue !== arr[index + 1]) {
+//             return [...accumulator, currentValue];
+//         }
+//         return accumulator;
+//     }, []);
+// }
+
+// console.log(uniqueInOrder('AAAABBBCCDAABBB'));
+// console.log(uniqueInOrder([1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 7, 7, 1, 1, 3, 3, 2]));
+
+
+// const iterable = 'AAAABBBCCDAABBB';
+// const myArrayWithNoDuplicates = iterable.split('').reduce((accumulator, currentValue, index, arr) => {
+//     if (currentValue !== arr[index + 1]) {
+//         return [...accumulator, currentValue];
+//     }
+//     return accumulator;
+// }, []);
+
+// console.log(myArrayWithNoDuplicates);
+
+// function findShort(s) {
+//     const min = s.split(' ').reduce((prev, cur) => prev.length <= cur.length ? prev : cur);
+//     return min.length;
+
+// }
+
+// console.log(findShort("bibibi take over the world maybe who knows perhapsperhaps"));
+
+
+// function arrayDiff(a, b) {
+//     let result = [];
+//     a.map(el => {
+//         (!b.includes(el)) ? result.push(el): null;
+//     })
+//     return result;
+// }
+
+// console.log(arrayDiff([1, 2, 3], [3]));
+
+// function disemvowel(str) {
+//     const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+//     let result = [];
+//     str.split('').map(el => {
+//         (vowels.includes(el) ? null : result.push(el))
+//     });
+//     const joined = result.join('');
+//     return joined;
+// }
+
+// console.log(disemvowel("This website is for losers LOL!"));
+
+function countBy(x, n) {
+    let z = [];
+    for (let i = x; i <= n; i += x) {
+        z.push(i);
+    }
+    return z;
+}
+
+console.log(countBy(2, 10));
