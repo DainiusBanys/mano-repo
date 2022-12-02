@@ -24,7 +24,8 @@ body {
 }
 
 .burger {
-  border: 1px solid aquamarine;
+  border: 1px solid rgb(10, 191, 241);
+  width: -moz-fit-content;
   width: fit-content;
   display: none;
   align-items: center;
@@ -33,7 +34,7 @@ body {
 .container,
 .menuText {
   padding: 5px 10px;
-  color: aquamarine;
+  color: rgb(10, 191, 241);
 }
 
 .line1,
@@ -41,7 +42,7 @@ body {
 .line3 {
   width: 25px;
   height: 3px;
-  background-color: aquamarine;
+  background-color: rgb(10, 191, 241);
   margin: 6px 0;
   border-radius: 3px;
   transition: 0.4s;
@@ -69,7 +70,7 @@ h1 {
 
 a,
 h2 {
-  color: aquamarine;
+  color: rgb(10, 191, 241);
 }
 
 a {
