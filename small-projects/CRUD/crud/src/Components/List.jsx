@@ -55,9 +55,8 @@ function List() {
       </div>
       <div className="card-body">
         <ul className="list-group">
-          {(tasks!== null) ?  console.log(tasks)
-        //  tasks.map((a) => ( Line key={a.id} task={a}></Line>)) 
-          : console.log(tasks)}
+          {(tasks!== null) ?  tasks.map((a) => ( <Line key={a.id} task={a}></Line>)) : 
+           console.log(tasks)}
         </ul>
         {listDisabled ? (
           <div className="loader-screen">
