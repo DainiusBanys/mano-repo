@@ -1,5 +1,5 @@
         $headColor: whitesmoke;
-        $titlesColor: rgb(17, 195, 244);
+        $titlesColor: rgb(10, 191, 241);
         $backColor: rgb(83, 83, 83);
         $textColor: lightgray;
         * {
@@ -37,6 +37,7 @@
         // }
         .burger {
             border: 1px solid $titlesColor;
+            width: -moz-fit-content;
             width: fit-content;
             display: none;
             align-items: center;
