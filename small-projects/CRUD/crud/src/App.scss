@@ -58,6 +58,10 @@ body {
     justify-content: space-between;
 }
 
+.card {
+    min-width: 500px;
+}
+
 .card-body {
     position: relative;
     .loader-screen {
