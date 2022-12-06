@@ -10,6 +10,31 @@ body {
   color: lightgray;
 }
 
+.screenshot {
+  width: 100%;
+}
+
+.icons {
+  width: 50px;
+  margin: 5px;
+}
+
+figcaption:hover {
+  color: whitesmoke;
+}
+
+figure > img:hover {
+  border: 3px solid rgb(10, 191, 241);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  /* align horizontal */
+  align-items: center;
+  /* align vertical */
+}
+
 .section {
   min-height: 100vh;
   display: flex;
@@ -22,6 +47,9 @@ body {
   max-width: 80%;
   padding-top: 140px;
 }
+.content ul {
+  list-style: none;
+}
 
 .burger {
   border: 1px solid rgb(10, 191, 241);
@@ -31,10 +59,32 @@ body {
   align-items: center;
 }
 
-.container,
 .menuText {
   padding: 5px 10px;
   color: rgb(10, 191, 241);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.list-box {
+  display: grid;
+  grid-template: auto/30% 70%;
+  gap: 10px;
+  border: 1px solid red;
+}
+
+.boxes {
+  border: 1px solid blue;
+}
+
+.last-project {
+  grid-column: 1/span 2;
+  text-align: center;
 }
 
 .line1,
@@ -71,6 +121,7 @@ h1 {
 a,
 h2 {
   color: rgb(10, 191, 241);
+  margin: 10px 0px 30px;
 }
 
 a {
@@ -104,12 +155,21 @@ a {
   .menu-items {
     display: none;
   }
+  .list-box {
+    grid-template: auto/80%;
+  }
+  .last-project {
+    grid-column: 1/span 1;
+  }
   .burger {
     display: flex;
   }
   .menu-items.responsive {
     display: block;
     text-align: left;
+  }
+  figure > img {
+    display: none;
   }
 }
 
