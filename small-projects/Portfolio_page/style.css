@@ -75,11 +75,10 @@ figure > img:hover {
   display: grid;
   grid-template: auto/30% 70%;
   gap: 10px;
-  border: 1px solid red;
 }
 
 .boxes {
-  border: 1px solid blue;
+  margin: 10px;
 }
 
 .last-project {
