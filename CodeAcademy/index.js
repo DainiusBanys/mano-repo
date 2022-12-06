@@ -208,12 +208,32 @@
 
 // console.log(disemvowel("This website is for losers LOL!"));
 
-function countBy(x, n) {
-    let z = [];
-    for (let i = x; i <= n; i += x) {
-        z.push(i);
-    }
-    return z;
+// function countBy(x, n) {
+//     let z = [];
+//     for (let i = x; i <= n; i += x) {
+//         z.push(i);
+//     }
+//     return z;
+// }
+
+// console.log(countBy(2, 10));
+
+
+function findOdd(A) {
+    let count = {};
+
+    A.forEach(element => {
+        count[element] = (count[element] || 0) + 1;
+        return count
+    });
+    const key = Object.keys(count).find((key) => count[key] % 2);
+    return parseInt(key);
 }
 
-console.log(countBy(2, 10));
+// console.log(findOdd([7]))
+// console.log(findOdd([0, 1, 0, 1, 0]))
+console.log(findOdd([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1]))
+
+//   [7] 
+//   [0,1,0,1,0]
+//   [1,2,2,3,3,3,4,3,3,3,2,2,1]
