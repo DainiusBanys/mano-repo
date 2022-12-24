@@ -149,9 +149,9 @@
 
 // const count = {};
 
-// arr.forEach(element => {
-//   count[element] = (count[element] || 0) + 1;
-// });
+// console.log(arr.forEach(element => {
+//     count[element] = (count[element] || 0) + 1;
+// }));
 
 // var uniqueInOrder = function(iterable) {
 //     (typeof iterable === 'string') ? input = iterable.split(''): input = iterable;
@@ -219,21 +219,105 @@
 // console.log(countBy(2, 10));
 
 
-function findOdd(A) {
-    let count = {};
+// function findOdd(A) {
+//     let count = {};
 
-    A.forEach(element => {
+//     A.forEach(element => {
+//         count[element] = (count[element] || 0) + 1;
+//         return count
+//     });
+//     const key = Object.keys(count).find((key) => count[key] % 2);
+//     return parseInt(key);
+// }
+
+// // console.log(findOdd([7]))
+// // console.log(findOdd([0, 1, 0, 1, 0]))
+// console.log(findOdd([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1]))
+
+// //   [7] 
+// //   [0,1,0,1,0]
+// //   [1,2,2,3,3,3,4,3,3,3,2,2,1]
+
+// function likes(names) {
+//     switch (names.length) {
+//         case 0:
+//             console.log('no one likes this');
+//             break;
+//         case 1:
+//             console.log(names[0] + ' likes this');
+//             break;
+//         case 2:
+//             console.log(names[0] + " and " + names[1] + ' like this');
+//             break;
+//         case 3:
+//             console.log(names[0] + ", " + names[1] + " and " + names[2] + ' like this');
+//             break;
+//         default:
+//             console.log(names[0] + ", " + names[1] + ' and ' + parseInt(names.length - 2) + ' others like this');
+//             break;
+//     }
+// }
+
+// function likes(names) {
+//     switch (names.length) {
+//         case 0:
+//             return 'no one likes this';
+//         case 1:
+//             return names[0] + ' likes this';
+//         case 2:
+//             return names[0] + " and " + names[1] + ' like this';
+//         case 3:
+//             return names[0] + ", " + names[1] + " and " + names[2] + ' like this';
+//         default:
+//             return names[0] + ", " + names[1] + ' and ' + parseInt(names.length - 2) + ' others like this';
+//     }
+// }
+
+
+// likes([]);
+// likes(['Peter']);
+// likes(['Jacob', 'Alex']);
+// likes(["Max", "John", "Mark"]);
+// likes(["Alex", "Jacob", "Mark", "Max"]);
+
+// function alphabetPosition(text) {
+//     const abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+//     let result = text.toLowerCase().split('').map(el => abc.indexOf(el) + 1).filter(elem => elem !== 0).join(' ');
+//     return result;
+// }
+
+
+
+// console.log(alphabetPosition("The sunset sets at twelve o' clock."));
+// // "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"
+
+// function sortArray(array) {
+//     let ods = [];
+//     let odsInd = [];
+//     array.map((el, i) => {
+//         if (el % 2 !== 0) {
+//             ods = [...ods, el];
+//             odsInd = [...odsInd, i]
+//         }
+//     });
+//     ods.sort((a, b) => a - b);
+//     ods.map((odd, i) => array[odsInd[i]] = odd);
+//     return array;
+// }
+
+// console.log(sortArray([5, 3, 2, 8, 1, 4])); // [1, 3, 2, 8, 5, 4]);
+
+function XO(str) {
+
+    const filtered = str.toLowerCase().split('').filter(el =>
+        (el === 'x' || el === 'o')
+    );
+    const count = {};
+    filtered.forEach(element => {
         count[element] = (count[element] || 0) + 1;
-        return count
-    });
-    const key = Object.keys(count).find((key) => count[key] % 2);
-    return parseInt(key);
+        return count;
+    })
+    return (Object.keys(count).length === 0) || (count.x === count.o);
 }
 
-// console.log(findOdd([7]))
-// console.log(findOdd([0, 1, 0, 1, 0]))
-console.log(findOdd([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1]))
-
-//   [7] 
-//   [0,1,0,1,0]
-//   [1,2,2,3,3,3,4,3,3,3,2,2,1]
+console.log(XO('abcdxox'));
