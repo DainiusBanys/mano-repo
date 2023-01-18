@@ -307,17 +307,50 @@
 
 // console.log(sortArray([5, 3, 2, 8, 1, 4])); // [1, 3, 2, 8, 5, 4]);
 
-function XO(str) {
+// function XO(str) {
 
-    const filtered = str.toLowerCase().split('').filter(el =>
-        (el === 'x' || el === 'o')
-    );
-    const count = {};
-    filtered.forEach(element => {
-        count[element] = (count[element] || 0) + 1;
-        return count;
-    })
-    return (Object.keys(count).length === 0) || (count.x === count.o);
-}
+//     const filtered = str.toLowerCase().split('').filter(el =>
+//         (el === 'x' || el === 'o')
+//     );
+//     const count = {};
+//     filtered.forEach(element => {
+//         count[element] = (count[element] || 0) + 1;
+//         return count;
+//     })
+//     return (Object.keys(count).length === 0) || (count.x === count.o);
+// }
 
-console.log(XO('abcdxox'));
+// console.log(XO('abcdxox'));
+
+// function isPangram(string) {
+//     const uniqueSet = new Set();
+//     const unique = string.toLowerCase().replace(/[^a-z]/gi, '').split("").map(el => uniqueSet.add(el));
+//     // unique.map(el => uniqueSet.add(el))
+//     return (uniqueSet.size === 26);
+// }
+
+// console.log(isPangram('this is a testttt22345555!'));
+// console.log(isPangram('"The quick brown fox jumps over the lazy dog.'));
+
+// function firstNonConsecutive(arr) {
+
+
+//     let result = null;
+//     for (let i = 0; i <= arr.length; i++) {
+//         if ((result !== null) || (i + 1 === arr.length)) { return result }
+//         if (arr[i + 1] - arr[i] !== 1) { result = arr[i + 1] } else result = null;
+//     }
+// };
+
+// console.log(firstNonConsecutive([1, 2, 3, 5, 6, 7, 8]));
+// firstNonConsecutive([1, 2, 3, 4, 6, 7, 8]);
+
+// function sum(numbers) {
+//     return numbers.reduce((prev, curr) => {
+//         return prev + curr
+//     }, 0)
+
+// };
+
+// console.log(sum([1, 5.2, 4, 0, -1]));
+// console.log(sum([]));
