@@ -13,3 +13,5 @@ const horoscope = () => {
 }
 
 console.log(horoscope());
+console.log(horoscope());
+console.log(horoscope());
