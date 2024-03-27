@@ -1,14 +1,33 @@
+import styles from "./Track.module.css";
+
 function Track(props) {
   const renderAction = () => {
-    if (props.track.isRemoval) {
-      return <button className="Track-action">-</button>;
+    if (props.isRemoval) {
+      return (
+        <button className={styles["Track-action"]} onClick={passTrackToRemove}>
+          -
+        </button>
+      );
     } else {
-      return <button className="Track-action">+</button>;
+      return (
+        <button className={styles["Track-action"]} onClick={passTrack}>
+          +
+        </button>
+      );
     }
   };
+
+  function passTrack() {
+    props.onAdd(props.track);
+  }
+
+  function passTrackToRemove() {
+    props.onRemove(props.track);
+  }
+
   return (
-    <div className="Track">
-      <div className="Track-information">
+    <div className={styles.Track}>
+      <div className={styles["Track-information"]}>
         <h3>{/*-- track name will go here */}</h3>
         <h3>{props.track.name}</h3>
         <p>
