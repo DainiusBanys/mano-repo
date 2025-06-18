@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "AWfTTQr4GxCwsZ0n2vqwKRfR7PpEqF2EhoveMI3FiXI=",
+  "Source": "SimpleOrderProcessor.Api",
+  "BasePath": "_content/SimpleOrderProcessor.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

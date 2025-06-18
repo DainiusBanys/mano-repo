@@ -1,0 +1,6 @@
+@SimpleOrderProcessor.Api.New_HostAddress = http://localhost:5204
+
+GET {{SimpleOrderProcessor.Api.New_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

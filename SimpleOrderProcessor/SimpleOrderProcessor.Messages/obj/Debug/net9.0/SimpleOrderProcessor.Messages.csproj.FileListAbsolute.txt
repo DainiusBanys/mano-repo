@@ -1,0 +1,12 @@
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Messages\bin\Debug\net9.0\SimpleOrderProcessor.Messages.deps.json
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Messages\bin\Debug\net9.0\SimpleOrderProcessor.Messages.dll
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Messages\bin\Debug\net9.0\SimpleOrderProcessor.Messages.pdb
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Messages\obj\Debug\net9.0\SimpleOrderProcessor.Messages.GeneratedMSBuildEditorConfig.editorconfig
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Messages\obj\Debug\net9.0\SimpleOrderProcessor.Messages.AssemblyInfoInputs.cache
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Messages\obj\Debug\net9.0\SimpleOrderProcessor.Messages.AssemblyInfo.cs
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Messages\obj\Debug\net9.0\SimpleOrderProcessor.Messages.csproj.CoreCompileInputs.cache
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Messages\obj\Debug\net9.0\SimpleOrderProcessor.Messages.sourcelink.json
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Messages\obj\Debug\net9.0\SimpleOrderProcessor.Messages.dll
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Messages\obj\Debug\net9.0\refint\SimpleOrderProcessor.Messages.dll
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Messages\obj\Debug\net9.0\SimpleOrderProcessor.Messages.pdb
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Messages\obj\Debug\net9.0\ref\SimpleOrderProcessor.Messages.dll

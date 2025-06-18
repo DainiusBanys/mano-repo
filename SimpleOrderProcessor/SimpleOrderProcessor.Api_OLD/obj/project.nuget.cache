@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "xn9vWzgkq4s=",
+  "success": true,
+  "projectFilePath": "D:\\Coding\\mano-repo\\Danske\\SimpleOrderProcessor\\SimpleOrderProcessor.Api\\SimpleOrderProcessor.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\daini\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.3\\microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
+    "C:\\Users\\daini\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512",
+    "C:\\Users\\daini\\.nuget\\packages\\rabbitmq.client\\7.1.2\\rabbitmq.client.7.1.2.nupkg.sha512",
+    "C:\\Users\\daini\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
+    "C:\\Users\\daini\\.nuget\\packages\\system.threading.ratelimiting\\8.0.0\\system.threading.ratelimiting.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,8 @@
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Api\obj\Debug\net9.0\SimpleOrderProcessor.Api.csproj.AssemblyReference.cache
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Api\obj\Debug\net9.0\SimpleOrderProcessor.Api.GeneratedMSBuildEditorConfig.editorconfig
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Api\obj\Debug\net9.0\SimpleOrderProcessor.Api.AssemblyInfoInputs.cache
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Api\obj\Debug\net9.0\SimpleOrderProcessor.Api.AssemblyInfo.cs
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Api\obj\Debug\net9.0\SimpleOrderProcessor.Api.csproj.CoreCompileInputs.cache
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Api\obj\Debug\net9.0\SimpleOrderProcessor.Api.MvcApplicationPartsAssemblyInfo.cs
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Api\obj\Debug\net9.0\SimpleOrderProcessor.Api.MvcApplicationPartsAssemblyInfo.cache
+D:\Coding\mano-repo\Danske\SimpleOrderProcessor\SimpleOrderProcessor.Api\obj\Debug\net9.0\SimpleOrderProcessor.Api.sourcelink.json
