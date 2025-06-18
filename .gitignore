@@ -1,0 +1,12 @@
+# Visual Studio related files
+.vs/
+
+# Build output
+bin/
+obj/
+
+# Other common .NET ignores
+*.user
+*.suo
+*.pdb
+*.lock.json
