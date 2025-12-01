@@ -7,6 +7,7 @@ const authRoutes = require("./routes/authRoutes"); // <--- ADD THIS LINE
 const mongoose = require("mongoose");
 const webhookRoutes = require("./routes/webhookRoutes"); // <--- NEW IMPORT
 const subscriptionRoutes = require("./routes/subscriptionRoutes"); // <--- NEW IMPORT
+const normalizerRoutes = require("./routes/normalizerRoutes"); // <--- NEW IMPORT
 
 // Load environment variables
 require("dotenv").config();
@@ -30,6 +31,7 @@ connectDB();
 // All requests starting with /api/auth will be handled by authRoutes.js
 app.use("/api/auth", authRoutes); // <--- ADD THIS LINE
 app.use("/api/subscribe", subscriptionRoutes); // <--- NEW ROUTE MIDDLEWARE
+app.use("/api/normalizer", normalizerRoutes); // <--- NEW ROUTE MIDDLEWARE
 
 // Root Route (Sanity Check)
 app.get("/", (req, res) => {

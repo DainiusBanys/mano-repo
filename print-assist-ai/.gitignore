@@ -1,0 +1,22 @@
+# Dependencies
+/node_modules
+/dist
+/build
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env              # CRITICAL: DO NOT COMMIT SECRET KEYS
+
+# Docker
+docker-compose.override.yml
+docker-data/
+/data/
+*.log
+
+# Windows/VS Code
+.DS_Store
+Thumbs.db
