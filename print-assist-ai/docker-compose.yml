@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  # --------------------
+  # 1. APPLICATION SERVICE
+  # --------------------
+  app:
+    build: . # Build from the Dockerfile in the current directory
+    container_name: printassist_app
+    restart: always
+    ports:
+      - "8080:8080" # Map host port 8080 to container port 8080
+    depends_on:
+      - db
+    environment:
+      # Pass environment variables to the app container
+      NODE_ENV: development
+      MONGO_URI: mongodb://db:27017/printassist_db
+      PORT: 8080
+    volumes:
+      - .:/usr/src/app # Sync local files with container for development
+      - /usr/src/app/node_modules # Prevents host modules from overwriting container modules
+
+  # --------------------
+  # 2. DATABASE SERVICE
+  # --------------------
+  db:
+    image: mongo:6-focal # Use the official MongoDB image
+    platform: linux/amd64
+    container_name: printassist_db
+    restart: always
+    ports:
+      - "27017:27017" # Optional: map internal port for local tools
+    volumes:
+      - mongo_data:/data/db # Persist data outside the container
+volumes:
+  mongo_data: # <-- This defines the named volume that Docker manages.
