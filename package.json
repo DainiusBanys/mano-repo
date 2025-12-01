@@ -1,0 +1,12 @@
+{
+  "name": "mano-repo",
+  "version": "1.0.0",
+  "description": "- ## [Failai iš teorijos](https://github.com/DainiusBanys/mano-repo/tree/main/Is_teorijos) - ## [Praktika 1](https://github.com/DainiusBanys/mano-repo/tree/main/Praktika1) - ## [Praktika 2](https://github.com/DainiusBanys/mano-repo/tree/main/Praktika2)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

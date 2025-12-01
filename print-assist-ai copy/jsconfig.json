@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2022", // Use a stable, modern target
+    "moduleResolution": "node",
+    "allowJs": true,
+    "checkJs": true,
+    "lib": ["ES2022"], // Explicitly set libraries to avoid conflicts
+    "noEmit": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["**/*.js"]
+}
