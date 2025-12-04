@@ -14,6 +14,11 @@ const fulfillmentRoutes = require("./routes/fulfillmentRoutes"); // <--- NEW IMP
 // Load environment variables
 require("dotenv").config();
 
+// --- CRITICAL CORS FIX: Read from environment variable ---
+// Use the production CORS_ORIGIN if set, otherwise fallback to local dev
+const ALLOWED_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:3000";
+// --------------------------------------------------------
+
 const PORT = process.env.PORT || 8080;
 
 // API Routes
@@ -23,8 +28,7 @@ app.use("/api/webhooks", webhookRoutes); // <--- ADD THIS LINE
 
 // 1. CORS Configuration (MUST BE BEFORE express.json)
 const corsOptions = {
-  // Allows requests only from your local frontend URL
-  origin: "http://localhost:3000",
+  origin: ALLOWED_ORIGIN, // <-- THIS IS THE FIX: Uses the Render environment variable
   credentials: true,
 };
 
