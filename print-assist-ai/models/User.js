@@ -1,34 +1,54 @@
-// models/User.js
+// models/User.js (FINAL, CORRECTED VERSION)
 
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt"); // Required for hashing
+const bcrypt = require("bcrypt");
+// ----------------------------------------------------
+// JSDoc Type Definition for VS Code / Type Checker
+// ----------------------------------------------------
 
-const UserSchema = new mongoose.Schema({
+/**
+ * @typedef {object} UserSchemaFields
+ * @property {string} email
+ * @property {string} password   // <-- FIX 1: Explicitly include the password field
+ * @property {string} subscriptionStatus
+ * @property {boolean} isBetaTester
+ * @property {string | undefined} stripeCustomerId
+ * @property {Date} createdAt
+ */
+
+/**
+ * @typedef {object} UserMethods
+ * @property {function(string): Promise<boolean>} comparePassword - Checks if the given password matches the stored hash.
+ */
+
+/**
+ * @typedef {mongoose.Document & UserSchemaFields & UserMethods} UserDocument // <-- Combine Schema Fields and Methods
+ */
+
+/** @type {mongoose.Schema<UserDocument>} */
+const userSchema = new mongoose.Schema({
   email: {
     type: String,
-    required: [true, "Email is required"],
+    required: true,
     unique: true,
-    lowercase: true,
     trim: true,
   },
   password: {
-    // This stores the HASHED password (never plain text)
     type: String,
-    required: [true, "Password is required"],
-  },
-  stripeCustomerId: {
-    // Links to Stripe customer object for billing
-    type: String,
-    required: false,
+    required: true,
   },
   subscriptionStatus: {
-    // 'trialing', 'active', 'canceled'
     type: String,
+    enum: ["active", "trialing", "canceled"],
     default: "trialing",
   },
   isBetaTester: {
     type: Boolean,
     default: false,
+  },
+  stripeCustomerId: {
+    type: String,
+    required: false,
   },
   createdAt: {
     type: Date,
@@ -36,29 +56,60 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-// --- Mongoose Pre-Save Hook (Automated Hashing) ---
-UserSchema.pre("save", async function (next) {
-  // Only hash the password if it has been modified (or is new)
-  if (!this.isModified("password")) {
+// ----------------------------------------------------
+// MIDDLEWARE: Hashing Password Before Save
+// ----------------------------------------------------
+
+// Define the 'this' context as UserDocument inside the function for type checking
+/** @type {function(function): void} */
+const preSaveHook = function (next) {
+  /** @type {UserDocument} */
+  const user = this; // Explicitly casting 'this' as UserDocument
+
+  // Check if the password field has been modified or if the user is new
+  if (!user.isModified("password")) {
+    // Fix 2: 'isModified' is now recognized via UserDocument cast
     return next();
   }
 
-  try {
-    // 1. Generate a Salt (a random string to make the hash unique)
-    const salt = await bcrypt.genSalt(10);
-
-    // 2. Hash the password using the salt
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-  } catch (err) {
-    next(err);
-  }
-});
-
-// --- Method for Password Comparison during Login (Week 2, Part 2) ---
-UserSchema.methods.comparePassword = async function (candidatePassword) {
-  // Compares the provided plain-text password to the stored hash
-  return await bcrypt.compare(candidatePassword, this.password);
+  // Generate Salt and Hash Password
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) return next(err);
+    bcrypt.hash(user.password, salt, (err, hash) => {
+      if (err) return next(err);
+      user.password = hash; // Fix 3: 'password' is now recognized via UserDocument cast
+      next();
+    });
+  });
 };
 
-module.exports = mongoose.model("User", UserSchema);
+userSchema.pre("save", preSaveHook); // Fix 1: 'pre' is now recognized because userSchema is typed above
+
+// ----------------------------------------------------
+// METHODS: Password Comparison
+// ----------------------------------------------------
+
+/**
+ * @this {UserDocument}
+ * @param {string} candidatePassword
+ * @returns {Promise<boolean>}
+ */
+userSchema.methods.comparePassword = function (candidatePassword) {
+  return new Promise((resolve, reject) => {
+    // Use the instance's password (this.password) for comparison
+    bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
+      if (err) return reject(err);
+      resolve(isMatch);
+    });
+  });
+};
+
+// ----------------------------------------------------
+// MODEL EXPORT
+// ----------------------------------------------------
+
+// Use JSDoc to inform the export type
+/** @type {mongoose.Model<UserDocument>} */
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;

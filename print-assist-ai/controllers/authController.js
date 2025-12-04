@@ -1,7 +1,15 @@
 // controllers/authController.js
 
+/// <reference types="mongoose" /> // <--- ADD THIS LINE
+
 const User = require("../models/User"); // Import the secure User Model
 const generateToken = require("../utils/jwtUtils"); // <--- NEW IMPORT
+
+// ----------------------------------------------------
+// JSDoc Type Casting for VS Code / Type Checker
+/** @type {mongoose.Model<import('../models/User').UserDocument>} */
+const UserModel = User;
+// ----------------------------------------------------
 
 // @route   POST /api/auth/register
 // @desc    Register a new user
@@ -57,7 +65,7 @@ exports.login = async (req, res) => {
 
   try {
     // 1. Check if user exists
-    const user = await User.findOne({ email });
+    const user = await UserModel.findOne({ email });
 
     if (!user) {
       return res.status(400).json({ msg: "Invalid Credentials." });

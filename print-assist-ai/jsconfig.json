@@ -1,13 +1,19 @@
+// jsconfig.json (FINAL CLEAN VERSION)
+
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "target": "ES2022", // Use a stable, modern target
-    "moduleResolution": "node",
-    "allowJs": true,
+    "module": "commonjs",
+    "target": "es2020",
     "checkJs": true,
-    "lib": ["ES2022"], // Explicitly set libraries to avoid conflicts
-    "noEmit": true
+    "esModuleInterop": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+
+    // Tells the compiler where to look for types (should be default)
+    "typeRoots": ["./node_modules/@types"]
   },
-  "exclude": ["node_modules"],
-  "include": ["**/*.js"]
+  "include": ["**/*.js"],
+  "exclude": ["node_modules"]
 }
