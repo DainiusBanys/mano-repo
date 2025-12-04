@@ -4,7 +4,7 @@ const stripeClient = require("../config/stripe");
 const User = require("../models/User");
 
 // IMPORTANT: Define your Stripe Price ID here (you must create this in the Stripe Dashboard first)
-const PREMIUM_PRICE_ID = "price_1SZIWtIjKpE1Yleh3Nk025q7"; // Replace with your actual price ID
+const PREMIUM_PRICE_ID = "price_1SakdwI5bdiSJ1ce8sR8qJPJ"; // Replace with your actual price ID
 
 // @route   POST /api/subscribe/checkout
 // @desc    Creates a new Stripe Checkout Session
