@@ -1,0 +1,31 @@
+[00:00:04.800] Server  LOG      ✓ Ready in 3.4s
+[00:00:20.794] Server  LOG      ○ Compiling /register ...
+[00:00:25.549] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:29.374] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:37.826] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:07.334] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:09.317] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:34.660] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:55.136] Server  LOG      ✓ Compiled in 153ms
+[00:23:48.270] Browser LOG     Registration successful, please log in.
+[00:23:57.246] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:34.810] Server  ERROR   D:\Coding\mano-repo\printassist-frontend\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:33:34.830] Server  ERROR   D:\Coding\mano-repo\printassist-frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__5de26d5c._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:33:34.840] Server  ERROR   ReferenceError: location is not defined
+[00:33:34.849] Server  ERROR   D:\Coding\mano-repo\printassist-frontend\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:33:34.852] Server  ERROR   D:\Coding\mano-repo\printassist-frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__5de26d5c._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:33:34.854] Server  ERROR    ⨯ "uncaughtException:" ReferenceError: location is not defined
+[00:33:34.865] Server  ERROR   D:\Coding\mano-repo\printassist-frontend\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:33:34.869] Server  ERROR   D:\Coding\mano-repo\printassist-frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__5de26d5c._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:33:34.873] Server  ERROR    ⨯ "uncaughtException: " ReferenceError: location is not defined
+[00:33:35.373] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:35.704] Browser ERROR   Cannot update a component (`%s`) while rendering a different component (`%s`). To locate the bad setState() call inside `%s`, follow the stack trace as described in https://react.dev/link/setstate-in-render Router DashboardPage DashboardPage
+[00:39:11.504] Server  LOG      ✓ Compiled in 245ms
+[00:40:05.144] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:40:11.927] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:40:20.037] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:40:27.442] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:40:39.583] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:42:32.431] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:44:05.537] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:51:43.406] Server  LOG      ✓ Compiled in 177ms
