@@ -130,7 +130,11 @@ async function normalizeWithAI(rawInput) {
       AI_API_URL,
       {
         // CRITICAL FIX 1: systemInstruction MUST be a top-level field
-        systemInstruction: systemInstruction, // <--- MOVED HERE!
+        // CRITICAL FIX 2: systemInstruction MUST be a Content Object
+        systemInstruction: {
+          role: "system",
+          parts: [{ text: systemInstruction }], // Use the string defined earlier
+        },
 
         // Contents is also at the top level
         contents: [{ role: "user", parts: [{ text: prompt }] }],
