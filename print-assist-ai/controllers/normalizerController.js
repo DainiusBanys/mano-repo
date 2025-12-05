@@ -152,10 +152,23 @@ async function normalizeWithAI(rawInput) {
     );
 
     // The AI response is usually a stringified JSON inside the text field
-    const jsonString = response.data.candidates[0].content.parts[0].text.trim();
+    let jsonString = response.data.candidates[0].content.parts[0].text.trim();
+
+    // --- CRITICAL FIX: Robust JSON Extraction ---
+    // 1. Remove markdown fences (```json) if the AI included them
+    if (jsonString.startsWith("```")) {
+      jsonString = jsonString.replace(/^```json\s*/, "").replace(/\s*```$/, "");
+    }
+
+    // 2. Safely parse the cleaned string
     return JSON.parse(jsonString);
   } catch (error) {
+    // Log the failure to the console for debugging
     console.error("AI Normalization Failed:", error.message);
+    // Log the response data that caused the parse error if possible
+    if (error.response && error.response.data) {
+      console.error("AI Response Data:", JSON.stringify(error.response.data));
+    }
     return null;
   }
 }
