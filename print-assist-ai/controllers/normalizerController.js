@@ -133,7 +133,7 @@ async function normalizeWithAI(rawInput) {
         contents: [{ role: "user", parts: [{ text: prompt }] }],
 
         // Configuration, including system instruction and schema, is at the top level
-        config: {
+        generationConfig: {
           systemInstruction: systemInstruction,
           responseMimeType: "application/json",
           responseSchema: {
