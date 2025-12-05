@@ -146,8 +146,15 @@ async function normalizeWithAI(rawInput) {
           responseSchema: {
             type: "object",
             properties: {
-              names: { type: "array" },
-              dates: { type: "array" },
+              // --- CRITICAL FIX HERE ---
+              names: {
+                type: "array",
+                items: { type: "string" }, // <-- REQUIRED FIX
+              },
+              dates: {
+                type: "array",
+                items: { type: "string" }, // <-- REQUIRED FIX
+              },
               message: { type: "string" },
             },
           },
