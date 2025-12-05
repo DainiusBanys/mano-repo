@@ -93,8 +93,17 @@ function extractNamesAndClean(text, dates) {
 }
 
 // controllers/normalizerController.js (NEW AI FUNCTION)
+// --- JSDOC FIX: Use the specific import syntax for module export ---
+/**
+ * @typedef {import('axios').AxiosInstance} AxiosInstance
+ */
 
-const axios = require("axios");
+// The two-step conversion: -> unknown -> AxiosInstance
+/** @type {AxiosInstance} */
+const axios = /** @type {AxiosInstance} */ (
+  /** @type {unknown} */ (require("axios"))
+);
+// --- END JSDOC FIX ---
 
 // Placeholder for the LLM API endpoint (e.g., Google Gemini)
 const AI_API_URL =
@@ -120,26 +129,23 @@ async function normalizeWithAI(rawInput) {
     const response = await axios.post(
       AI_API_URL,
       {
+        // Contents is at the top level
         contents: [{ role: "user", parts: [{ text: prompt }] }],
+
+        // Configuration, including system instruction and schema, is at the top level
         config: {
           systemInstruction: systemInstruction,
           responseMimeType: "application/json",
           responseSchema: {
             type: "object",
             properties: {
-              names: { type: "array", description: "List of extracted names." },
-              dates: {
-                type: "array",
-                description: "List of extracted date ranges.",
-              },
-              message: {
-                type: "string",
-                description: "Any residual message or instruction, or null.",
-              },
+              names: { type: "array" },
+              dates: { type: "array" },
+              message: { type: "string" },
             },
           },
         },
-      },
+      }, // End of payload object
       {
         headers: { "x-goog-api-key": AI_API_KEY },
       }
