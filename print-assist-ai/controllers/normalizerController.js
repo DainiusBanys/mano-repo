@@ -192,10 +192,13 @@ exports.processData = async (req, res) => {
 
     // --- 2. AI FALLBACK CHECK ---
     // If Rule-Based finds no names, we escalate to the AI
-    if (names.length === 0) {
-      console.log(
-        "Rule-based extraction failed to find names. Escalating to AI."
-      );
+    // if (names.length === 0) {
+    //   console.log(
+    //     "Rule-based extraction failed to find names. Escalating to AI."
+    //   );
+    if (true) {
+      // <--- CRITICAL DEBUGGING CHANGE: Forces AI execution
+      console.log("DEBUG: Forcing AI execution.");
       const aiResult = await normalizeWithAI(rawInput);
 
       if (aiResult && aiResult.names && aiResult.names.length > 0) {
