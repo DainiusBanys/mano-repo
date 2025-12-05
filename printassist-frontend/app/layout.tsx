@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-version="5">
       <body>
         <AuthProvider> //  WRAP THE CHILDREN IN THE PROVIDER
           {children}
