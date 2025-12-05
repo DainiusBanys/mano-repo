@@ -92,6 +92,68 @@ function extractNamesAndClean(text, dates) {
   return names;
 }
 
+// controllers/normalizerController.js (NEW AI FUNCTION)
+
+const axios = require("axios");
+
+// Placeholder for the LLM API endpoint (e.g., Google Gemini)
+const AI_API_URL =
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
+const AI_API_KEY = process.env.GEMINI_API_KEY; // Pulled from Render ENV
+
+/**
+ * Sends raw text to the LLM and requests clean JSON output.
+ * @param {string} rawInput
+ * @returns {Promise<object | null>} The structured JSON object from the AI.
+ */
+async function normalizeWithAI(rawInput) {
+  if (!AI_API_KEY) {
+    console.error("AI API Key is missing. Skipping AI normalization.");
+    return null;
+  }
+
+  const systemInstruction = `You are a strict data parsing API for a print-on-demand service. Your ONLY task is to extract names and date ranges from the user input and return them in a clean JSON format. DO NOT include extra words, instructions, or notes. If data is not found, use an empty array or null.`;
+
+  const prompt = `Raw Customer Input: "${rawInput}".\n\nReturn the data strictly in this JSON format: {"names": ["name1", "name2"], "dates": ["YYYY-YYYY", "YYYY-Present"], "message": null}.`;
+
+  try {
+    const response = await axios.post(
+      AI_API_URL,
+      {
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        config: {
+          systemInstruction: systemInstruction,
+          responseMimeType: "application/json",
+          responseSchema: {
+            type: "object",
+            properties: {
+              names: { type: "array", description: "List of extracted names." },
+              dates: {
+                type: "array",
+                description: "List of extracted date ranges.",
+              },
+              message: {
+                type: "string",
+                description: "Any residual message or instruction, or null.",
+              },
+            },
+          },
+        },
+      },
+      {
+        headers: { "x-goog-api-key": AI_API_KEY },
+      }
+    );
+
+    // The AI response is usually a stringified JSON inside the text field
+    const jsonString = response.data.candidates[0].content.parts[0].text.trim();
+    return JSON.parse(jsonString);
+  } catch (error) {
+    console.error("AI Normalization Failed:", error.message);
+    return null;
+  }
+}
+
 // @route   POST /api/normalizer/process
 // @desc    Processes raw personalization data and normalizes it.
 // @access  Private (Requires subscription)
@@ -104,32 +166,59 @@ exports.processData = async (req, res) => {
   }
 
   try {
-    // --- CORE NORMALIZATION LOGIC ---
-    const dates = extractDates(rawInput);
-    const names = extractNamesAndClean(rawInput, dates);
+    // --- 1. RULE-BASED ATTEMPT ---
+    let dates = extractDates(rawInput);
+    let names = extractNamesAndClean(rawInput, dates);
+    let finalData = null;
 
-    const normalizedData = {
-      status: "normalized_success",
-      raw: rawInput,
-      cleaned:
-        names.join(", ") +
-        (dates.length > 0 ? " (" + dates.join(", ") + ")" : ""),
-      structure: {
-        names: names,
-        dates: dates,
-        message:
-          names.length === 0 && dates.length === 0
-            ? "No recognizable data found."
-            : null,
-      },
-    };
+    // --- 2. AI FALLBACK CHECK ---
+    // If Rule-Based finds no names, we escalate to the AI
+    if (names.length === 0) {
+      console.log(
+        "Rule-based extraction failed to find names. Escalating to AI."
+      );
+      const aiResult = await normalizeWithAI(rawInput);
 
-    // --------------------------------
+      if (aiResult && aiResult.names && aiResult.names.length > 0) {
+        // SUCCESS: Use AI result and format it
+        finalData = {
+          status: "normalized_success_ai",
+          raw: rawInput,
+          // Reformat the AI names/dates into your standardized string
+          cleaned:
+            aiResult.names.join(", ") +
+            (aiResult.dates && aiResult.dates.length > 0
+              ? " (" + aiResult.dates.join(", ") + ")"
+              : ""),
+          structure: aiResult,
+        };
+      }
+    }
 
-    // 3. Return the processed result
+    // --- 3. RULE-BASED SUCCESS ---
+    if (!finalData) {
+      finalData = {
+        status: "normalized_success_rule",
+        raw: rawInput,
+        cleaned:
+          names.join(", ") +
+          (dates.length > 0 ? " (" + dates.join(", ") + ")" : ""),
+        structure: {
+          names,
+          dates,
+          message:
+            names.length === 0 && dates.length === 0
+              ? "No recognizable data found."
+              : null,
+        },
+      };
+    }
+
     res.json({
-      msg: "Data successfully normalized.",
-      result: normalizedData,
+      msg: `Data processed using ${
+        finalData.status.includes("ai") ? "AI Fallback" : "Rule-Based Logic"
+      }.`,
+      result: finalData,
     });
   } catch (error) {
     console.error("Normalization Error:", error);
