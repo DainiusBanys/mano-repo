@@ -186,8 +186,10 @@ exports.processData = async (req, res) => {
 
   try {
     // --- 1. RULE-BASED ATTEMPT ---
-    let dates = extractDates(rawInput);
-    let names = extractNamesAndClean(rawInput, dates);
+    // let dates = extractDates(rawInput);
+    // let names = extractNamesAndClean(rawInput, dates);
+    let dates = null;
+    let names = null;
     let finalData = null;
 
     // --- 2. AI FALLBACK CHECK ---
@@ -218,23 +220,23 @@ exports.processData = async (req, res) => {
     }
 
     // --- 3. RULE-BASED SUCCESS ---
-    if (!finalData) {
-      finalData = {
-        status: "normalized_success_rule",
-        raw: rawInput,
-        cleaned:
-          names.join(", ") +
-          (dates.length > 0 ? " (" + dates.join(", ") + ")" : ""),
-        structure: {
-          names,
-          dates,
-          message:
-            names.length === 0 && dates.length === 0
-              ? "No recognizable data found."
-              : null,
-        },
-      };
-    }
+    // if (!finalData) {
+    //   finalData = {
+    //     status: "normalized_success_rule",
+    //     raw: rawInput,
+    //     cleaned:
+    //       names.join(", ") +
+    //       (dates.length > 0 ? " (" + dates.join(", ") + ")" : ""),
+    //     structure: {
+    //       names,
+    //       dates,
+    //       message:
+    //         names.length === 0 && dates.length === 0
+    //           ? "No recognizable data found."
+    //           : null,
+    //     },
+    //   };
+    // }
 
     res.json({
       msg: `Data processed using ${
