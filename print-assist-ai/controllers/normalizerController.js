@@ -129,12 +129,15 @@ async function normalizeWithAI(rawInput) {
     const response = await axios.post(
       AI_API_URL,
       {
-        // Contents is at the top level
+        // CRITICAL FIX 1: systemInstruction MUST be a top-level field
+        systemInstruction: systemInstruction, // <--- MOVED HERE!
+
+        // Contents is also at the top level
         contents: [{ role: "user", parts: [{ text: prompt }] }],
 
-        // Configuration, including system instruction and schema, is at the top level
+        // CRITICAL FIX 2: generationConfig only contains generation settings
         generationConfig: {
-          systemInstruction: systemInstruction,
+          // REMOVED systemInstruction from here
           responseMimeType: "application/json",
           responseSchema: {
             type: "object",
