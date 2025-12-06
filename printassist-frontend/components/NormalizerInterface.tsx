@@ -17,6 +17,10 @@ interface NormalizedResult {
         dates: string[];
         message: string | null;
     };
+    // CRITICAL NEW FLAGS FROM BACKEND:
+    status: string; // 'normalized_success', 'normalized_success_ai', 'normalized_suspicious', etc.
+    aiRequired: boolean; // True if Tier 3 (Catastrophic) was automatically called
+    needsReview: boolean; // True if Tier 2 (Suspicious) requires user fix
 }
 
 const NormalizerInterface: React.FC = () => {
@@ -25,6 +29,34 @@ const NormalizerInterface: React.FC = () => {
     const [result, setResult] = useState<NormalizedResult | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+
+    // --- NEW: Function to Call the Dedicated AI Fix Endpoint ---
+    const handleAIFix = async () => {
+        setLoading(true);
+        setError('');
+
+        try {
+            const response = await axios.post(
+                `${API_BASE_URL}/normalizer/ai-fix`, // <-- NEW DEDICATED ROUTE
+                { rawInput: result ? result.raw : rawInput }, // Use the original raw input
+                {
+                    headers: { Authorization: `Bearer ${token}` },
+                }
+            );
+
+            // The response status is now automatically 'normalized_success_ai'
+            setResult(response.data.result);
+
+        } catch (err) {
+            if (axios.isAxiosError(err) && err.response) {
+                setError(err.response.data.msg || 'AI Fix failed.');
+            } else {
+                setError('A network or server error occurred during AI fix.');
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
 
     // Function to call the Normalizer API (No change here)
     const handleProcess = async (e: React.FormEvent) => {
@@ -120,36 +152,41 @@ const NormalizerInterface: React.FC = () => {
                 <h2 className="text-2xl font-semibold text-gray-800">2. PrintAssist AI Output (Validated)</h2>
 
                 {result ? (
-                    <div className="p-6 bg-white shadow-lg rounded-lg border border-green-300">
-                        <h3 className="text-xl font-bold mb-3 text-green-700 flex items-center">
-                            <span className="text-2xl mr-2">✅</span> Normalized Data Ready!
-                        </h3>
+                    <div className="p-6 bg-white shadow-lg rounded-lg border border-gray-200">
+                        {/* ... Output Headers and Cleaned String Display ... */}
 
-                        {/* Cleaned String Output */}
-                        <div className="mb-4">
-                            <p className="text-sm font-medium text-gray-600 mb-1">Cleaned String (Ready for Print):</p>
-                            <div className="bg-gray-100 p-3 rounded shadow-inner border border-dashed border-gray-400">
-                                <p className="text-lg font-mono text-gray-900">{result.cleaned}</p>
+                        {/* --- NEW LOGIC: Conditional Button Display --- */}
+                        {result.needsReview ? (
+                            // TIER 2: SUSPICIOUS RESULT (Show fix button and warning)
+                            <div className="bg-red-50 border border-red-300 p-4 rounded-lg mb-4 space-y-3">
+                                <p className="font-bold text-red-700 flex items-center">
+                                    ⚠️ Review Needed: Potential Garbage Detected
+                                </p>
+                                <p className="text-sm text-red-600">The automatic tool detected suspicious words. Click below to use the AI for a guaranteed clean fix.</p>
+
+                                <button
+                                    onClick={handleAIFix}
+                                    disabled={loading}
+                                    className="w-full py-2 px-4 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 disabled:opacity-50"
+                                >
+                                    {loading ? 'Consulting AI...' : 'Fix with AI for Free'}
+                                </button>
                             </div>
-                        </div>
-
-                        {/* Structured Data */}
-                        <div className="mb-6">
-                            <h4 className="text-md font-medium mb-1">Structured Data:</h4>
-                            <ul className="text-sm space-y-1 text-gray-700">
-                                <li><strong>Names:</strong> {result.structure.names.join(', ') || 'N/A'}</li>
-                                <li><strong>Dates:</strong> {result.structure.dates.join(', ') || 'N/A'}</li>
-                                <li><strong>Raw Input:</strong> <em className="text-gray-500">{result.raw}</em></li>
-                            </ul>
-                        </div>
-
-                        {/* Fulfillment Button */}
-                        <button
-                            onClick={handleFulfill}
-                            className="w-full py-3 px-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700"
-                        >
-                            Submit to Print Provider (Final Step)
-                        </button>
+                        ) : (
+                            // TIER 1/3: CLEAN RESULT (Show fulfillment button)
+                            <div className="space-y-3">
+                                <p className="text-sm font-medium text-green-700">
+                                    {result.status.includes('ai') ? 'AI Fixed & Validated' : 'Validated by Regex'}
+                                </p>
+                                <button
+                                    onClick={handleFulfill}
+                                    className="w-full py-3 px-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700"
+                                >
+                                    Submit to Print Provider (Final Step)
+                                </button>
+                            </div>
+                        )}
+                        {/* --- END Conditional Button Display --- */}
 
                     </div>
                 ) : (
