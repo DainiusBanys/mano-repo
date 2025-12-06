@@ -206,8 +206,8 @@ exports.processData = async (req, res) => {
     let finalData = null;
 
     // Define failure thresholds
-    const CATASTROPHIC_THRESHOLD = 6; // E.g., > 6 words remaining is catastrophic
-    const SUSPICIOUS_THRESHOLD = 3; // E.g., 4 to 6 words remaining is suspicious
+    const CATASTROPHIC_THRESHOLD = 5; // E.g., > 5 words remaining is catastrophic
+    const SUSPICIOUS_THRESHOLD = 3; // E.g., 4 to 5 words remaining is suspicious
     const residualWordCount = names.length;
 
     // --- 1. CATASTROPHIC FAILURE CHECK (TIER 3: AUTOMATIC AI) ---
