@@ -57,11 +57,6 @@ function extractNamesAndClean(text, dates) {
   // Filter words greater than 2 characters (retaining this, but adding stop words below)
   names = cleanText.split(/\s+/).filter((word) => word.length > 2);
 
-  // Capitalize first letter of each name
-  names = names.map(
-    (name) => name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
-  );
-
   // --- STOP WORD LIST FILTER (FINAL SAFETY CHECK) ---
   // Remove common non-name words that might still be left (e.g., from weird spacing)
   const stopWords = [
@@ -90,6 +85,13 @@ function extractNamesAndClean(text, dates) {
   );
 
   return names;
+}
+
+function capitalizeNames(namesArray) {
+  if (!Array.isArray(namesArray)) return [];
+  return namesArray.map(
+    (name) => name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+  );
 }
 
 // controllers/normalizerController.js (NEW AI FUNCTION)
@@ -220,6 +222,8 @@ exports.processData = async (req, res) => {
 
       if (aiResult && aiResult.names && aiResult.names.length > 0) {
         // SUCCESS: Use AI result and format it
+        // FIX: Capitalize names returned by AI before packaging finalData
+        aiResult.names = capitalizeNames(aiResult.names); // <-- CRITICAL FIX
         finalData = {
           status: "normalized_success_ai",
           raw: rawInput,
@@ -238,6 +242,8 @@ exports.processData = async (req, res) => {
 
     // --- 2. RULE-BASED AND SUSPICIOUS CHECK (TIER 1/2) ---
     if (!finalData) {
+      // FIX 1B: Capitalize names from Regex before packaging finalData
+      names = capitalizeNames(names); // <-- CRITICAL FIX
       // Determine if the user needs to manually trigger the fix (Suspicious Case)
       let needsReview = residualWordCount > SUSPICIOUS_THRESHOLD;
 
@@ -283,9 +289,12 @@ exports.runAIFix = async (req, res) => {
 
   try {
     console.log("User requested AI fix. Bypassing Regex.");
+
     const aiResult = await normalizeWithAI(rawInput); // Direct AI call
 
     if (aiResult && aiResult.names && aiResult.names.length > 0) {
+      aiResult.names = capitalizeNames(aiResult.names);
+
       // SUCCESS: Format the AI result
       const finalData = {
         status: "normalized_success_ai",
@@ -299,8 +308,10 @@ exports.runAIFix = async (req, res) => {
         aiRequired: false,
         needsReview: false,
       };
-
-      return res.json({ msg: "AI fix successful.", result: finalData });
+      return res.json({
+        msg: "AI fix successful.",
+        result: finalData, // Correct syntax
+      });
     } else {
       return res.status(500).json({ msg: "AI could not parse usable data." });
     }
