@@ -205,13 +205,18 @@ exports.processData = async (req, res) => {
 
     let finalData = null;
 
-    // --- 2. AI FALLBACK CHECK ---
-    // If Rule-Based finds no names, we escalate to the AI
-    if (names.length === 0) {
+    // Define failure thresholds
+    const CATASTROPHIC_THRESHOLD = 6; // E.g., > 6 words remaining is catastrophic
+    const SUSPICIOUS_THRESHOLD = 3; // E.g., 4 to 6 words remaining is suspicious
+    const residualWordCount = names.length;
+
+    // --- 1. CATASTROPHIC FAILURE CHECK (TIER 3: AUTOMATIC AI) ---
+    if (residualWordCount > CATASTROPHIC_THRESHOLD) {
       console.log(
-        "Rule-based extraction failed to find names. Escalating to AI."
+        "Catastrophic failure detected. Initiating automatic AI fallback."
       );
-      const aiResult = await normalizeWithAI(rawInput);
+
+      const aiResult = await normalizeWithAI(rawInput); // CALL AI INSTANTLY
 
       if (aiResult && aiResult.names && aiResult.names.length > 0) {
         // SUCCESS: Use AI result and format it
@@ -225,37 +230,84 @@ exports.processData = async (req, res) => {
               ? " (" + aiResult.dates.join(", ") + ")"
               : ""),
           structure: aiResult,
+          aiRequired: false, // AI solved it
+          needsReview: false, // AI solved it
         };
       }
     }
 
-    // --- 3. RULE-BASED SUCCESS ---
-    // if (!finalData) {
-    //   finalData = {
-    //     status: "normalized_success_rule",
-    //     raw: rawInput,
-    //     cleaned:
-    //       names.join(", ") +
-    //       (dates.length > 0 ? " (" + dates.join(", ") + ")" : ""),
-    //     structure: {
-    //       names,
-    //       dates,
-    //       message:
-    //         names.length === 0 && dates.length === 0
-    //           ? "No recognizable data found."
-    //           : null,
-    //     },
-    //   };
-    // }
+    // --- 2. RULE-BASED AND SUSPICIOUS CHECK (TIER 1/2) ---
+    if (!finalData) {
+      // Determine if the user needs to manually trigger the fix (Suspicious Case)
+      let needsReview = residualWordCount > SUSPICIOUS_THRESHOLD;
 
-    res.json({
-      msg: `Data processed using ${
-        finalData.status.includes("ai") ? "AI Fallback" : "Rule-Based Logic"
-      }.`,
-      result: finalData,
-    });
+      finalData = {
+        status: "normalized_success_rule",
+        raw: rawInput,
+        cleaned:
+          names.join(", ") +
+          (dates.length > 0 ? " (" + dates.join(", ") + ")" : ""),
+        structure: {
+          names,
+          dates,
+          message:
+            names.length === 0 && dates.length === 0 ? "No data found." : null,
+        },
+
+        // CRITICAL FLAGS SENT TO FRONTEND:
+        aiRequired: false, // Not automatically using AI
+        needsReview: needsReview, // Sets true if names are 4, 5, or 6
+      };
+    }
+
+    res.json({ msg: `Data processed.`, result: finalData });
   } catch (error) {
     console.error("Normalization Error:", error);
     res.status(500).json({ msg: "Internal server error during processing." });
+  }
+};
+
+// controllers/normalizerController.js (NEW AI Fix function)
+
+// @route   POST /api/normalizer/ai-fix
+// @desc    Forces AI execution for user-requested corrections.
+// @access  Private (Requires subscription)
+exports.runAIFix = async (req, res) => {
+  const { rawInput } = req.body;
+
+  if (!rawInput) {
+    return res
+      .status(400)
+      .json({ msg: "Raw input text is required for AI fix." });
+  }
+
+  try {
+    console.log("User requested AI fix. Bypassing Regex.");
+    const aiResult = await normalizeWithAI(rawInput); // Direct AI call
+
+    if (aiResult && aiResult.names && aiResult.names.length > 0) {
+      // SUCCESS: Format the AI result
+      const finalData = {
+        status: "normalized_success_ai",
+        raw: rawInput,
+        cleaned:
+          aiResult.names.join(", ") +
+          (aiResult.dates && aiResult.dates.length > 0
+            ? " (" + aiResult.dates.join(", ") + ")"
+            : ""),
+        structure: aiResult,
+        aiRequired: false,
+        needsReview: false,
+      };
+
+      return res.json({ msg: "AI fix successful.", result: finalData });
+    } else {
+      return res.status(500).json({ msg: "AI could not parse usable data." });
+    }
+  } catch (error) {
+    console.error("AI Fix Error:", error);
+    res
+      .status(500)
+      .json({ msg: "Internal server error during AI processing." });
   }
 };

@@ -14,4 +14,12 @@ router.post(
   normalizerController.processData
 );
 
+// POST route for user-requested AI fix
+router.post(
+  "/ai-fix",
+  protect,
+  checkSubscription,
+  normalizerController.runAIFix
+); // <-- NEW ROUTE
+
 module.exports = router;
