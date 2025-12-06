@@ -155,7 +155,14 @@ const NormalizerInterface: React.FC = () => {
                 {result ? (
                     <div className="p-6 bg-white shadow-lg rounded-lg border border-gray-200">
                         {/* ... Output Headers and Cleaned String Display ... */}
-
+                        {/* ---  ADD THIS DISPLAY BLOCK --- */}
+                        <div className="mb-6">
+                            <h3 className="text-lg font-semibold text-indigo-700 mb-2">Cleaned String (Ready for Print):</h3>
+                            <div className="p-3 bg-gray-100 border border-gray-300 rounded-md text-gray-800 font-mono text-lg">
+                                {result.cleaned || 'Processing...'}
+                            </div>
+                        </div>
+                        {/* --- END DISPLAY BLOCK --- */}
                         {/* --- NEW LOGIC: Conditional Button Display --- */}
                         {result.needsReview ? (
                             // TIER 2: SUSPICIOUS RESULT (Show fix button and warning)
