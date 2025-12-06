@@ -46,6 +46,7 @@ const NormalizerInterface: React.FC = () => {
 
             // The response status is now automatically 'normalized_success_ai'
             setResult(response.data.result);
+            setRawInput(response.data.result.raw); // <--- Update all relevant states after success
 
         } catch (err) {
             if (axios.isAxiosError(err) && err.response) {
