@@ -200,21 +200,17 @@ exports.processData = async (req, res) => {
 
   try {
     // --- 1. RULE-BASED ATTEMPT ---
-    // let dates = extractDates(rawInput);
-    // let names = extractNamesAndClean(rawInput, dates);
-    let dates = null;
-    let names = null;
+    let dates = extractDates(rawInput);
+    let names = extractNamesAndClean(rawInput, dates);
+
     let finalData = null;
 
     // --- 2. AI FALLBACK CHECK ---
     // If Rule-Based finds no names, we escalate to the AI
-    // if (names.length === 0) {
-    //   console.log(
-    //     "Rule-based extraction failed to find names. Escalating to AI."
-    //   );
-    if (true) {
-      // <--- CRITICAL DEBUGGING CHANGE: Forces AI execution
-      console.log("DEBUG: Forcing AI execution.");
+    if (names.length === 0) {
+      console.log(
+        "Rule-based extraction failed to find names. Escalating to AI."
+      );
       const aiResult = await normalizeWithAI(rawInput);
 
       if (aiResult && aiResult.names && aiResult.names.length > 0) {
