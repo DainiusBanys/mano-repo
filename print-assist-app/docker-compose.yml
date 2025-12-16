@@ -1,0 +1,65 @@
+version: "3.8"
+
+services:
+  # 1. PostgreSQL Database Service
+  db:
+    image: postgres:15-alpine
+    container_name: print-assist-app-db-1
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: printassist_db
+    ports:
+      - "5432:5432" # Exposed for external tools like PgAdmin/DBeaver
+    volumes:
+      # Data persistence across container restarts
+      - postgres_data:/var/lib/postgresql/data
+
+  # 2. Node.js Backend Service (Express API)
+  backend-node:
+    build: ./backend-node
+    container_name: print-assist-app-backend-node-1
+    ports:
+      - "5000:5000"
+    environment:
+      # CRITICAL: These values are used by the Node service to connect to the 'db' service
+      - PORT=5000
+      - DATABASE_URL=postgres://user:password@db:5432/printassist_db
+      - PYTHON_SERVICE_URL=http://backend-python:8000
+      - CORS_ORIGIN=http://localhost:3000
+      # IMPORTANT: Add your secret keys here (e.g., JWT_SECRET, GEMINI_API_KEY)
+      - JWT_SECRET=your_dev_jwt_secret
+    depends_on:
+      - db
+      - backend-python
+      # CRITICAL FIX: Explicitly define the command to use ts-node and nodemon
+    command: sh -c "npx nodemon --exec ts-node server.ts"
+    # NOTE: Volume mounts were causing the 'module not found' issues.
+    # We rely on the image build (npm install) to place node_modules inside the container.
+
+  # 3. Python Backend Service (Image Processor - FastAPI/Uvicorn)
+  backend-python:
+    build: ./backend-python
+    container_name: print-assist-app-backend-python-1
+    ports:
+      - "8000:8000"
+
+  # 4. React Frontend Service (Next.js/Vite)
+  frontend:
+    build: ./frontend
+    container_name: print-assist-app-frontend-1
+    ports:
+      - "3000:3000"
+    environment:
+      # Frontend must know where the public API is located
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost:5000/api
+    depends_on:
+      - backend-node
+    # NOTE: You may still need the following volumes for hot-reloading in Next.js/React.
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # Masking local node_modules to avoid permission issues
+
+volumes:
+  postgres_data:

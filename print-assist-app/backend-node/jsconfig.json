@@ -1,0 +1,25 @@
+// jsconfig.json (FINAL CLEAN VERSION)
+
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2020",
+    "checkJs": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+
+    // Tells the compiler where to look for types (should be default)
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": [
+    "**/*.js",
+    "controllers/authController.ts",
+    "config/config.ts",
+    "server.ts",
+    "routes/authRoutes.ts"
+  ],
+  "exclude": ["node_modules"]
+}
