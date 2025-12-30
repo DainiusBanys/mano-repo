@@ -11,7 +11,8 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 interface User {
     id: string;
     email: string;
-    isSubscribed: boolean;
+    isSubscribed: boolean;        // <--- MUST BE HERE
+    subscriptionStatus: string;   // <--- MUST BE HERE
 }
 
 interface AuthContextType {
@@ -22,6 +23,7 @@ interface AuthContextType {
     logout: () => void;
     registerUser: (email: string, password: string) => Promise<void>;
     loginUser: (email: string, password: string) => Promise<void>;
+    refreshUser: () => Promise<void>;
 }
 
 // --- 2. Create Context ---
@@ -104,6 +106,24 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
     };
 
+    const refreshUser = async () => {
+        const storedToken = localStorage.getItem('token');
+        if (!storedToken) return;
+
+        try {
+            // Assume you have a /auth/me or similar endpoint that returns the current user
+            const response = await axios.get(`${API_BASE_URL}/auth/me`, {
+                headers: { Authorization: `Bearer ${storedToken}` }
+            });
+
+            const updatedUser = response.data; // This will have isSubscribed: true
+            setUser(updatedUser);
+            localStorage.setItem('user', JSON.stringify(updatedUser));
+        } catch (error) {
+            console.error("Failed to refresh user data", error);
+        }
+    };
+
 
     const value: AuthContextType = {
         user,
@@ -113,6 +133,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         logout,
         registerUser,
         loginUser,
+        refreshUser,
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

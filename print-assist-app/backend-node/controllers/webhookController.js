@@ -1,74 +1,53 @@
-// controllers/webhookController.js
-
-const stripeClient = require("../config/stripe");
-const User = require("../models/User");
-
-require("dotenv").config();
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-
-// @route   POST /api/webhooks
-// @desc    Receives events from Stripe (e.g., successful payment)
-// @access  Public (But secured by webhook signature)
 exports.handleWebhook = async (req, res) => {
   const signature = req.headers["stripe-signature"];
   let event;
 
   try {
-    // 1. Verify the signature using the secret key
     event = stripeClient.webhooks.constructEvent(
-      req.body, // Important: Stripe needs the raw body
+      req.body,
       signature,
-      webhookSecret
+      process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (err) {
     console.error(`❌ Webhook signature verification failed: ${err.message}`);
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  // 2. Handle the event based on its type
+  const session = event.data.object;
+
   switch (event.type) {
     case "checkout.session.completed":
-      const session = event.data.object;
-
-      // CRITICAL FIX: Get userId directly from the session's metadata
       const userId = session.metadata.userId;
 
-      //  Check if userId exists before updating
-      if (!userId) {
-        console.error(
-          "❌ Webhook Error: userId not found in Customer metadata."
-        );
-        return res.status(400).send("Missing userId.");
-      }
-
-      // 4. Update the user's subscription status
       if (session.payment_status === "paid") {
-        await User.findByIdAndUpdate(userId, {
-          subscriptionStatus: "active",
-        });
-        console.log(`✅ User ${userId} subscription ACTIVED.`);
+        // UPDATE BOTH FIELDS: The boolean for UI and the string for logic
+        await User.update(
+          {
+            subscriptionStatus: "active",
+            isSubscribed: true,
+          },
+          { where: { id: userId } }
+        );
+        console.log(`✅ User ${userId} upgraded to ACTIVE.`);
       }
       break;
 
     case "customer.subscription.deleted":
-      // Handle cancellations or failed renewals
-      const subscription = event.data.object;
-      const customerId = subscription.customer;
+      const customerId = session.customer;
 
-      await User.findOneAndUpdate(
-        { stripeCustomerId: customerId },
+      await User.update(
         {
           subscriptionStatus: "canceled",
-        }
+          isSubscribed: false,
+        },
+        { where: { stripeCustomerId: customerId } }
       );
-      console.log(`❌ User ${customerId} subscription CANCELED.`);
+      console.log(`❌ Customer ${customerId} subscription CANCELED.`);
       break;
 
-    // ... handle other events (e.g., invoice.payment_failed)
     default:
       console.log(`Unhandled event type ${event.type}`);
   }
 
-  // 3. Send a 200 response back to Stripe immediately
   res.json({ received: true });
 };

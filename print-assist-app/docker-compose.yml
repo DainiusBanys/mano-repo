@@ -29,7 +29,11 @@ services:
       - PYTHON_SERVICE_URL=http://backend-python:8000
       - CORS_ORIGIN=http://localhost:3000
       # IMPORTANT: Add your secret keys here (e.g., JWT_SECRET, GEMINI_API_KEY)
-      - JWT_SECRET=your_dev_jwt_secret
+      - JWT_SECRET=${JWT_SECRET}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+      - PREMIUM_PRICE_ID=${PREMIUM_PRICE_ID}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
     depends_on:
       - db
       - backend-python
@@ -52,14 +56,18 @@ services:
     ports:
       - "3000:3000"
     environment:
-      # Frontend must know where the public API is located
       - NEXT_PUBLIC_API_BASE_URL=http://localhost:5000/api
+      - WATCHPACK_POLLING=true # Helps Next.js detect changes in Docker
+      - CHOKIDAR_USEPOLLING=true # Legacy support for file watching
     depends_on:
       - backend-node
-    # NOTE: You may still need the following volumes for hot-reloading in Next.js/React.
+    stdin_open: true # Keeps the process alive
+    tty: true # Keeps the process alive
+    command: npm run dev
     volumes:
       - ./frontend:/app
-      - /app/node_modules # Masking local node_modules to avoid permission issues
+      - /app/node_modules
+      - /app/.next
 
 volumes:
   postgres_data:

@@ -15,6 +15,11 @@ const subscriptionRoutes = require("./routes/subscriptionRoutes");
 const normalizerRoutes = require("./routes/normalizerRoutes");
 const fulfillmentRoutes = require("./routes/fulfillmentRoutes");
 
+// 2. Debug logs (Use the EXACT names from above)
+console.log("DEBUG - Auth:", typeof authRoutes);
+console.log("DEBUG - Sub:", typeof subscriptionRoutes);
+console.log("DEBUG - Norm:", typeof normalizerRoutes);
+console.log("DEBUG - Full:", typeof fulfillmentRoutes);
 // --- CRITICAL FIX 1: Sequence Connection ---
 // 1. Connection should be authenticated early, but only called ONCE.
 // connectDB(); // <--- KEEP THIS CALL: It executes the DB connection test.

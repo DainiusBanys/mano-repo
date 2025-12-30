@@ -40,7 +40,7 @@ export const register = async (req: Request, res: Response) => {
     console.log('[Register] Signing JWT...');
     jwt.sign(
       payload,
-      process.env.JWT_SECRET || 'secret',
+      process.env.JWT_SECRET || 'V,#4c*8mLZr9Q;rL{i2y!+{J-VaSf5+Kr($',
       { expiresIn: 360000 },
       (err, token) => {
         if (err) {
@@ -48,7 +48,12 @@ export const register = async (req: Request, res: Response) => {
           return res.status(500).json({ msg: 'Error signing token' });
         }
         console.log('[Register] Success! Sending token.');
-        res.status(201).json({ token, user: { id: newUser.id, email: newUser.email } });
+        res.status(201).json({
+          token, user: {
+            id: newUser.id, email: newUser.email, isSubscribed: newUser.isSubscribed,
+            subscriptionStatus: newUser.subscriptionStatus
+          }
+        });
       }
     );
 
@@ -86,7 +91,15 @@ export const login = async (req: Request, res: Response) => {
           console.error('[Login] JWT Error:', err);
           return res.status(500).send('Token Error');
         }
-        res.json({ token, user: { id: user.id, email: user.email } });
+        res.json({
+          token,
+          user: {
+            id: user.id,
+            email: user.email,
+            isSubscribed: user.isSubscribed, // MAKE SURE THIS LINE EXISTS
+            subscriptionStatus: user.subscriptionStatus // AND THIS ONE
+          }
+        });
       }
     );
 
@@ -94,4 +107,10 @@ export const login = async (req: Request, res: Response) => {
     console.error('[Login] Critical Error:', error.message);
     res.status(500).send('Server Error');
   }
+};
+
+// backend-node/controllers/authController.js
+export const getMe = async (req: any, res: Response) => {
+  // req.user is already attached by the 'protect' middleware
+  res.status(200).json(req.user);
 };

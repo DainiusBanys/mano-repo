@@ -1,21 +1,20 @@
-// print-assist-ai/middleware/subscriptionMiddleware.js
-
-const User = require("../models/User");
-
+// Remove the User require if you aren't using it to query the DB
 const checkSubscription = async (req, res, next) => {
-  // The 'protect' middleware already guaranteed req.user exists and is valid.
-  const user = req.user;
+  try {
+    const user = req.user;
 
-  // Check if user is active
-  if (user && user.subscriptionStatus === "active") {
-    next();
-  } else {
-    // User is 'trialing' or 'canceled'
+    // Use a more robust check: check both the boolean and the status string
+    if (user && (user.isSubscribed || user.subscriptionStatus === "active")) {
+      return next(); // Explicit return to ensure no further code execution
+    }
+
     return res.status(403).json({
       msg: "Subscription Required.",
-      detail:
-        "This feature is only available to active subscribers. Please check your account status.",
+      detail: "This feature is only available to active subscribers.",
     });
+  } catch (error) {
+    console.error("Subscription Middleware Error:", error);
+    return res.status(500).json({ msg: "Internal Server Error" });
   }
 };
 
