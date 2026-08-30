@@ -4,6 +4,11 @@ import pandas as pd
 import numpy as np
 import random
 
+from history_boundary import (
+    HistoryBoundaryError,
+    get_clean_history_scan_id,
+    resolve_clean_history_start_id,
+)
 from momentum_metrics import STRONG_VELOCITY_THRESHOLD, build_keyword_momentum
 
 DB = "velocity.db"
@@ -12,12 +17,13 @@ st.set_page_config(page_title="Alpha Engine v4", page_icon="🚜", layout="wide"
 def get_db(): return sqlite3.connect(DB)
 
 @st.cache_data(ttl=60)
-def load_alpha():
+def load_alpha(history_start_id):
     q = """
     WITH latest AS (
         SELECT *, ROW_NUMBER() OVER (PARTITION BY listing_id ORDER BY timestamp DESC) rn,
                COUNT(*) OVER (PARTITION BY listing_id) as confidence
         FROM scan_history
+        WHERE id >= ?
     ),
     stats AS (
         SELECT niche, AVG(review_count) as n_rev, AVG(price) as n_price, MAX(saturation_count) as n_sat 
@@ -38,7 +44,7 @@ def load_alpha():
     FROM metrics m JOIN n_vel nv ON m.niche = nv.niche
     """
     try:
-        df = pd.read_sql_query(q, get_db())
+        df = pd.read_sql_query(q, get_db(), params=(history_start_id,))
         if 'risk_score' not in df.columns: df['risk_score'] = 0
         df['opp_score'] = (df['alpha'] * 40) + (np.log10(df['review_count']+1) * 10) - (np.log10(df['n_sat']+10) * 5) - (df['p_dev'] * 15)
         
@@ -53,7 +59,7 @@ def load_alpha():
 
 
 @st.cache_data(ttl=60)
-def load_history():
+def load_history(history_start_id):
     conn = get_db()
     try:
         columns = {
@@ -64,8 +70,10 @@ def load_history():
             f"""
             SELECT niche, listing_id, review_count, timestamp, {shop_select}
             FROM scan_history
+            WHERE id >= ?
             """,
             conn,
+            params=(history_start_id,),
         )
     finally:
         conn.close()
@@ -92,14 +100,29 @@ def generate_prompts(row):
 
 # --- UI ---
 st.title("🚜 Alpha Creative Terminal v4")
-df = load_alpha()
+
+try:
+    clean_scan_id = get_clean_history_scan_id()
+    boundary_conn = get_db()
+    try:
+        history_start_id = resolve_clean_history_start_id(
+            boundary_conn, clean_scan_id
+        )
+    finally:
+        boundary_conn.close()
+except HistoryBoundaryError as error:
+    st.warning(str(error))
+    st.stop()
+
+st.caption(f"Clean history starts at scan: {clean_scan_id}")
+df = load_alpha(history_start_id)
 
 st.sidebar.header("Settings")
 hide_risk = st.sidebar.toggle("Hide Trademark Risks", value=True)
 if not df.empty and hide_risk:
     df = df[df['risk_score'] == 0]
 
-history = load_history()
+history = load_history(history_start_id)
 v1_by_niche = (
     df.groupby("niche")["opp_score"].median().to_dict() if not df.empty else {}
 )
