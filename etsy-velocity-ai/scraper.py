@@ -71,6 +71,7 @@ async def extract_item_data(page):
     price = 0.0
     reviews = 0
     shop_name = None
+    has_listing_review_section = False
 
     # 1. Force a strict wait for the EXACT class you identified
     try:
@@ -94,10 +95,11 @@ async def extract_item_data(page):
                 if m: price = float(m.group(0))
     except: pass
 
-    # 4. Reviews - The CSS Bypass Method
+    # 4. Reviews - listing-specific CSS and review section only
     try:
-        # We grab the explicit class, plus fallback anchors
-        locators = page.locator('.wt-text-body-smaller.wt-sem-text-tertiary, a[href*="#reviews"]')
+        review_section = page.locator("#reviews")
+        has_listing_review_section = await review_section.count() > 0
+        locators = page.locator('.wt-text-body-smaller.wt-sem-text-tertiary, #reviews')
         count = await locators.count()
         
         for i in range(count):
@@ -108,7 +110,7 @@ async def extract_item_data(page):
             clean = text.replace('\n', '').replace('\r', '').strip()
             
             # Ultra-forgiving Regex: Matches English, Lithuanian, and isolated numbers in parentheses
-            m = re.search(r'\(?\s*([\d,.]+[kK]?)\s*\)?\s*(?:review|atsiliepim|įvertinim)', clean, re.IGNORECASE)
+            m = re.search(r'\(?\s*([\d][\d,.]*[kK]?)\s*\)?\s*(?:review|atsiliepim|įvertinim)', clean, re.IGNORECASE)
             
             # Absolute Fallback: If it's the exact class, just pull the digits inside the parentheses
             if not m:
@@ -123,8 +125,8 @@ async def extract_item_data(page):
                     break
     except: pass
 
-    # 5. Structured-data fallback
-    if reviews == 0:
+    # 5. Structured-data fallback is valid only when this listing has a review section.
+    if reviews == 0 and has_listing_review_section:
         try:
             scripts = await page.locator('script[type="application/ld+json"]').all_text_contents()
             for script in scripts:
@@ -149,19 +151,6 @@ async def extract_item_data(page):
             if shop_name:
                 break
     except: pass
-
-    # 7. The "Nuclear" Page-Wide Fallback
-    if reviews == 0:
-        try:
-            html_text = await page.locator("body").text_content()
-            matches = re.findall(r'\(?\s*([\d,.]+[kK]?)\s*\)?\s*(?:review|atsiliepim|įvertinim)', html_text, re.IGNORECASE)
-            for match in matches:
-                val_str = match.lower().replace(',', '')
-                val = int(float(val_str.replace('k', '')) * 1000) if 'k' in val_str else int(val_str)
-                if 0 < val < 3000:
-                    reviews = val
-                    break
-        except: pass
 
     return {"reviews": reviews, "price": price, "title": title, "shop_name": shop_name}
 
