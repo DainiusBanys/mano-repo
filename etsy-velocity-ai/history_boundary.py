@@ -35,6 +35,31 @@ def resolve_clean_history_start_id(conn, scan_id):
     return int(start_id)
 
 
+def load_clean_recheck_cohort(conn, environ=None):
+    """Load the original clean DISCOVER cohort for every RECHECK."""
+    scan_id = get_clean_history_scan_id(environ)
+    resolve_clean_history_start_id(conn, scan_id)
+    rows = conn.execute(
+        """
+        WITH baseline_rows AS (
+            SELECT id, niche, url, listing_id, rank, saturation_count,
+                   ROW_NUMBER() OVER (
+                       PARTITION BY niche, listing_id
+                       ORDER BY id
+                   ) AS cohort_row
+            FROM scan_history
+            WHERE scan_id = ?
+        )
+        SELECT niche, url, listing_id, rank, saturation_count
+        FROM baseline_rows
+        WHERE cohort_row = 1
+        ORDER BY niche, rank, id
+        """,
+        (scan_id,),
+    ).fetchall()
+    return scan_id, rows
+
+
 def ensure_scans_are_clean(conn, scan_ids, start_id):
     """Reject explicitly selected scans that begin before the clean boundary."""
     for scan_id in scan_ids:

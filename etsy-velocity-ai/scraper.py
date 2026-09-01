@@ -8,6 +8,8 @@ import logging
 from datetime import datetime, UTC
 from playwright.async_api import async_playwright
 
+from history_boundary import load_clean_recheck_cohort
+
 # --- CONFIG ---
 DB = "velocity.db"
 MODE = "RECHECK"  # "DISCOVER" or "RECHECK"
@@ -171,65 +173,10 @@ async def get_saturation_count(page):
 
 # ---------- MAIN ENGINE ----------
 
-def get_latest_scan_rows(conn):
-    scan_ids = conn.execute(
-        """SELECT scan_id
-           FROM scan_history
-           WHERE scan_id != ?
-           GROUP BY scan_id
-           ORDER BY MAX(id) DESC""",
-        (SCAN_ID,),
-    ).fetchall()
-    if not scan_ids:
-        return None, []
+async def recheck_clean_baseline(context, conn):
+    baseline_scan_id, rows = load_clean_recheck_cohort(conn)
 
-    def load_rows(scan_id):
-        return conn.execute("""
-            SELECT niche, url, listing_id, rank, saturation_count
-            FROM scan_history
-            WHERE scan_id = ?
-            ORDER BY niche, rank, id
-        """, (scan_id,)).fetchall()
-
-    latest_scan_id = scan_ids[0][0]
-    latest_rows = load_rows(latest_scan_id)
-    expected_niches = {row[0] for row in latest_rows}
-
-    previous_scan_id = latest_scan_id
-    rows = latest_rows
-    for (candidate_scan_id,) in scan_ids:
-        candidate_rows = load_rows(candidate_scan_id)
-        niche_counts = {}
-        for row in candidate_rows:
-            niche_counts[row[0]] = niche_counts.get(row[0], 0) + 1
-
-        if all(niche_counts.get(niche, 0) >= TARGET_PER_NICHE for niche in expected_niches):
-            previous_scan_id = candidate_scan_id
-            rows = candidate_rows
-            break
-
-    selected = []
-    niche_counts = {}
-    for row in rows:
-        niche = row[0]
-        if niche not in expected_niches:
-            continue
-        niche_counts[niche] = niche_counts.get(niche, 0)
-        if niche_counts[niche] >= TARGET_PER_NICHE:
-            continue
-        selected.append(row)
-        niche_counts[niche] += 1
-
-    return previous_scan_id, selected
-
-
-async def recheck_latest_scan(context, conn):
-    previous_scan_id, rows = get_latest_scan_rows(conn)
-    if not rows:
-        log.warning("No previous scan results found to recheck.")
-        return
-
-    log.info(f"RECHECK: {len(rows)} listings from scan {previous_scan_id}")
+    log.info(f"RECHECK: {len(rows)} listings from clean scan {baseline_scan_id}")
 
     for i, (niche, url, listing_id, rank, saturation_count) in enumerate(rows, 1):
         item_page = None
@@ -295,7 +242,7 @@ async def run():
             return
 
         if MODE == "RECHECK":
-            await recheck_latest_scan(context, conn)
+            await recheck_clean_baseline(context, conn)
             conn.close()
             log.info("RECHECK complete.")
             return
