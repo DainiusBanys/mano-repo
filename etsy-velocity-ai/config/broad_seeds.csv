@@ -1,0 +1,71 @@
+seed_id,macro_segment,query,product_type,personalization_type,occasion,ip_risk_hint,enabled,notes
+B001,Kids birthdays,personalized birthday shirt kids,kids T-shirt,name and age,birthday,LOW,true,pilot
+B002,Kids birthdays,personalized construction birthday shirt,kids T-shirt,name and age,birthday,LOW,true,pilot
+B003,Generic sports,personalized basketball birthday shirt,kids T-shirt,name and age,birthday,MEDIUM,true,pilot
+B004,Teacher / school,personalized teacher shirt,adult T-shirt,name and role,school,LOW,true,pilot
+B005,Occupations / professions,custom mechanic shirt name,adult T-shirt,name and occupation,everyday,LOW,true,pilot
+B006,Hobbies / outdoors,personalized fishing shirt,adult T-shirt,name and hobby,everyday,LOW,true,pilot
+B007,Family / relatives,personalized grandpa shirt,adult T-shirt,name and family relation,family gift,LOW,true,pilot
+B008,Family / relatives,personalized dad shirt,adult T-shirt,name and family relation,family gift,LOW,true,pilot
+B009,Pets,personalized dog shirt owner,adult T-shirt,name and pet,everyday,LOW,true,pilot
+B010,Family / relatives,personalized family shirt,family matching apparel,family names,family event,LOW,true,pilot
+B011,Family trips / vacations,personalized family vacation shirts,family matching apparel,family name and year,vacation,LOW,true,pilot
+B012,Hobbies / outdoors,personalized camping family shirt,family matching apparel,family name,camping trip,LOW,true,pilot
+B013,Graduation,personalized graduation shirt,adult T-shirt,name and year,graduation,LOW,true,pilot
+B014,Adult milestone birthdays,personalized retirement shirt,adult T-shirt,name and year,retirement,LOW,true,pilot
+B015,Baby / newborn,personalized new dad shirt,adult T-shirt,name and role,new baby,LOW,true,pilot
+B016,Wedding / bridal,personalized bridal party shirt,family matching apparel,name and role,wedding,MEDIUM,true,pilot
+B017,Memorial / sentimental,personalized memorial shirt,adult T-shirt,name and dates,memorial,LOW,true,pilot
+B018,Adult milestone birthdays,personalized 50th birthday shirt,adult T-shirt,name and age,birthday,LOW,true,pilot
+B019,Kids birthdays,personalized dinosaur birthday shirt,kids T-shirt,name and age,birthday,MEDIUM,false,full registry
+B020,Kids birthdays,personalized race car birthday shirt,kids T-shirt,name and age,birthday,LOW,false,full registry
+B021,Kids birthdays,personalized farm birthday shirt,kids T-shirt,name and age,birthday,LOW,false,full registry
+B022,Kids birthdays,personalized train birthday shirt,kids T-shirt,name and age,birthday,LOW,false,full registry
+B023,Kids birthdays,personalized space birthday shirt,kids T-shirt,name and age,birthday,LOW,false,full registry
+B024,Kids birthdays,personalized animal birthday shirt,kids T-shirt,name and age,birthday,LOW,false,full registry
+B025,Adult milestone birthdays,personalized 30th birthday shirt,adult T-shirt,name and age,birthday,LOW,false,full registry
+B026,Adult milestone birthdays,personalized 40th birthday shirt,adult T-shirt,name and age,birthday,LOW,false,full registry
+B027,Adult milestone birthdays,personalized 60th birthday shirt,adult T-shirt,name and age,birthday,LOW,false,full registry
+B028,Adult milestone birthdays,custom birthday year shirt,adult T-shirt,year,birthday,LOW,false,full registry
+B029,Adult milestone birthdays,custom retirement shirt,adult T-shirt,name and year,retirement,LOW,false,full registry
+B030,Family / relatives,personalized grandma shirt,adult T-shirt,name and family relation,family gift,LOW,false,full registry
+B031,Family / relatives,personalized mom shirt,adult T-shirt,name and family relation,family gift,LOW,false,full registry
+B032,Family / relatives,personalized aunt shirt,adult T-shirt,name and family relation,family gift,LOW,false,full registry
+B033,Family / relatives,personalized uncle shirt,adult T-shirt,name and family relation,family gift,LOW,false,full registry
+B034,Family / relatives,personalized sibling shirts,family matching apparel,names and family relation,family event,LOW,false,full registry
+B035,Occupations / professions,personalized nurse shirt,adult T-shirt,name and occupation,everyday,LOW,false,full registry
+B036,Occupations / professions,custom electrician shirt name,adult T-shirt,name and occupation,everyday,LOW,false,full registry
+B037,Occupations / professions,personalized firefighter shirt,adult T-shirt,name and occupation,everyday,LOW,false,full registry
+B038,Occupations / professions,custom carpenter shirt name,adult T-shirt,name and occupation,everyday,LOW,false,full registry
+B039,Hobbies / outdoors,custom fishing dad shirt,adult T-shirt,name and hobby,family gift,LOW,false,full registry
+B040,Hobbies / outdoors,personalized grandpa fishing shirt,adult T-shirt,name and hobby,family gift,LOW,false,full registry
+B041,Hobbies / outdoors,custom hiking shirt name,adult T-shirt,name and hobby,outdoors,LOW,false,full registry
+B042,Hobbies / outdoors,personalized gardening shirt,adult T-shirt,name and hobby,everyday,LOW,false,full registry
+B043,Generic sports,personalized soccer shirt,kids T-shirt,name and sport,sports,MEDIUM,false,full registry
+B044,Generic sports,personalized baseball shirt,adult T-shirt,name and sport,sports,MEDIUM,false,full registry
+B045,Generic sports,personalized volleyball shirt,adult T-shirt,name and sport,sports,MEDIUM,false,full registry
+B046,Generic sports,custom running shirt name,adult T-shirt,name and sport,sports,LOW,false,full registry
+B047,Pets,custom dog mom shirt name,adult T-shirt,name and pet,family gift,LOW,false,full registry
+B048,Pets,personalized cat owner shirt,adult T-shirt,name and pet,everyday,LOW,false,full registry
+B049,Pets,custom pet memorial shirt,adult T-shirt,pet name and dates,memorial,LOW,false,full registry
+B050,Wedding / bridal,personalized bridesmaid shirt,adult T-shirt,name and role,wedding,MEDIUM,false,full registry
+B051,Wedding / bridal,custom groomsmen shirts,adult T-shirt,name and role,wedding,LOW,false,full registry
+B052,Wedding / bridal,personalized wedding party sweatshirts,sweatshirt,name and role,wedding,MEDIUM,false,full registry
+B053,Baby / newborn,personalized new mom shirt,adult T-shirt,name and role,new baby,LOW,false,full registry
+B054,Baby / newborn,personalized baby announcement shirt,adult T-shirt,name and year,new baby,LOW,false,full registry
+B055,Baby / newborn,custom big sister shirt,kids T-shirt,name and role,new baby,LOW,false,full registry
+B056,Teacher / school,custom teacher name sweatshirt,sweatshirt,name and occupation,school,LOW,false,full registry
+B057,Teacher / school,personalized school staff shirt,adult T-shirt,name and role,school,LOW,false,full registry
+B058,Teacher / school,custom kindergarten teacher shirt,adult T-shirt,name and occupation,school,LOW,false,full registry
+B059,Graduation,custom graduation year shirt,adult T-shirt,name and year,graduation,LOW,false,full registry
+B060,Graduation,personalized graduate family shirts,family matching apparel,name and family relation,graduation,LOW,false,full registry
+B061,Memorial / sentimental,custom remembrance shirt,adult T-shirt,name and dates,memorial,LOW,false,full registry
+B062,Memorial / sentimental,personalized family reunion shirts,family matching apparel,family name and year,reunion,LOW,false,full registry
+B063,Family trips / vacations,custom cruise family shirts,family matching apparel,family name and year,vacation,LOW,false,full registry
+B064,Family trips / vacations,personalized beach trip shirts,family matching apparel,family name and year,vacation,LOW,false,full registry
+B065,Family trips / vacations,custom road trip family shirts,family matching apparel,family name and year,vacation,LOW,false,full registry
+B066,Seasonal personalized apparel,personalized family christmas shirts,family matching apparel,family names,seasonal,MEDIUM,false,full registry
+B067,Seasonal personalized apparel,custom halloween family shirts,family matching apparel,family names,seasonal,MEDIUM,false,full registry
+B068,Seasonal personalized apparel,personalized thanksgiving family shirts,family matching apparel,family names,seasonal,LOW,false,full registry
+B069,Seasonal personalized apparel,custom easter family shirts,family matching apparel,family names,seasonal,LOW,false,full registry
+B070,Seasonal personalized apparel,personalized new year shirts,family matching apparel,name and year,seasonal,LOW,false,full registry
