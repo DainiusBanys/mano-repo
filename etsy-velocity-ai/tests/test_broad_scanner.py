@@ -90,7 +90,7 @@ class BroadMetricTests(unittest.TestCase):
 
 class PersistenceTests(unittest.TestCase):
     def healthy(self, total=50, breadth=.6, share=.25):
-        return {"positive_shop_pct": breadth, "positive_shop_count": 5,
+        return {"paired_listing_count": 5, "positive_shop_pct": breadth, "positive_shop_count": 5,
                 "total_positive_velocity_30d": total, "top_shop_share": share, "elapsed_days": 8}
 
     def test_signal_and_breadth_retention(self):
@@ -109,6 +109,39 @@ class PersistenceTests(unittest.TestCase):
         self.assertEqual(result["persistence_status"], "UNVALIDATED")
         self.assertIsNone(result["PersistenceScore"])
 
+    def test_none_interval_metric_is_invalid(self):
+        missing = self.healthy()
+        missing["positive_shop_pct"] = None
+        result = persistence_metrics([missing, self.healthy()])
+        self.assertEqual(result["valid_interval_count"], 1)
+        self.assertIsNone(result["PersistenceScore"])
+
+    def test_nan_interval_metric_is_invalid(self):
+        missing = self.healthy()
+        missing["positive_shop_pct"] = float("nan")
+        result = persistence_metrics([missing, self.healthy()])
+        self.assertEqual(result["valid_interval_count"], 1)
+        self.assertIsNone(result["PersistenceScore"])
+
+    def test_zero_matched_listings_do_not_increment_valid_count(self):
+        zero_matches = self.healthy(total=0, breadth=0, share=None)
+        zero_matches["paired_listing_count"] = 0
+        result = persistence_metrics([zero_matches])
+        self.assertEqual(result["valid_interval_count"], 0)
+
+    def test_zero_match_t0_t1_cannot_receive_t2_persistence_score(self):
+        zero_matches = self.healthy(total=0, breadth=0, share=None)
+        zero_matches["paired_listing_count"] = 0
+        result = persistence_metrics([zero_matches, self.healthy()], 100)
+        self.assertEqual(result["valid_interval_count"], 1)
+        self.assertEqual(result["persistence_status"], "UNVALIDATED")
+        self.assertIsNone(result["PersistenceScore"])
+
+    def test_valid_numeric_intervals_still_score(self):
+        result = persistence_metrics([self.healthy(45, .6, .25), self.healthy(48, .58, .24)], 95)
+        self.assertEqual(result["valid_interval_count"], 2)
+        self.assertIsNotNone(result["PersistenceScore"])
+
     def test_strong_then_zero_collapses(self):
         result = persistence_metrics([self.healthy(), self.healthy(total=0, breadth=0, share=None)])
         self.assertEqual(result["persistence_status"], "COLLAPSED")
@@ -126,7 +159,7 @@ class PersistenceTests(unittest.TestCase):
 class VerdictAndRegressionTests(unittest.TestCase):
     def test_tiny_sample_is_not_deep_scan(self):
         scored = score_seed(seed(), listing_fixture({"A": [10], "B": [10]}, 4), [
-            {"positive_shop_pct": .5, "positive_shop_count": 2, "total_positive_velocity_30d": 20, "top_shop_share": .5, "elapsed_days": 14}
+            {"paired_listing_count": 2, "positive_shop_pct": .5, "positive_shop_count": 2, "total_positive_velocity_30d": 20, "top_shop_share": .5, "elapsed_days": 14}
         ])
         self.assertEqual(scored["verdict"], "RECHECK")
 
@@ -136,7 +169,7 @@ class VerdictAndRegressionTests(unittest.TestCase):
 
     def test_weak_market_with_many_listings_not_validated(self):
         scored = score_seed(seed(), listing_fixture({f"S{i}": [0] for i in range(10)}), [
-            {"positive_shop_pct": 0, "positive_shop_count": 0, "total_positive_velocity_30d": 0, "top_shop_share": None, "elapsed_days": 14}
+            {"paired_listing_count": 10, "positive_shop_pct": 0, "positive_shop_count": 0, "total_positive_velocity_30d": 0, "top_shop_share": None, "elapsed_days": 14}
         ])
         self.assertNotEqual(scored["verdict"], "VALIDATED_DEEP_SCAN")
 
@@ -144,8 +177,8 @@ class VerdictAndRegressionTests(unittest.TestCase):
         viral = score_seed(seed(), listing_fixture({"A": [80], "B": [5]}, 10), [])
         dinosaur = score_seed(seed("HIGH"), listing_fixture({"A": [80], "B": [5]}, 10, "Jurassic"), [])
         collapsed = persistence_metrics([
-            {"positive_shop_pct": .7, "positive_shop_count": 7, "total_positive_velocity_30d": 80, "top_shop_share": .25, "elapsed_days": 14},
-            {"positive_shop_pct": 0, "positive_shop_count": 0, "total_positive_velocity_30d": 0, "top_shop_share": None, "elapsed_days": 14},
+            {"paired_listing_count": 10, "positive_shop_pct": .7, "positive_shop_count": 7, "total_positive_velocity_30d": 80, "top_shop_share": .25, "elapsed_days": 14},
+            {"paired_listing_count": 10, "positive_shop_pct": 0, "positive_shop_count": 0, "total_positive_velocity_30d": 0, "top_shop_share": None, "elapsed_days": 14},
         ])
         self.assertNotEqual(viral["verdict"], "VALIDATED_DEEP_SCAN")
         self.assertEqual(dinosaur["verdict"], "REJECT")

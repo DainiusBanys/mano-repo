@@ -192,8 +192,14 @@ def rank_stability(previous_rank, current_rank, niche_count):
     return clamp(100 * (1 - abs(current_rank - previous_rank) / max(niche_count - 1, 1)))
 
 
+def _has_matched_interval_evidence(row):
+    paired_count = row.get("paired_listing_count")
+    positive_shop_pct = row.get("positive_shop_pct")
+    return pd.notna(paired_count) and paired_count > 0 and pd.notna(positive_shop_pct)
+
+
 def persistence_metrics(intervals, rank_score=None):
-    valid = [row for row in intervals if row.get("positive_shop_pct") is not None]
+    valid = [row for row in intervals if _has_matched_interval_evidence(row)]
     if len(valid) < 2:
         return {
             "interval_count": max(1, len(intervals)), "valid_interval_count": len(valid),
